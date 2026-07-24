@@ -1,0 +1,463 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowLeft, ArrowRight, Bot, CalendarDays, Check, ChevronRight,
+  Code2, Computer, Cpu, FileText, Folder, FolderOpen, Github, Globe2,
+  HelpCircle, Info, Mail, MapPin, Maximize2, MessageCircle, Minus, Monitor,
+  MoreHorizontal, Music2, Plus, Power, Search, Send, Settings, Sparkles, Trophy,
+  Wifi, X
+} from "lucide-react";
+import { fetchEvents, formatEventForDisplay } from "../lib/api";
+import EventForm from "./components/EventForm";
+import JoinForm from "./components/JoinForm";
+
+type AppId = "welcome" | "about" | "projects" | "events" | "archive" | "join";
+
+type WindowState = {
+  id: AppId;
+  minimized: boolean;
+  maximized: boolean;
+  x: number;
+  y: number;
+};
+
+const APP_META: Record<AppId, { label: string; short: string; icon: typeof Computer; tone: string }> = {
+  welcome: { label: "Welcome to IoSC", short: "Welcome", icon: Info, tone: "blue" },
+  about: { label: "About Intel oneAPI Student Club", short: "About IoSC", icon: Cpu, tone: "blue" },
+  projects: { label: "oneAPI Projects - Internet Explorer", short: "oneAPI Projects", icon: Globe2, tone: "blue" },
+  events: { label: "Events Calendar", short: "Events", icon: CalendarDays, tone: "orange" },
+  archive: { label: "IoSC Archive - Notepad", short: "Archive", icon: FileText, tone: "paper" },
+  join: { label: "Join IoSC", short: "Join IoSC", icon: MessageCircle, tone: "green" },
+};
+
+const XP_ICONS: Record<AppId, string> = {
+  welcome: "/assets/xp/icons/tour.png",
+  about: "/assets/xp/icons/computer.png",
+  projects: "/assets/xp/icons/internet-explorer.png",
+  events: "/assets/xp/icons/events.png",
+  archive: "/assets/xp/icons/notepad.png",
+  join: "/assets/xp/icons/messenger.png",
+};
+
+const DEFAULT_POSITIONS: Record<AppId, { x: number; y: number }> = {
+  welcome: { x: 250, y: 86 }, about: { x: 120, y: 72 },
+  projects: { x: 160, y: 65 }, events: { x: 265, y: 100 }, archive: { x: 320, y: 76 }, join: { x: 370, y: 112 },
+};
+
+const projects = [
+  { title: "RAG Chatbot for IoSC", type: "Python · RAG · LLM · Embeddings", status: "Built", icon: Bot, color: "#0068b5", description: "An IoSC assistant that uses retrieval-augmented generation to answer club and community questions." },
+  { title: "HackMaze Project Track", type: "oneAPI · Intel Developer Cloud", status: "2023 archive", icon: Code2, color: "#00a3a3", description: "A project-building programme that moved teams from an online preliminary round to an offline showcase using oneAPI tooling." },
+];
+
+const defaultEvents = [
+  { day: "10–12", month: "OCT 2023", title: "HackMaze", type: "Hackathon", place: "Online prelims · Offline project showcase", accent: "#0068b5" },
+  { day: "2023", month: "ARCHIVE", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus", accent: "#00a3a3" },
+  { day: "2024", month: "ARCHIVE", title: "Vespera", type: "Two-day tech fest", place: "USAR, GGSIPU EDC", accent: "#ce7b25" },
+  { day: "15–16", month: "OCT 2025", title: "AzinHack ’25", type: "24-hour hackathon", place: "USAR, GGSIPU EDC", accent: "#875fa0" },
+];
+
+
+function WindowsFlag({ small = false }: { small?: boolean }) {
+  return <span className={`windows-flag ${small ? "windows-flag--small" : ""}`} aria-hidden="true">
+    <i className="bg-[#f04b2f]"/><i className="bg-[#77b82a]"/><i className="bg-[#2f7dd0]"/><i className="bg-[#f8bd22]"/>
+  </span>;
+}
+
+function ChipMark({ compact = false }: { compact?: boolean }) {
+  return <span className={`chip-mark ${compact ? "chip-mark--compact" : ""}`} aria-hidden="true">
+    <i className="chip-die"><b>one</b><b>API</b></i>
+    {Array.from({ length: 12 }, (_, index) => <i className="chip-pin" key={index}/>) }
+  </span>;
+}
+
+function SiliconOverlay() {
+  return <div className="silicon-overlay" aria-hidden="true">
+    <div className="silicon-chip"><span>intel</span><strong>oneAPI</strong><small>student club</small></div>
+    <i className="trace trace-a"/><i className="trace trace-b"/><i className="trace trace-c"/><i className="trace trace-d"/>
+    <b className="node node-a"/><b className="node node-b"/><b className="node node-c"/><b className="node node-d"/>
+  </div>;
+}
+
+function AppIcon({ id, size = "desktop" }: { id: AppId; size?: "desktop" | "small" | "menu" }) {
+  return <span className={`app-icon app-icon--${size}`}><img src={XP_ICONS[id]} alt="" draggable={false}/></span>;
+}
+
+function BootScreen({ done }: { done: () => void }) {
+  useEffect(() => {
+    const timer = window.setTimeout(done, 1550);
+    return () => window.clearTimeout(timer);
+  }, [done]);
+  return <button className="boot-screen" onClick={done} aria-label="Skip boot animation">
+    <div className="boot-brand"><div><span>intel</span><sup>student club</sup></div><strong>oneAPI</strong></div>
+    <p>Initializing heterogeneous computing environment...</p>
+    <div className="boot-progress"><i/><i/><i/></div>
+    <small>Click anywhere to start</small>
+  </button>;
+}
+
+function DesktopShortcut({ id, selected, onSelect, onOpen }: { id: AppId; selected: boolean; onSelect: () => void; onOpen: () => void }) {
+  return <button
+    className={`desktop-shortcut ${selected ? "desktop-shortcut--selected" : ""}`}
+    onClick={onSelect}
+    onDoubleClick={onOpen}
+    onKeyDown={(event) => { if (event.key === "Enter") onOpen(); }}
+  >
+    <AppIcon id={id}/><span>{APP_META[id].short}</span>
+  </button>;
+}
+
+function TitleBar({ id, active, maximized, onFocus, onMinimize, onMaximize, onClose, onDragStart }: {
+  id: AppId; active: boolean; maximized: boolean; onFocus: () => void; onMinimize: () => void; onMaximize: () => void; onClose: () => void; onDragStart: (event: React.PointerEvent) => void;
+}) {
+  return <div className={`window-titlebar ${active ? "window-titlebar--active" : ""}`} onPointerDown={onDragStart} onDoubleClick={onMaximize}>
+    <div className="window-title"><AppIcon id={id} size="small"/><span>{APP_META[id].label}</span></div>
+    <div className="window-controls" onPointerDown={(event) => event.stopPropagation()}>
+      <button onClick={() => { onFocus(); onMinimize(); }} aria-label="Minimize"><Minus/></button>
+      <button onClick={() => { onFocus(); onMaximize(); }} aria-label={maximized ? "Restore" : "Maximize"}><Maximize2/></button>
+      <button className="window-close" onClick={onClose} aria-label="Close"><X/></button>
+    </div>
+  </div>;
+}
+
+function MenuBar({ items = ["File", "Edit", "View", "Favorites", "Tools", "Help"] }: { items?: string[] }) {
+  return <div className="menu-bar" aria-label="Application menu">{items.map(item => <span key={item}>{item}</span>)}</div>;
+}
+
+function ExplorerToolbar({ address }: { address: string }) {
+  return <div className="address-bar"><span>Address</span><div><img src="/assets/xp/icons/earth.png" alt=""/><p>{address}</p></div></div>;
+}
+
+function WelcomeApp({ openApp }: { openApp: (id: AppId) => void }) {
+  return <div className="welcome-app">
+    <div className="welcome-left">
+      <div className="welcome-logo"><ChipMark/><div><strong>Intel oneAPI</strong><span>Student Club · IoSC</span></div></div>
+      <h1>Building dreams together.</h1>
+      <p>We’re IoSC-EDC: a future-focused, tech-driven community for students who learn, build, and experiment across software, AI, robotics, design, games, and systems.</p>
+      <button className="xp-primary-button" onClick={() => openApp("about")}>Take the tour <ChevronRight/></button>
+    </div>
+    <div className="welcome-actions">
+      <p>What do you want to do?</p>
+      {["about", "projects", "events", "join"].map(id => <button key={id} onClick={() => openApp(id as AppId)}><AppIcon id={id as AppId} size="menu"/><span><strong>{APP_META[id as AppId].short}</strong><small>{id === "about" ? "Mission, focus, and campus chapter" : id === "projects" ? "A small selection of club work" : id === "events" ? "Hackathons, workshops, and tech fests" : "Connect with the community"}</small></span><ChevronRight/></button>)}
+    </div>
+  </div>;
+}
+
+function AboutApp() {
+  const [tab, setTab] = useState("General");
+  return <div className="system-app">
+    <div className="system-tabs">{["General", "Our values", "Club details"].map(item => <button key={item} onClick={() => setTab(item)} className={tab === item ? "active" : ""}>{item}</button>)}</div>
+    <div className="system-panel">
+      {tab === "General" && <><div className="system-hero"><ChipMark/><div><h2>Intel oneAPI Student Club — EDC</h2><p>IoSC · GGSIPU East Delhi Campus</p></div></div><hr/><div className="system-copy"><strong>A future-focused, tech-driven community.</strong><p>IoSC brings together students who love technology and innovative development—from design, system integration, game development, robotics, and web to management. It is a platform to learn, gain hands-on experience, and excel.</p></div><div className="system-stats"><span><b>LEARN</b> together</span><span><b>BUILD</b> projects</span><span><b>SHARE</b> openly</span></div></>}
+      {tab === "Our values" && <div className="value-list">{[["Hands-on education", "Turn technical ideas into practical experience through making and experimentation."],["Real-life problem solving", "Learn by working on challenges that demand thoughtful, useful solutions."],["Collaboration", "Build with people from different technical and creative disciplines."],["Industry insight", "Connect workshops and sessions with contemporary tools and working practice."]].map(([title,text], i) => <div key={title}><span>{i+1}</span><p><strong>{title}</strong><small>{text}</small></p></div>)}</div>}
+      {tab === "Club details" && <div className="detail-table"><div><span>Club type</span><strong>Intel oneAPI Student Club</strong></div><div><span>Established</span><strong>2023</strong></div><div><span>Campus</span><strong>GGSIPU East Delhi Campus, USAR</strong></div><div><span>Activities</span><strong>Workshops, hackathons, coding competitions, bootcamps &amp; networking</strong></div><div><span>Focus</span><strong>Technology, oneAPI, multidisciplinary project building</strong></div></div>}
+    </div>
+  </div>;
+}
+
+function ProjectsApp() {
+  const [selected, setSelected] = useState(0);
+  const project = projects[selected];
+  const ProjectIcon = project.icon;
+  return <div className="browser-app"><MenuBar/><ExplorerToolbar address="https://iosc.club/projects"/><div className="project-webpage">
+    <header><div><ChipMark compact/><strong>IoSC // oneAPI Projects</strong></div><span>Select a project to view details</span></header>
+    <div className="project-page-heading"><div><p>HETEROGENEOUS LAB</p><h2>Silicon meets graphics.</h2><span>Parallel code, visual demos, measurable performance.</span></div><div className="project-orb"><Cpu/></div></div>
+    <div className="project-browser-grid"><aside>{projects.map((item, index) => { const Icon = item.icon; return <button key={item.title} className={selected === index ? "active" : ""} onClick={() => setSelected(index)}><span style={{ backgroundColor: item.color }}><Icon/></span><p><strong>{item.title}</strong><small>{item.type}</small></p></button>})}</aside><article><div className="project-preview" style={{ "--project": project.color } as React.CSSProperties}><ProjectIcon/><span>{project.status}</span></div><p className="project-type">{project.type}</p><h3>{project.title}</h3><p>{project.description}</p><div className="project-tags"><span>Club work</span><span>Student-built</span></div><p className="project-repo-note"><Github/> Add the maintained repository link when the new project catalogue is ready.</p></article></div>
+  </div><div className="browser-status"><span>Done</span><div/><Globe2/><span>Internet</span></div></div>;
+}
+
+function EventsApp({ openApp, eventsList, onRefresh, onRegisterClick }: { openApp: (id: AppId) => void; eventsList: typeof defaultEvents; onRefresh?: () => void; onRegisterClick?: () => void }) {
+  const [view, setView] = useState<"Event archive" | "Highlights">("Event archive");
+  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]}/><div className="events-period"><CalendarDays/> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({length: 31}, (_, i) => <span className={i+1 >= 10 && i+1 <= 12 ? "active" : ""} key={i}>{i+1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button><button className="bg-emerald-600 text-white font-semibold hover:bg-emerald-500 mt-2 py-1 px-2 rounded cursor-pointer text-xs" onClick={onRegisterClick}>📝 Register Now</button></div></aside><main><div className="events-heading"><h2>{view}</h2></div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{borderColor: event.accent}}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{color: event.accent}}>{event.type}</span><h3>{event.title}</h3><p><MapPin/> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy/><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
+}
+
+function ArchiveApp() {
+  return <div className="notepad-app"><MenuBar items={["File", "Edit", "Format", "View", "Help"]}/><div className="notepad-page" contentEditable suppressContentEditableWarning spellCheck={false}>
+    <p>IoSC SYSTEM LOG<br/>===============</p><p>Intel oneAPI Student Club — selected milestones.</p>
+    <p><b>2023 — SYSTEM BOOT</b><br/>IoSC GGSIPU-EDC is founded as a student technology community at the East Delhi Campus.</p>
+    <p><b>2023 — oneAPI INTRODUCTION</b><br/>The club presents an introductory workshop covering oneAPI toolkits and Intel DevCloud.</p>
+    <p><b>10–12 OCT 2023 — HACKMAZE</b><br/>A project-based hackathon challenges teams to explore, learn, and create with oneAPI. The programme moves from online prelims to an offline showcase.</p>
+    <p><b>2023 — AZINTEK</b><br/>The club’s first tech event brings together HackMaze, DesignBlitz, coding competitions, gaming events, and speaker sessions.</p>
+    <p><b>2024 — VESPERA</b><br/>IoSC and AWS Cloud Club GGSIPU organise a two-day campus tech fest.</p>
+    <p><b>15–16 OCT 2025 — AZINHACK ’25</b><br/>IoSC organises the 24-hour flagship hackathon of Elysian 2025 at USAR, GGSIPU EDC.</p>
+    <p>_</p>
+  </div><div className="notepad-status"><span>Ln 24, Col 1</span><span>100%</span><span>Windows (CRLF)</span><span>UTF-8</span></div></div>;
+}
+
+function JoinApp() {
+  const links = [
+    ["LinkedIn", "Official club updates and event announcements", "https://www.linkedin.com/company/iosc-usar/"],
+    ["Instagram", "Photos, posters, and campus highlights", "https://instagram.com/iosc_edc"],
+    ["YouTube", "Session recordings and club videos", "https://youtube.com/@IoSCUSAR"],
+    ["All official links", "Open the IoSC GGSIPU-EDC Linktree", "https://linktr.ee/iosc_ggsipuedc"],
+  ];
+  return <div className="join-app overflow-y-auto p-2">
+    <div className="join-header">
+      <div className="messenger-people"><span/><span/></div>
+      <div><strong>Connect with Intel oneAPI Student Club</strong><p>● Visit official channels and social media</p></div>
+    </div>
+    <div className="join-message my-3">
+      <span>IoSC says:</span>
+      <p>Follow the club’s verified public channels for new sessions, applications, hackathons, and campus announcements.</p>
+    </div>
+    <div className="welcome-actions">
+      {links.map(([title, description, href]) => (
+        <a key={title} href={href} target="_blank" rel="noreferrer">
+          <AppIcon id="join" size="menu"/>
+          <span><strong>{title}</strong><small>{description}</small></span>
+          <ChevronRight/>
+        </a>
+      ))}
+    </div>
+  </div>;
+}
+
+function AppContent({ id, openApp, eventsList, onRefresh, onRegisterClick }: { id: AppId; openApp: (id: AppId) => void; eventsList: typeof defaultEvents; onRefresh: () => void; onRegisterClick?: () => void }) {
+  if (id === "welcome") return <WelcomeApp openApp={openApp}/>;
+  if (id === "about") return <AboutApp/>;
+  if (id === "projects") return <ProjectsApp/>;
+  if (id === "events") return <EventsApp openApp={openApp} eventsList={eventsList} onRefresh={onRefresh} onRegisterClick={onRegisterClick}/>;
+  if (id === "archive") return <ArchiveApp/>;
+  return <JoinApp/>;
+}
+
+function StartMenu({ openApp, close, openGuide }: { openApp: (id: AppId) => void; close: () => void; openGuide: () => void }) {
+  return <div className="start-menu">
+    <div className="start-user"><div>i</div><strong>IoSC Club</strong></div>
+    <div className="start-content"><div className="start-left">
+      <button onClick={() => openApp("projects")}><AppIcon id="projects" size="menu"/><span><strong>Internet Explorer</strong><small>Browse club projects</small></span></button>
+      <button onClick={() => openApp("join")}><AppIcon id="join" size="menu"/><span><strong>IoSC Messenger</strong><small>Join the community</small></span></button><hr/>
+      {(["events", "archive", "about"] as AppId[]).map(id => <button key={id} onClick={() => openApp(id)}><AppIcon id={id} size="menu"/><span><strong>{APP_META[id].short}</strong></span></button>)}
+      <div className="all-programs">All Programs <ChevronRight/></div>
+    </div><div className="start-right">
+      {(["about", "projects", "archive"] as AppId[]).map(id => <button key={id} onClick={() => openApp(id)}><AppIcon id={id} size="small"/><span>{APP_META[id].short}</span></button>)}
+    </div></div>
+    <div className="start-footer"><button onClick={openGuide}><img src="/assets/xp/icons/tour.png" alt=""/> Guided website</button><button onClick={close}><X/> Close menu</button></div>
+  </div>;
+}
+
+function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop: (id?: AppId) => void; time: string; eventsList: typeof defaultEvents; onRefresh: () => void }) {
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+
+  return <main className="guided-shell portal-shell relative">
+    <div className="guided-browser-chrome">
+      <div className="window-titlebar window-titlebar--active"><div className="window-title"><AppIcon id="projects" size="small"/><span>IoSC Home - Intel oneAPI Student Club - Internet Explorer</span></div><div className="window-controls"><button className="window-close" onClick={() => openDesktop()} aria-label="Open XP desktop"><X/></button></div></div>
+      <MenuBar/>
+      <div className="guided-minimal-toolbar"><div className="address-bar"><span>Address</span><div><img src="/assets/xp/icons/earth.png" alt=""/><p>https://iosc.club/home</p></div></div><button onClick={() => openDesktop()}><img src="/assets/xp/icons/computer.png" alt=""/> Open XP Desktop</button></div>
+    </div>
+
+    <div className="portal-page">
+      <header className="portal-header" id="top"><div className="portal-brand"><span>intel</span><div><strong>oneAPI Student Club</strong><small>IoSC · GGSIPU East Delhi Campus</small></div></div><div className="portal-utility"><a href="#club-timeline">Timeline</a><a href="#club-events">Events</a><button onClick={() => openDesktop("join")}>Connect</button></div></header>
+      <nav className="portal-nav"><span className="portal-nav-brand">IoSC</span><a href="#top" className="active">Home</a><a href="#about-club">About the club</a><a href="#tracks">What we do</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><a href="#club-timeline">Timeline</a><button onClick={() => openDesktop()}><img src="/assets/xp/icons/computer.png" alt=""/> XP Desktop</button></nav>
+      <div className="portal-breadcrumb">IoSC Home &nbsp;›&nbsp; Welcome</div>
+
+      <div className="portal-layout">
+        <div className="portal-main">
+          <section className="portal-hero">
+            <div><p>INTEL oneAPI STUDENT CLUB · EDC</p><h1>Building dreams together.</h1><span>A future-focused, tech-driven community where students learn, experiment, and build across software, AI, robotics, design, games, and systems.</span><div><a href="#about-club">Explore IoSC</a><button onClick={() => openDesktop("join")}>Connect with us</button></div></div>
+            <div className="portal-code"><div><span/><span/><span/>vector_add.cpp</div><pre><code>{`queue q;\nq.parallel_for(n, [=](id<1> i) {\n  c[i] = a[i] + b[i];\n});\nq.wait();`}</code></pre><small>oneAPI + SYCL</small></div>
+          </section>
+
+          <div className="portal-notice"><strong>From the archive:</strong> HackMaze turned oneAPI learning into a project-building journey. <button onClick={() => openDesktop("events")}>View event archive »</button></div>
+
+          <section id="about-club" className="portal-section"><h2>About the club</h2><div className="portal-rule"/><p>IoSC-EDC is a community of people who love technology and innovative development across design, system integration, game development, robotics, web, management, and more.</p><p>Our mission is to bring hands-on education based on collaboration and real-life problem solving through workshops, hackathons, coding competitions, and networking sessions—building contemporary skills and industry insight along the way.</p><button className="portal-link" onClick={() => openDesktop("about")}><img src="/assets/xp/icons/computer.png" alt=""/> View club information</button></section>
+
+          <section id="tracks" className="portal-section"><h2>What we do</h2><div className="portal-rule"/><div className="portal-track-list">{[["Workshops & bootcamps","Hands-on introductions to oneAPI toolkits and a wide range of technical topics."],["Hackathons & projects","Build practical solutions, collaborate across disciplines, and present working ideas."],["Coding & creative events","Programming competitions, design challenges, gaming events, and technical showcases."],["Talks & networking","Learn from practitioners and connect technical work with contemporary industry insight."]].map(([title,text],index)=><article key={title}><b>{index+1}</b><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
+
+          <section id="club-projects" className="portal-section"><div className="portal-section-title"><h2>Selected projects</h2><button onClick={() => openDesktop("projects")}>Open Projects in Internet Explorer</button></div><div className="portal-rule"/><div className="portal-project-table">{projects.map(project=><article key={project.title}><div style={{backgroundColor:project.color}}><Code2/></div><section><h3>{project.title}</h3><p>{project.description}</p><small>{project.type}</small></section><span>{project.status}</span></article>)}</div></section>
+
+          <section id="club-events" className="portal-section">
+            <div className="portal-section-title">
+              <h2>Events Calendar</h2>
+              <div className="flex items-center gap-2">
+                <button className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
+                  📝 Register Now
+                </button>
+                <button onClick={() => openDesktop("events")}>Open event archive</button>
+              </div>
+            </div>
+            <div className="portal-rule"/>
+            <table className="portal-events">
+              <thead><tr><th>Date</th><th>Event</th><th>Type</th><th>Location</th></tr></thead>
+              <tbody>{eventsList.map(event=><tr key={event.title}><td>{event.day} {event.month}</td><td><strong>{event.title}</strong></td><td>{event.type}</td><td>{event.place}</td></tr>)}</tbody>
+            </table>
+          </section>
+
+          <section id="club-timeline" className="portal-section"><div className="portal-section-title"><h2>Club timeline</h2><button onClick={() => openDesktop("archive")}>Open timeline in Notepad</button></div><div className="portal-rule"/><div className="portal-track-list">{[["2023","IoSC GGSIPU-EDC is founded and begins introducing students to oneAPI."],["Oct 2023","HackMaze runs as a project-based oneAPI hackathon; Azintek brings multiple technical and creative events together."],["2024","Vespera expands the campus programme into a two-day collaborative tech fest."],["Oct 2025","AzinHack ’25 runs as a 24-hour flagship hackathon at USAR."]].map(([title,text],index)=><article key={title}><b>{index+1}</b><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
+        </div>
+
+        <aside className="portal-sidebar">
+          <section><h2>Club links</h2><button onClick={() => openDesktop("join")}><img src="/assets/xp/icons/messenger.png" alt=""/><span><strong>Join IoSC</strong><small>Membership interest form</small></span></button><button onClick={() => openDesktop("projects")}><img src="/assets/xp/icons/folder.png" alt=""/><span><strong>Project archive</strong><small>Code, demos, and reports</small></span></button><button onClick={() => openDesktop("archive")}><img src="/assets/xp/icons/notepad.png" alt=""/><span><strong>Club timeline</strong><small>Past sessions and milestones</small></span></button></section>
+          <section><h2>Campus</h2><div className="portal-meeting"><strong>GGSIPU East Delhi Campus</strong><span>University School of Automation and Robotics</span><p>133, Patel Street, Vishwas Nagar, Shahdara, New Delhi 110032.</p></div></section>
+          <section><h2>Official channels</h2><ul><li><a href="https://www.linkedin.com/company/iosc-usar/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li><li><a href="https://instagram.com/iosc_edc" target="_blank" rel="noreferrer">Instagram ↗</a></li><li><a href="https://youtube.com/@IoSCUSAR" target="_blank" rel="noreferrer">YouTube ↗</a></li><li><a href="https://linktr.ee/iosc_ggsipuedc" target="_blank" rel="noreferrer">All official links ↗</a></li></ul></section>
+          <section className="portal-status"><h2>Club record</h2><p><i/> Founded in 2023</p><p><i/> Student technology community</p><p><i/> Workshops, projects &amp; hackathons</p></section>
+        </aside>
+      </div>
+
+      <footer className="portal-footer"><div><strong>Intel oneAPI Student Club</strong><span>IoSC · Student chapter website</span></div><nav><a href="#about-club">About</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><button onClick={() => openDesktop()}>XP Desktop</button></nav><small>This student website is a design draft and is not an official Intel website.</small></footer>
+    </div>
+
+    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/xp/icons/windows.png" alt=""/><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/xp/icons/computer.png" alt=""/></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({behavior:"smooth"})}><img src="/assets/xp/icons/internet-explorer.png" alt=""/></button></div><div className="task-divider"/><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({behavior:"smooth"})}><AppIcon id="projects" size="small"/><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi/><Music2/><span>{time}</span></div></footer>
+
+    {showFormModal && (
+      <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowFormModal(false)}>
+        <div className="relative w-full max-w-2xl bg-slate-900 rounded-xl shadow-2xl border border-slate-800 p-2" onClick={(e) => e.stopPropagation()}>
+          <button onClick={() => setShowFormModal(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg">
+            <X className="w-5 h-5"/>
+          </button>
+          <EventForm onSuccess={() => { setShowFormModal(false); onRefresh(); }} />
+        </div>
+      </div>
+    )}
+
+    {showRegisterModal && (
+      <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowRegisterModal(false)}>
+        <div className="relative w-full max-w-2xl bg-slate-900 rounded-xl shadow-2xl border border-slate-800 p-4 max-h-[90vh] overflow-y-auto text-slate-100" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-2">
+            <div>
+              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <span className="text-emerald-400">📝</span> IoSC Event & Membership Registration
+              </h3>
+              <p className="text-xs text-slate-400">Submit your application to participate in upcoming events & workshops</p>
+            </div>
+            <button onClick={() => setShowRegisterModal(false)} className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors">
+              <X className="w-5 h-5"/>
+            </button>
+          </div>
+          <JoinForm />
+        </div>
+      </div>
+    )}
+  </main>;
+}
+
+export default function Home() {
+  const [booting, setBooting] = useState(true);
+  const [windows, setWindows] = useState<WindowState[]>([{ id: "welcome", minimized: false, maximized: false, ...DEFAULT_POSITIONS.welcome }]);
+  const [active, setActive] = useState<AppId>("welcome");
+  const [selectedIcon, setSelectedIcon] = useState<AppId | null>(null);
+  const [startOpen, setStartOpen] = useState(false);
+  const [time, setTime] = useState("");
+  const [contextMenu, setContextMenu] = useState<{x:number;y:number}|null>(null);
+  const [viewMode, setViewMode] = useState<"guided" | "desktop">("guided");
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const dragRef = useRef<{ id: AppId; dx: number; dy: number } | null>(null);
+
+  const [eventsList, setEventsList] = useState(defaultEvents);
+
+  const loadEvents = async () => {
+    try {
+      const res = await fetchEvents();
+      if (res && res.data && Array.isArray(res.data) && res.data.length > 0) {
+        const formatted = res.data.map(formatEventForDisplay);
+        setEventsList(formatted);
+      }
+    } catch (err) {
+      console.warn("Backend server offline or unreachable. Displaying fallback event list.", err);
+    }
+  };
+
+  useEffect(() => {
+    loadEvents();
+  }, []);
+
+  useEffect(() => {
+    const tick = () => setTime(new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date()));
+    tick(); const timer = window.setInterval(tick, 30000); return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const move = (event: PointerEvent) => {
+      if (!dragRef.current || window.innerWidth < 700) return;
+      const { id, dx, dy } = dragRef.current;
+      setWindows(current => current.map(win => win.id === id ? { ...win, x: Math.max(0, event.clientX - dx), y: Math.max(0, event.clientY - dy) } : win));
+    };
+    const up = () => { dragRef.current = null; };
+    window.addEventListener("pointermove", move); window.addEventListener("pointerup", up);
+    return () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); };
+  }, []);
+
+  const focusWindow = (id: AppId) => {
+    setActive(id); setStartOpen(false); setContextMenu(null);
+    setWindows(current => { const target = current.find(win => win.id === id); return target ? [...current.filter(win => win.id !== id), { ...target, minimized: false }] : current; });
+  };
+  const openApp = (id: AppId) => {
+    const exists = windows.some(win => win.id === id);
+    if (exists) focusWindow(id);
+    else { setWindows(current => [...current, { id, minimized: false, maximized: false, ...DEFAULT_POSITIONS[id] }]); setActive(id); setStartOpen(false); }
+  };
+  const closeWindow = (id: AppId) => {
+    setWindows(current => current.filter(win => win.id !== id));
+    const next = [...windows].reverse().find(win => win.id !== id && !win.minimized); if (next) setActive(next.id);
+  };
+  const minimizeWindow = (id: AppId) => setWindows(current => current.map(win => win.id === id ? {...win, minimized: true} : win));
+  const maximizeWindow = (id: AppId) => setWindows(current => current.map(win => win.id === id ? {...win, maximized: !win.maximized} : win));
+  const startDrag = (id: AppId, event: React.PointerEvent) => {
+    const win = windows.find(item => item.id === id); if (!win || win.maximized) return;
+    focusWindow(id); dragRef.current = { id, dx: event.clientX - win.x, dy: event.clientY - win.y };
+  };
+
+
+  const openDesktop = (id?: AppId) => {
+    setViewMode("desktop");
+    if (id) openApp(id);
+  };
+
+  if (booting) return <BootScreen done={() => setBooting(false)}/>;
+  if (viewMode === "guided") return <GuidedSite openDesktop={openDesktop} time={time} eventsList={eventsList} onRefresh={loadEvents}/>;
+
+  return <main className="xp-desktop" onClick={() => { setSelectedIcon(null); setContextMenu(null); }} onContextMenu={(event) => { event.preventDefault(); setContextMenu({x:event.clientX,y:event.clientY}); }}>
+    <div className="wallpaper" aria-hidden="true"><div className="cloud cloud-one"/><div className="cloud cloud-two"/><div className="hill hill-back"/><div className="hill hill-front"/><div className="wallpaper-shine"/></div>
+    <SiliconOverlay/>
+    <div className="desktop-brand"><span>intel</span><strong>oneAPI Student Club</strong><small>CPU · GPU · AI · HPC</small></div>
+    <div className="desktop-icons">{(["about", "projects", "events", "archive", "join"] as AppId[]).map(id => <DesktopShortcut key={id} id={id} selected={selectedIcon === id} onSelect={() => setSelectedIcon(id)} onOpen={() => openApp(id)}/>)}</div>
+    <button className="desktop-guide-toggle" onClick={(event) => { event.stopPropagation(); setViewMode("guided"); }}><img src="/assets/xp/icons/tour.png" alt=""/> Guided website</button>
+    <div className="desktop-tip"><MousePointerIcon/><span>Double-click an icon<br/>or use the Start menu</span></div>
+
+    {windows.map((win, index) => !win.minimized && <section
+      key={win.id}
+      className={`xp-app-window ${win.maximized ? "xp-app-window--maximized" : ""}`}
+      style={win.maximized ? { zIndex: 20 + index } : { left: win.x, top: win.y, zIndex: 20 + index }}
+      onPointerDown={() => focusWindow(win.id)}
+    >
+      <TitleBar id={win.id} active={active === win.id} maximized={win.maximized} onFocus={() => focusWindow(win.id)} onMinimize={() => minimizeWindow(win.id)} onMaximize={() => maximizeWindow(win.id)} onClose={() => closeWindow(win.id)} onDragStart={(event) => startDrag(win.id, event)}/>
+      <div className="app-content"><AppContent id={win.id} openApp={openApp} eventsList={eventsList} onRefresh={loadEvents} onRegisterClick={() => setShowRegisterModal(true)}/></div>
+    </section>)}
+
+    {contextMenu && <div className="context-menu" style={{left: contextMenu.x, top: contextMenu.y}} onClick={event => event.stopPropagation()}><button onClick={() => setViewMode("guided")}>Open guided website</button><hr/><button onClick={() => openApp("about")}>Club properties</button></div>}
+
+    {startOpen && (
+      <StartMenu openApp={openApp} close={() => setStartOpen(false)} openGuide={() => setViewMode("guided")}/>
+    )}
+    <footer className="taskbar" onClick={event => event.stopPropagation()}>
+      <button className={`start-button ${startOpen ? "pressed" : ""}`} onClick={() => setStartOpen(!startOpen)}><WindowsFlag small/><em>start</em></button>
+      <div className="quick-launch"><button title="Show desktop" onClick={() => setWindows(current => current.map(win => ({...win, minimized:true})))}><img src="/assets/xp/icons/computer.png" alt=""/></button><button title="Guided website" onClick={() => setViewMode("guided")}><img src="/assets/xp/icons/internet-explorer.png" alt=""/></button></div>
+      <div className="task-divider"/>
+      <div className="task-items">{windows.map(win => <button key={win.id} className={active === win.id && !win.minimized ? "active" : ""} onClick={() => win.minimized || active !== win.id ? focusWindow(win.id) : minimizeWindow(win.id)}><AppIcon id={win.id} size="small"/><span>{APP_META[win.id].short}</span></button>)}</div>
+      <div className="system-tray"><span className="tray-hide">‹</span><Wifi/><Music2/><span>{time}</span></div>
+    </footer>
+
+    {showRegisterModal && (
+      <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowRegisterModal(false)}>
+        <div className="relative w-full max-w-2xl bg-slate-900 rounded-xl shadow-2xl border border-slate-800 p-4 max-h-[90vh] overflow-y-auto text-slate-100" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-2">
+            <div>
+              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <span className="text-emerald-400">📝</span> IoSC Event & Membership Registration
+              </h3>
+              <p className="text-xs text-slate-400">Submit your application to participate in upcoming events & workshops</p>
+            </div>
+            <button onClick={() => setShowRegisterModal(false)} className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors">
+              <X className="w-5 h-5"/>
+            </button>
+          </div>
+          <JoinForm />
+        </div>
+      </div>
+    )}
+  </main>;
+}
+
+function MousePointerIcon() { return <span className="pixel-pointer">↖</span>; }
+
