@@ -60,147 +60,149 @@ export default function EventForm({ onSuccess }: EventFormProps) {
   };
 
   return (
-    <div className="bg-slate-900 text-slate-100 p-6 rounded-xl border border-slate-800 shadow-2xl max-w-2xl mx-auto">
-      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
-        <div className="p-3 bg-blue-600/20 text-blue-400 rounded-lg">
-          <CalendarDays className="w-6 h-6" />
+    <div className="xp-dialog max-w-2xl mx-auto">
+      <div className="xp-dialog-header">
+        <div className="flex items-center gap-3">
+          <div className="p-1 bg-white/20 rounded-sm"><CalendarDays className="w-5 h-5" /></div>
+          <div>
+            <div className="text-sm font-bold tracking-wide">Create New IoSC Event</div>
+            <div className="text-[11px] text-slate-200">Post a new hackathon, workshop, or campus event to PostgreSQL</div>
+          </div>
         </div>
-        <div>
-          <h2 className="text-xl font-bold tracking-wide">Create New IoSC Event</h2>
-          <p className="text-xs text-slate-400">Post a new hackathon, workshop, or campus event to PostgreSQL</p>
-        </div>
+        <div className="text-[11px] text-slate-200">Intel oneAPI Student Club event form</div>
       </div>
 
-      {message && (
-        <div className={`p-4 rounded-lg flex items-center gap-3 mb-6 ${
-          message.type === "success" ? "bg-emerald-950/80 border border-emerald-500/30 text-emerald-300" : "bg-rose-950/80 border border-rose-500/30 text-rose-300"
-        }`}>
-          {message.type === "success" ? <CheckCircle2 className="w-5 h-5 flex-shrink-0" /> : <AlertCircle className="w-5 h-5 flex-shrink-0" />}
-          <span className="text-sm">{message.text}</span>
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-            Event Title *
-          </label>
-          <input
-            type="text"
-            required
-            placeholder="e.g. AzinHack '25"
-            value={formData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-colors"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Event Type *
-            </label>
-            <select
-              value={formData.eventType}
-              onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-colors"
-            >
-              <option value="Hackathon">Hackathon</option>
-              <option value="Workshop">Workshop</option>
-              <option value="Tech event">Tech event</option>
-              <option value="Bootcamp">Bootcamp</option>
-              <option value="Speaker session">Speaker session</option>
-            </select>
+      <div className="xp-dialog-body">
+        {message && (
+          <div className={`p-3 rounded-sm flex items-center gap-3 mb-4 ${
+            message.type === "success" ? "bg-emerald-100 border border-emerald-300 text-emerald-900" : "bg-rose-100 border border-rose-300 text-rose-900"
+          }`}>
+            {message.type === "success" ? <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-600" /> : <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600" />}
+            <span className="text-sm">{message.text}</span>
           </div>
+        )}
 
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Location *
+              Event Title *
             </label>
             <input
               type="text"
               required
-              placeholder="e.g. USAR, GGSIPU EDC"
-              value={formData.location}
-              onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+              placeholder="e.g. AzinHack '25"
+              value={formData.title}
+              onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+              className="w-full xp-form-input"
             />
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                Event Type *
+              </label>
+              <select
+                value={formData.eventType}
+                onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
+                className="w-full xp-form-input"
+              >
+                <option value="Hackathon">Hackathon</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Tech event">Tech event</option>
+                <option value="Bootcamp">Bootcamp</option>
+                <option value="Speaker session">Speaker session</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                Location *
+              </label>
+              <input
+                type="text"
+                required
+                placeholder="e.g. USAR, GGSIPU EDC"
+                value={formData.location}
+                onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                className="w-full xp-form-input"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                Start Date & Time *
+              </label>
+              <input
+                type="datetime-local"
+                required
+                value={formData.startDate}
+                onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
+                className="w-full xp-form-input"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                End Date & Time (Optional)
+              </label>
+              <input
+                type="datetime-local"
+                value={formData.endDate}
+                onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
+                className="w-full xp-form-input"
+              />
+            </div>
+          </div>
+
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Start Date & Time *
+              Registration URL (Optional)
             </label>
             <input
-              type="datetime-local"
-              required
-              value={formData.startDate}
-              onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-colors text-slate-300"
+              type="url"
+              placeholder="https://unstop.com/or-linktree"
+              value={formData.registrationLink}
+              onChange={(e) => setFormData({ ...formData, registrationLink: e.target.value })}
+              className="w-full xp-form-input"
             />
           </div>
 
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              End Date & Time (Optional)
+              Description
             </label>
-            <input
-              type="datetime-local"
-              value={formData.endDate}
-              onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-colors text-slate-300"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-            Registration URL (Optional)
-          </label>
-          <input
-            type="url"
-            placeholder="https://unstop.com/or-linktree"
-            value={formData.registrationLink}
-            onChange={(e) => setFormData({ ...formData, registrationLink: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-colors"
-          />
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-            Description
-          </label>
-          <textarea
-            rows={3}
-            placeholder="Brief overview of the event..."
-            value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-colors resize-none"
-          />
-        </div>
-
-        <div className="flex items-center justify-between pt-4 border-t border-slate-800">
-          <div className="flex items-center gap-3">
-            <label className="text-xs text-slate-400">Accent Color:</label>
-            <input
-              type="color"
-              value={formData.accentColor}
-              onChange={(e) => setFormData({ ...formData, accentColor: e.target.value })}
-              className="w-8 h-8 rounded bg-transparent cursor-pointer border-0"
+            <textarea
+              rows={3}
+              placeholder="Brief overview of the event..."
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              className="w-full xp-form-input resize-none"
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 disabled:opacity-50 text-white font-medium text-sm rounded-lg shadow-lg shadow-blue-600/30 transition-all flex items-center gap-2 cursor-pointer"
-          >
-            {loading ? "Saving to Database..." : "Publish Event"}
-          </button>
-        </div>
-      </form>
+          <div className="xp-dialog-actions">
+            <div className="flex items-center gap-3">
+              <label className="text-xs text-slate-500">Accent Color:</label>
+              <input
+                type="color"
+                value={formData.accentColor}
+                onChange={(e) => setFormData({ ...formData, accentColor: e.target.value })}
+                className="h-9 w-9 rounded border border-slate-400 bg-white"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="xp-primary-button flex items-center gap-2"
+            >
+              {loading ? "Saving..." : "Publish Event"}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

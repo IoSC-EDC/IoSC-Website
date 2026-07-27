@@ -13,17 +13,19 @@ const INTEREST_OPTIONS = [
   "Arc",
 ];
 
+const initialFormData: ApplicationData = {
+  fullName: "",
+  email: "",
+  enrollmentNumber: "",
+  yearOfStudy: 1,
+  department: "USAR - AI & Data Science",
+  interests: ["i7"],
+  githubUrl: "",
+  linkedinUrl: "",
+};
+
 export default function JoinForm() {
-  const [formData, setFormData] = useState<ApplicationData>({
-    fullName: "",
-    email: "",
-    enrollmentNumber: "",
-    yearOfStudy: 1,
-    department: "USAR - AI & Data Science",
-    interests: ["i7"],
-    githubUrl: "",
-    linkedinUrl: "",
-  });
+  const [formData, setFormData] = useState<ApplicationData>(initialFormData);
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -100,27 +102,30 @@ export default function JoinForm() {
   };
 
   return (
-    <div className="bg-slate-900 text-slate-100 p-6 rounded-xl border border-slate-800 shadow-2xl max-w-2xl mx-auto my-2 mb-3">
-      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
-        <div className="p-3 bg-emerald-600/20 text-emerald-400 rounded-lg">
-          <GraduationCap className="w-6 h-6" />
+    <div className="w-full mx-auto">
+      <div className="xp-dialog">
+        <div className="xp-dialog-header">
+          <div className="flex items-center gap-3">
+            <div className="p-1 bg-white/20 rounded-sm"><GraduationCap className="w-5 h-5" /></div>
+            <div>
+              <div className="text-sm font-bold tracking-wide">IoSC Club Membership Application</div>
+              <div className="text-[11px] text-slate-200">Event registration</div>
+            </div>
+          </div>
+          <div className="text-[11px] text-slate-200">Join the Intel oneAPI Student Club</div>
         </div>
-        <div>
-          <h2 className="text-xl font-bold tracking-wide">IoSC Club Membership Application</h2>
-          <p className="text-xs text-slate-400">Join the Intel oneAPI Student Club at GGSIPU East Delhi Campus</p>
-        </div>
-      </div>
 
-      {message && (
-        <div className={`p-4 rounded-lg flex items-center gap-3 mb-6 ${
-          message.type === "success" ? "bg-emerald-950/80 border border-emerald-500/30 text-emerald-300" : "bg-rose-950/80 border border-rose-500/30 text-rose-300"
-        }`}>
-          {message.type === "success" ? <CheckCircle2 className="w-5 h-5 flex-shrink-0" /> : <AlertCircle className="w-5 h-5 flex-shrink-0" />}
-          <span className="text-sm">{message.text}</span>
-        </div>
-      )}
+        <div className="xp-dialog-body">
+          {message && (
+            <div className={`p-3 rounded-sm flex items-center gap-3 mb-4 ${
+              message.type === "success" ? "bg-emerald-100 border border-emerald-300 text-emerald-900" : "bg-rose-100 border border-rose-300 text-rose-900"
+            }`}>
+              {message.type === "success" ? <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-600" /> : <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600" />}
+              <span className="text-sm">{message.text}</span>
+            </div>
+          )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+          <form id="join-form" onSubmit={handleSubmit} className="space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
@@ -134,7 +139,7 @@ export default function JoinForm() {
                 placeholder="e.g. Alex Johnson"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                className="w-full xp-form-input pl-9"
               />
             </div>
           </div>
@@ -151,7 +156,7 @@ export default function JoinForm() {
                 placeholder="alex@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                className="w-full xp-form-input pl-9"
               />
             </div>
           </div>
@@ -167,7 +172,7 @@ export default function JoinForm() {
               placeholder="e.g. 01213302722"
               value={formData.enrollmentNumber}
               onChange={(e) => setFormData({ ...formData, enrollmentNumber: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+              className="w-full xp-form-input"
             />
           </div>
 
@@ -178,7 +183,7 @@ export default function JoinForm() {
             <select
               value={formData.yearOfStudy}
               onChange={(e) => setFormData({ ...formData, yearOfStudy: parseInt(e.target.value) })}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+              className="w-full xp-form-input"
             >
               <option value={1}>1st Year</option>
               <option value={2}>2nd Year</option>
@@ -197,7 +202,7 @@ export default function JoinForm() {
               placeholder="e.g. USAR - AI & DS"
               value={formData.department}
               onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+              className="w-full xp-form-input"
             />
           </div>
         </div>
@@ -214,11 +219,7 @@ export default function JoinForm() {
                   type="button"
                   key={interest}
                   onClick={() => selectInterest(interest)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
-                    selected
-                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
-                      : "bg-slate-950 text-slate-400 border border-slate-800 hover:border-slate-700"
-                  }`}
+                  className={`xp-pill-button ${selected ? "selected" : ""}`}
                 >
                   {interest}
                 </button>
@@ -239,7 +240,7 @@ export default function JoinForm() {
                 placeholder="https://github.com/username"
                 value={formData.githubUrl}
                 onChange={(e) => setFormData({ ...formData, githubUrl: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                className="w-full xp-form-input pl-9"
               />
             </div>
           </div>
@@ -255,23 +256,36 @@ export default function JoinForm() {
                 placeholder="https://linkedin.com/in/username"
                 value={formData.linkedinUrl}
                 onChange={(e) => setFormData({ ...formData, linkedinUrl: e.target.value })}
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                className="w-full xp-form-input pl-9"
               />
             </div>
           </div>
         </div>
 
-        <div className="pt-2 flex justify-end">
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 disabled:opacity-50 text-white font-medium text-sm rounded-lg shadow-lg shadow-emerald-600/30 transition-all flex items-center gap-2 cursor-pointer"
-          >
-            {loading ? "Submitting Application..." : "Submit Application"}
-            <Send className="w-4 h-4" />
-          </button>
-        </div>
-      </form>
+          <div className="xp-dialog-actions">
+            <button
+              type="button"
+              onClick={() => {
+                setFormData(initialFormData);
+                setMessage(null);
+              }}
+              disabled={loading}
+              className="xp-secondary-button"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={loading}
+              className="xp-primary-button flex items-center gap-2"
+            >
+              {loading ? "Submitting..." : "Submit"}
+              <Send className="w-4 h-4" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
       {popup.show && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4" onClick={() => setPopup(prev => ({ ...prev, show: false }))}>
