@@ -34,6 +34,7 @@ type Team = {
     image: string;
     github: string;
     linkedin: string;
+    bio?: string;
   };
 
   coLead: {
@@ -42,6 +43,7 @@ type Team = {
     image: string;
     github: string;
     linkedin: string;
+    bio?: string;
   };
 
   members: {
@@ -50,6 +52,7 @@ type Team = {
     image: string;
     github: string;
     linkedin: string;
+    bio?: string;
   }[];
 };
 
@@ -113,29 +116,30 @@ const projects = [
 const clubLeadership = [
   {
     title: "IoSC Lead",
-    name: "Place Holder",
-    image: "/assets/members/placeholder.png",
+    name: "Piyush Gupta",
+    image: "/assets/xp/leads/PIYUSH GUPTA.jpg",
     github: "#",
     linkedin: "#",
   },
   {
     title: "IoSC Co-Lead",
-    name: "Place Holder",
-    image: "/assets/members/placeholder.png",
+    name: "Armaan",
+    image: "/assets/xp/leads/IMG_20260612_211648_070 - Armaan _.jpg",
     github: "#",
     linkedin: "#",
+    bio: "Driven by curiosity . Defined by creativity . Blending creativity with technology",
   },
   {
     title: "Technical Lead",
-    name: "Place Holder",
-    image: "/assets/members/placeholder.png",
+    name: "Waqar Akhtar",
+    image: "/assets/xp/leads/Waqar Akhtar.jpeg",
     github: "#",
     linkedin: "#",
   },
   {
     title: "Technical Co-Lead",
-    name: "Place Holder",
-    image: "/assets/members/placeholder.png",
+    name: "Rahul Bhatia",
+    image: "/assets/xp/leads/Rahul Bhatia.jpeg",
     github: "#",
     linkedin: "#",
   },
@@ -167,25 +171,43 @@ const teams = [
 
     members: [
       {
-        name: "Member One",
-        role: "Frontend Developer",
-        image: "/assets/members/placeholder.png",
+        name: "DHRUV SHARMA",
+        role: "Member",
+        image: "/assets/xp/i3/DHRUV SHARMA.jpg",
         github: "#",
         linkedin: "#",
       },
       {
-        name: "Member Two",
-        role: "Backend Developer",
-        image: "/assets/members/placeholder.png",
-        github: "#",
+        name: "Mayank Bisht",
+        role: "Member",
+        image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
+        github: "https://github.com/mayankbisht-tech",
         linkedin: "#",
+        bio: "Software engineer",
       },
       {
-        name: "Member Three",
-        role: "UI Designer",
-        image: "/assets/members/placeholder.png",
-        github: "#",
+        name: "Jayant Baliyan",
+        role: "Member",
+        image: "/assets/xp/i3/IMG20250822141950 - Jayant Baliyan.jpg",
+        github: "https://github.com/Jayant-Baliyan",
         linkedin: "#",
+        bio: "We must cling to our honor, lest we become beasts ourselves.",
+      },
+      {
+        name: "Pawan Yadav",
+        role: "Member",
+        image: "/assets/xp/i3/Pawan Yadav.jpg",
+        github: "https://github.com/pawanydv35",
+        linkedin: "#",
+        bio: "Building smart models and the apps that run them",
+      },
+      {
+        name: "Prabhat Kumar",
+        role: "Member",
+        image: "/assets/xp/i3/Prabhat Kumar - Prabhat Kumar.png",
+        github: "https://github.com/PrabhatKumar-06",
+        linkedin: "#",
+        bio: "Heavy are the hands that center a div.",
       },
     ],
   },
@@ -212,7 +234,39 @@ const teams = [
       linkedin: "#",
     },
 
-    members: [],
+    members: [
+      {
+        name: "Shourya Upadhyay",
+        role: "Member",
+        image: "/assets/xp/i5/20260708_114840 - Shourya Upadhyay.jpg",
+        github: "https://github.com/shouryaupadhyay2029",
+        linkedin: "#",
+      },
+      {
+        name: "Aditya Bhatnagar",
+        role: "Member",
+        image: "/assets/xp/i5/IMG_20260130_044912_379 - Aditya Bhatnagar.webp",
+        github: "https://github.com/adityabhatnagar1",
+        linkedin: "#",
+        bio: "If there is a God, he's a great Mathematician!",
+      },
+      {
+        name: "Gurmehak Singh",
+        role: "Member",
+        image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
+        github: "https://github.com/niggsingh20",
+        linkedin: "#",
+        bio: "Some random nobody ~",
+      },
+      {
+        name: "Jatin Khandelwal",
+        role: "Member",
+        image: "/assets/xp/i5/PXL_20260104_042517377 - Jatin Khandelwal.jpg",
+        github: "https://github.com/jatinkhandelwal662-jk",
+        linkedin: "#",
+        bio: "The Pragmatic Builder",
+      },
+    ],
   },
 
   {
@@ -237,7 +291,31 @@ const teams = [
       linkedin: "#",
     },
 
-    members: [],
+    members: [
+      {
+        name: "Akul Malik",
+        role: "Member",
+        image: "/assets/xp/i7/IMG-20260606-WA0023~2 - Akul Malik.jpg",
+        github: "https://github.com/akul1301",
+        linkedin: "#",
+        bio: "Building software that scales",
+      },
+      {
+        name: "MANANDEEP SINGH LAMBA",
+        role: "Member",
+        image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
+        github: "#",
+        linkedin: "#",
+      },
+      {
+        name: "Vishesh Sagar",
+        role: "Member",
+        image: "/assets/xp/i7/WhatsApp Image 2026-07-26 at 22.07.39 - Vishesh Sagar.jpeg",
+        github: "https://github.com/visheshsagar0501-prog",
+        linkedin: "#",
+        bio: "Professional Ctrl + C, ctrl + V ; Part time coder",
+      },
+    ],
   },
 
   {
@@ -262,9 +340,51 @@ const teams = [
       linkedin: "#",
     },
 
-    members: [],
+    members: [
+      {
+        name: "Chaitanya Mangla",
+        role: "Member",
+        image: "/assets/xp/i9/College photo - Chaitanya Mangla.jpeg",
+        github: "https://github.com/cmangla581",
+        linkedin: "#",
+        bio: "Passionate about Mathematics, Physics and Artificial Intelligence.  Also, allergic to giving up.",
+      },
+      {
+        name: "PUSHPENDRA SINGH",
+        role: "Member",
+        image: "/assets/xp/i9/IMG-20260411-WA0020 - PUSHPENDRA SINGH.jpg",
+        github: "https://github.com/Pushpendra2006/Pushpendra2006",
+        linkedin: "#",
+        bio: "Most people ask AI for answers.I spend time figuring out how AI finds them",
+      },
+      {
+        name: "Ananya Sharma",
+        role: "Member",
+        image: "/assets/xp/i9/IMG_20260726_181547 - Ananya Sharma.jpg",
+        github: "https://github.com/ananya-builds",
+        linkedin: "#",
+        bio: "Core Member - Team i9 | Turning data into decisions",
+      },
+      {
+        name: "Avish Choudhary",
+        role: "Member",
+        image: "/assets/xp/i9/me - Avish Choudhary.png",
+        github: "https://github.com/choudhary-avish20",
+        linkedin: "#",
+        bio: "Works, but makes sad noises",
+      },
+      {
+        name: "Richik Das",
+        role: "Member",
+        image: "/assets/xp/i9/WhatsApp Image 2026-07-26 at 21.55.35 - Richik Das.jpeg",
+        github: "https://github.com/Richik06",
+        linkedin: "#",
+        bio: "Aspiring AI Engineer",
+      },
+    ],
   },
 
+  /*
   {
     id: "pr",
     name: "Xeon : PR and Sponsorship Team",
@@ -314,6 +434,7 @@ const teams = [
 
     members: [],
   },
+  */
 ];
 
 const mentors = [
@@ -557,6 +678,9 @@ function TeamsPanel() {
               <h3>{selectedTeam.lead.name}</h3>
 
               <span>{selectedTeam.lead.role}</span>
+              {selectedTeam.lead.bio && (
+                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{selectedTeam.lead.bio}</p>
+              )}
               <div className="xp-social-links">
 
                 <a
@@ -592,6 +716,9 @@ function TeamsPanel() {
               <h3>{selectedTeam.coLead.name}</h3>
 
               <span>{selectedTeam.coLead.role}</span>
+              {selectedTeam.coLead.bio && (
+                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{selectedTeam.coLead.bio}</p>
+              )}
               <div className="xp-social-links">
 
                 <a
@@ -644,6 +771,9 @@ function TeamsPanel() {
                   <h4>{member.name}</h4>
 
                   <span>{member.role}</span>
+                  {member.bio && (
+                    <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{member.bio}</p>
+                  )}
                   <div className="xp-social-links">
 
                     <a
@@ -704,21 +834,26 @@ function TeamsPanel() {
               <h3>{leader.name}</h3>
 
               <span>{leader.title}</span>
+              {"bio" in leader && leader.bio && (
+                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{leader.bio as string}</p>
+              )}
 
               <div className="xp-social-links">
 
                 <a
-                  href={leader.github}
+                  href={leader.github || "#"}
                   target="_blank"
                   rel="noreferrer"
+                  title="GitHub"
                 >
                   <Github size={18} />
                 </a>
 
                 <a
-                  href={leader.linkedin}
+                  href={leader.linkedin || "#"}
                   target="_blank"
                   rel="noreferrer"
+                  title="LinkedIn"
                 >
                   <Linkedin size={18} />
                 </a>
