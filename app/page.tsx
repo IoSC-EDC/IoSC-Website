@@ -171,27 +171,27 @@ const teams = [
 
     members: [
       {
-        name: "DHRUV SHARMA",
+        name: "Jayant Baliyan",
         role: "Member",
-        image: "/assets/xp/i3/DHRUV SHARMA.jpg",
-        github: "#",
-        linkedin: "#",
+        image: "/assets/xp/i3/IMG20250822141950 - Jayant Baliyan.jpg",
+        github: "https://github.com/Jayant-Baliyan",
+        linkedin: "https://www.linkedin.com/in/jayant-baliyan/",
+        bio: "We must cling to our honor, lest we become beasts ourselves.",
       },
       {
         name: "Mayank Bisht",
         role: "Member",
         image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
         github: "https://github.com/mayankbisht-tech",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/mayankbisht011/",
         bio: "Software engineer",
       },
       {
-        name: "Jayant Baliyan",
+        name: "DHRUV SHARMA",
         role: "Member",
-        image: "/assets/xp/i3/IMG20250822141950 - Jayant Baliyan.jpg",
-        github: "https://github.com/Jayant-Baliyan",
+        image: "/assets/xp/i3/DHRUV SHARMA.jpg",
+        github: "#",
         linkedin: "#",
-        bio: "We must cling to our honor, lest we become beasts ourselves.",
       },
       {
         name: "Pawan Yadav",
@@ -297,7 +297,7 @@ const teams = [
         role: "Member",
         image: "/assets/xp/i7/IMG-20260606-WA0023~2 - Akul Malik.jpg",
         github: "https://github.com/akul1301",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/akul-malik-b65216324/",
         bio: "Building software that scales",
       },
       {
@@ -342,20 +342,20 @@ const teams = [
 
     members: [
       {
+        name: "PUSHPENDRA SINGH",
+        role: "Member",
+        image: "/assets/xp/i9/IMG-20260411-WA0020 - PUSHPENDRA SINGH.jpg",
+        github: "https://github.com/Pushpendra2006/Pushpendra2006",
+        linkedin: "https://www.linkedin.com/in/pushpendra-singh-69a768333/",
+        bio: "Most people ask AI for answers.I spend time figuring out how AI finds them",
+      },
+      {
         name: "Chaitanya Mangla",
         role: "Member",
         image: "/assets/xp/i9/College photo - Chaitanya Mangla.jpeg",
         github: "https://github.com/cmangla581",
         linkedin: "#",
         bio: "Passionate about Mathematics, Physics and Artificial Intelligence.  Also, allergic to giving up.",
-      },
-      {
-        name: "PUSHPENDRA SINGH",
-        role: "Member",
-        image: "/assets/xp/i9/IMG-20260411-WA0020 - PUSHPENDRA SINGH.jpg",
-        github: "https://github.com/Pushpendra2006/Pushpendra2006",
-        linkedin: "#",
-        bio: "Most people ask AI for answers.I spend time figuring out how AI finds them",
       },
       {
         name: "Ananya Sharma",
