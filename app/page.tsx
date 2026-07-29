@@ -22,38 +22,23 @@ type WindowState = {
   y: number;
 };
 
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  github: string;
+  linkedin: string;
+  bio?: string;
+};
+
 type Team = {
   id: string;
   name: string;
   image: string;
   description: string;
-
-  lead: {
-    name: string;
-    role: string;
-    image: string;
-    github: string;
-    linkedin: string;
-    bio?: string;
-  };
-
-  coLead: {
-    name: string;
-    role: string;
-    image: string;
-    github: string;
-    linkedin: string;
-    bio?: string;
-  };
-
-  members: {
-    name: string;
-    role: string;
-    image: string;
-    github: string;
-    linkedin: string;
-    bio?: string;
-  }[];
+  lead: TeamMember;
+  coLead: TeamMember;
+  members: TeamMember[];
 };
 
 type MentorProfile = {
@@ -145,7 +130,7 @@ const clubLeadership = [
   },
 ];
 
-const teams = [
+const teams: Team[] = [
   {
     id: "software",
     name: "i3 : Software Development Team",
@@ -622,286 +607,112 @@ function AboutApp() {
 }
 
 function TeamsPanel() {
-  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
-
-  if (selectedTeam) {
-    return (
-      <div className="xp-team-details">
-
-        <div className="xp-team-breadcrumb">
-
-          <button
-            className="xp-back-button"
-            onClick={() => setSelectedTeam(null)}
-          >
-            ← Back
-          </button>
-
-          <span>
-            📁 Teams &gt; <b>{selectedTeam.name}</b>
-          </span>
-
-        </div>
-
-        <div className="xp-team-details-content">
-
-          <div className="xp-team-header">
-
-            <div className="xp-folder-large">
-
-              <img
-                src={selectedTeam.image}
-                alt={selectedTeam.name}
-              />
-
-            </div>
-
-            <div>
-
-              <h2>{selectedTeam.name}</h2>
-
-              <p>{selectedTeam.description}</p>
-
-            </div>
-
-          </div>
-
-          <div className="xp-lead-grid">
-
-            <div className="xp-person-card">
-
-              <img
-                src={selectedTeam.lead.image}
-                alt={selectedTeam.lead.name}
-              />
-
-              <h3>{selectedTeam.lead.name}</h3>
-
-              <span>{selectedTeam.lead.role}</span>
-              {selectedTeam.lead.bio && (
-                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{selectedTeam.lead.bio}</p>
-              )}
-              <div className="xp-social-links">
-
-                <a
-                  href={selectedTeam.lead.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-
-                <a
-                  href={selectedTeam.lead.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-
-              </div>
-            </div>
-
-            <div className="xp-person-card">
-
-              <img
-                src={selectedTeam.coLead.image}
-                alt={selectedTeam.coLead.name}
-              />
-
-              <h3>{selectedTeam.coLead.name}</h3>
-
-              <span>{selectedTeam.coLead.role}</span>
-              {selectedTeam.coLead.bio && (
-                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{selectedTeam.coLead.bio}</p>
-              )}
-              <div className="xp-social-links">
-
-                <a
-                  href={selectedTeam.coLead.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-
-                <a
-                  href={selectedTeam.coLead.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-
-              </div>
-            </div>
-
-          </div>
-
-          <div className="xp-members-section">
-
-            <div className="xp-members-title">
-
-              Members
-
-            </div>
-
-            <div className="xp-members-grid">
-
-              {selectedTeam.members.map((member) => (
-
-                <div
-                  key={member.name}
-                  className="xp-member-card"
-                >
-
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                  />
-
-                  <h4>{member.name}</h4>
-
-                  <span>{member.role}</span>
-                  {member.bio && (
-                    <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{member.bio}</p>
-                  )}
-                  <div className="xp-social-links">
-
-                    <a
-                      href={member.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      title="GitHub"
-                    >
-                      <Github size={16} />
-                    </a>
-
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      title="LinkedIn"
-                    >
-                      <Linkedin size={16} />
-                    </a>
-
-                  </div>
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    );
-  }
+  const [selectedTeam, setSelectedTeam] = useState<string | "club">("club");
+  const [selectedView, setSelectedView] = useState<"leadership" | "members">("leadership");
+  const [selectedPerson, setSelectedPerson] = useState(0);
+  const currentTeam = teams.find((team) => team.id === selectedTeam) ?? null;
+  const people = selectedTeam === "club"
+    ? clubLeadership.map((leader) => ({ name: leader.name, role: leader.title, image: leader.image, github: leader.github, linkedin: leader.linkedin, bio: "bio" in leader ? leader.bio : undefined }))
+    : selectedView === "leadership"
+      ? [currentTeam!.lead, currentTeam!.coLead]
+      : currentTeam!.members;
+  const person = people[Math.min(selectedPerson, people.length - 1)];
+  const select = (team: string | "club", view: "leadership" | "members" = "leadership") => {
+    setSelectedTeam(team);
+    setSelectedView(view);
+    setSelectedPerson(0);
+  };
+  const location = selectedTeam === "club"
+    ? "C:\\Website\\Teams\\Club Leadership"
+    : `C:\\Website\\Teams\\${currentTeam?.name.split(" : ")[0]}\\${selectedView === "leadership" ? "Team Leadership" : "Members"}`;
 
   return (
-    <div className="xp-team-panel">
-      <div className="xp-club-leadership">
-
-        <h2>Club Leadership</h2>
-
-        <div className="xp-club-lead-grid">
-
-          {clubLeadership.map((leader) => (
-
-            <div
-              key={leader.title}
-              className="xp-person-card"
-            >
-
-              <img
-                src={leader.image}
-                alt={leader.name}
-              />
-
-              <h3>{leader.name}</h3>
-
-              <span>{leader.title}</span>
-              {"bio" in leader && leader.bio && (
-                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{leader.bio as string}</p>
-              )}
-
-              <div className="xp-social-links">
-
-                <a
-                  href={leader.github || "#"}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-
-                <a
-                  href={leader.linkedin || "#"}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-        <hr className="xp-team-divider" />
-
+    <div className="explorer-app team-explorer-shell">
+      <div className="explorer-toolbar">
+        <button type="button" aria-label="Back">
+          <ArrowLeft size={21} />
+          <span>Back</span>
+        </button>
+        <button type="button" disabled aria-label="Forward">
+          <ArrowRight size={21} />
+          <span>Forward</span>
+        </button>
+        <div className="toolbar-separator" />
+        <button type="button">
+          <FolderOpen size={21} />
+          <span>Up</span>
+        </button>
+        <button type="button">
+          <Search size={21} />
+          <span>Search</span>
+        </button>
+        <button type="button"><Folder size={21} /><span>Folders</span></button>
       </div>
 
-      {teams.map((team) => (
-
-        <div
-          key={team.id}
-          className="xp-team-card"
-          onClick={() => setSelectedTeam(team)}
-        >
-
-          <div className="xp-team-image">
-            <img src={team.image} alt={team.name} />
-          </div>
-
-          <div className="xp-team-info">
-
-            <h3>{team.name}</h3>
-
-            <span className="xp-team-lead">
-              Team Lead: <b>{team.lead.name}</b>
-            </span>
-
-            <span className="xp-team-lead">
-              Team Co-Lead: <b>{team.coLead.name}</b>
-            </span>
-
-            <p>{team.description}</p>
-
-          </div>
-
+      <div className="address-bar">
+        <span>Address</span>
+        <div>
+          <img src="/assets/xp/icons/earth.png" alt="" />
+          <p>{location}</p>
         </div>
+      </div>
 
-      ))}
+      <div className="explorer-main">
+        <aside className="explorer-sidebar">
+          <div className="sidebar-panel">
+            <div>Folders</div>
+            <section>
+              <button type="button" className="xp-tree-root" onClick={() => select("club")}>
+                <Folder size={14} />
+                <span>Teams</span>
+              </button>
+              <button
+                type="button"
+                className={`xp-tree-item xp-tree-level-one ${selectedTeam === "club" ? "selected" : ""}`}
+                onClick={() => select("club")}
+              >
+                <FolderOpen size={13} />
+                <span>Club Leadership</span>
+              </button>
+              {teams.map((team) => (
+                <div key={team.id} className="xp-tree-branch">
+                  <button type="button" className={`xp-tree-item xp-tree-level-one ${selectedTeam === team.id ? "selected" : ""}`} onClick={() => select(team.id)}>
+                    <FolderOpen size={13} />
+                    <span>{team.name.split(" : ")[0]}</span>
+                  </button>
+                  <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "leadership" ? "selected" : ""}`} onClick={() => select(team.id, "leadership")}>
+                    <Folder size={13} /><span>Team Leadership</span>
+                  </button>
+                  <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "members" ? "selected" : ""}`} onClick={() => select(team.id, "members")}>
+                    <Folder size={13} /><span>Members</span>
+                  </button>
+                </div>
+              ))}
+            </section>
+          </div>
+        </aside>
 
+        <main className="team-profile-pane">
+          <div className="xp-person-preview">
+            <img src={person.image} alt={person.name} />
+            <div>
+              <h2>{person.name}</h2>
+              <strong>{person.role}</strong>
+              <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online">Active</dd></dl>
+              {person.bio && <p>“{person.bio}”</p>}
+              <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span>
+            </div>
+          </div>
+          <div className="xp-member-list" role="listbox" aria-label="Team members">
+            <div className="xp-member-list-head"><span>Name</span><span>Role</span><span>Status</span></div>
+            {people.map((member, index) => <button key={`${member.name}-${index}`} className={index === Math.min(selectedPerson, people.length - 1) ? "selected" : ""} onClick={() => setSelectedPerson(index)}><span>{member.name}</span><span>{member.role}</span><span>Active</span></button>)}
+          </div>
+        </main>
+      </div>
+
+      <div className="status-bar">
+        <span>{people.length} object{people.length === 1 ? "" : "s"}</span><span>{selectedTeam === "club" ? "Club Leadership" : currentTeam?.name}</span>
+      </div>
     </div>
   );
 }
