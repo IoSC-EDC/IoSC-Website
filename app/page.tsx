@@ -139,18 +139,18 @@ const teams: Team[] = [
       "Develops web applications, AI solutions, automation tools and technical projects.",
 
     lead: {
-      name: "Place Holder",
+      name: "Mayank Bisht",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
-      linkedin: "#",
+      image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
+      github: "https://github.com/mayankbisht-tech",
+      linkedin: "https://www.linkedin.com/in/mayankbisht011/",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Pawan Yadav",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i3/Pawan Yadav.jpg",
+      github: "https://github.com/pawanydv35",
       linkedin: "#",
     },
 
@@ -261,15 +261,15 @@ const teams: Team[] = [
     description: "Develops games and gaming-related applications.",
 
     lead: {
-      name: "Place Holder",
+      name: "Manandeep Singh Lamba",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
+      image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
       github: "#",
       linkedin: "#",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Pranshu Bansal",
       role: "Co Lead",
       image: "/assets/members/placeholder.png",
       github: "#",
@@ -286,9 +286,16 @@ const teams: Team[] = [
         bio: "Building software that scales",
       },
       {
-        name: "MANANDEEP SINGH LAMBA",
+        name: "Manandeep Singh Lamba",
         role: "Member",
         image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
+        github: "#",
+        linkedin: "#",
+      },
+      {
+        name: "Pranshu Bansal",
+        role: "Member",
+        image: "/assets/members/placeholder.png",
         github: "#",
         linkedin: "#",
       },
@@ -310,15 +317,16 @@ const teams: Team[] = [
     description: "Handles AI development and Machine Learning projects.",
 
     lead: {
-      name: "Place Holder",
+      name: "Avish Choudhary",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i9/me - Avish Choudhary.png",
+      github: "https://github.com/choudhary-avish20",
       linkedin: "#",
+      bio: "Works, but makes sad noises",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Dishita",
       role: "Co Lead",
       image: "/assets/members/placeholder.png",
       github: "#",
@@ -357,6 +365,13 @@ const teams: Team[] = [
         github: "https://github.com/choudhary-avish20",
         linkedin: "#",
         bio: "Works, but makes sad noises",
+      },
+      {
+        name: "Dishita",
+        role: "Member",
+        image: "/assets/members/placeholder.png",
+        github: "#",
+        linkedin: "#",
       },
       {
         name: "Richik Das",
