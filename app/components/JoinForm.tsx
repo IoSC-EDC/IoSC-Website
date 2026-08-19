@@ -61,7 +61,7 @@ export default function JoinForm() {
           show: true,
           type: "email-sent",
           title: "Registration Successful! ✉️",
-          message: `Your application has been saved to PostgreSQL, and a confirmation email was sent to ${formData.email}. Please check your inbox!`,
+          message: `Your submission have been received, and a confirmation email was sent to ${formData.email}. Please check your inbox!`,
         });
       } else {
         setPopup({

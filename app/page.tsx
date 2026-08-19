@@ -222,19 +222,20 @@ const teams: Team[] = [
     description: "Develops IoT and embedded systems solutions.",
 
     lead: {
-      name: "Samarth Yadav",
+      name: "Waqar Akhtar",
       role: "Team Lead",
-      image: "/assets/xp/i5/Samarth Yadav.jpg",
-      github: "#",
+      image: "/assets/xp/leads/Waqar Akhtar.jpeg",
+      github: "https://github.com/Waqar080206",
       linkedin: "#",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Gurmehak Singh",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
+      github: "https://github.com/niggsingh20",
       linkedin: "#",
+      bio: "Some random nobody ~",
     },
 
     members: [
@@ -252,14 +253,6 @@ const teams: Team[] = [
         github: "https://github.com/adityabhatnagar1",
         linkedin: "#",
         bio: "If there is a God, he's a great Mathematician!",
-      },
-      {
-        name: "Gurmehak Singh",
-        role: "Member",
-        image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
-        github: "https://github.com/niggsingh20",
-        linkedin: "#",
-        bio: "Some random nobody ~",
       },
       {
         name: "Jatin Khandelwal",
