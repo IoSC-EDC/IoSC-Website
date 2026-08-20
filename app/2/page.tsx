@@ -3,11 +3,14 @@ import {
   ArrowUpRight,
   Bot,
   CalendarDays,
+  Car,
   ChevronDown,
   CircuitBoard,
   Code2,
   Crown,
+  Droplets,
   ExternalLink,
+  HelpCircle,
   MapPin,
   ScrollText,
   Shield,
@@ -19,20 +22,40 @@ import "./material.css";
 
 const projects = [
   {
-    icon: Bot,
+    icon: Droplets,
     numeral: "I",
-    title: "The IoSC Oracle",
-    actual: "RAG Chatbot for IoSC",
-    text: "A retrieval-augmented assistant forged to answer questions from the club’s collected knowledge.",
-    tools: "Python · RAG · LLM · Embeddings",
+    title: "The Flow Watcher",
+    actual: "HYDRO HEROES",
+    text: "Real-time flow tracking engineered to predict leaks and maintain vigilant water quality monitoring.",
+    tools: "IoT · Flow Tracking · Water Quality",
+    github: "https://github.com/Waqar080206/Hydro-Heroes",
   },
   {
-    icon: Code2,
+    icon: HelpCircle,
     numeral: "II",
-    title: "The HackMaze Trials",
-    actual: "HackMaze Project Track",
-    text: "A project-building passage from online preliminaries to an offline showcase using oneAPI tooling.",
-    tools: "oneAPI · Intel Developer Cloud · Prototyping",
+    title: "The Arena of Inquiries",
+    actual: "QUIZ PLAY",
+    text: "An interactive UI platform empowering scholars to test their wits, track scores, and manage quiz data.",
+    tools: "React · Interactive UI · Quiz Management",
+    github: "https://github.com/prefierolasoledad/QuizApp",
+  },
+  {
+    icon: Bot,
+    numeral: "III",
+    title: "The Code Sentinel",
+    actual: "AI CODE REVIEW",
+    text: "A full-stack AI-powered code review tool built with Node.js, React, and Google's Gemini API.",
+    tools: "Node.js · React · Google Gemini API",
+    github: "https://github.com/utkarsh-chauhannn/Ai-Code-Review",
+  },
+  {
+    icon: Car,
+    numeral: "IV",
+    title: "The Chariot Ledger",
+    actual: "DriveEasy",
+    text: "A MERN stack-based car rental platform that enables users to easily browse, book, and manage vehicle rentals online.",
+    tools: "MERN Stack · MongoDB · Express · React · Node.js",
+    github: "https://github.com/AryanSachan12/vehicle-rental",
   },
 ];
 
@@ -127,7 +150,7 @@ export default function MedievalDesignPage() {
         <div className="med-section-number">CHAPTER THE SECOND</div>
         <div className="med-works-heading"><div><p>SELECTED WORKS</p><h2>Artefacts of<br/><em>the guild.</em></h2></div><p>Only a small selection is shown. Each panel is designed as a repeatable component for the next web team.</p></div>
         <div className="med-work-grid">
-          {projects.map(({ icon: Icon, numeral, title, actual, text, tools }) => (
+          {projects.map(({ icon: Icon, numeral, title, actual, text, tools, github }) => (
             <article key={actual}>
               <span className="med-work-numeral">{numeral}</span>
               <div className="med-work-icon"><Icon /></div>
@@ -135,7 +158,22 @@ export default function MedievalDesignPage() {
               <h3>{title}</h3>
               <Ornament />
               <p>{text}</p>
-              <footer><span>{tools}</span><ExternalLink /></footer>
+              <footer>
+                <span>{tools}</span>
+                {github ? (
+                  <a
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${actual} on GitHub`}
+                    style={{ color: "inherit", display: "inline-flex", alignItems: "center" }}
+                  >
+                    <ExternalLink />
+                  </a>
+                ) : (
+                  <ExternalLink />
+                )}
+              </footer>
             </article>
           ))}
         </div>

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowLeft, ArrowRight, Bot, CalendarDays, Check, ChevronRight,
-  Code2, Computer, Cpu, FileText, Folder, FolderOpen, Github, Linkedin, Globe2,
+  ArrowLeft, ArrowRight, Bot, CalendarDays, Car, Check, ChevronRight,
+  Code2, Computer, Cpu, Droplets, FileText, Folder, FolderOpen, Github, Linkedin, Globe2,
   HelpCircle, Info, Mail, MapPin, Maximize2, MessageCircle, Minus, Monitor,
   MoreHorizontal, Music2, Plus, Power, Search, Send, Settings, Sparkles, Trophy,
   Wifi, X
@@ -94,8 +94,42 @@ const DEFAULT_POSITIONS: Record<AppId, { x: number; y: number }> = {
 };
 
 const projects = [
-  { title: "RAG Chatbot for IoSC", type: "Python · RAG · LLM · Embeddings", status: "Built", icon: Bot, color: "#0068b5", description: "An IoSC assistant that uses retrieval-augmented generation to answer club and community questions." },
-  { title: "HackMaze Project Track", type: "oneAPI · Intel Developer Cloud", status: "2023 archive", icon: Code2, color: "#00a3a3", description: "A project-building programme that moved teams from an online preliminary round to an offline showcase using oneAPI tooling." },
+  {
+    title: "HYDRO HEROES",
+    type: "IoT · Flow Tracking · Water Quality",
+    status: "Built",
+    icon: Droplets,
+    color: "#0284c7",
+    description: "It does realtime flow tracking to predict leaks and quality monitoring.",
+    github: "https://github.com/Waqar080206/Hydro-Heroes",
+  },
+  {
+    title: "QUIZ PLAY",
+    type: "React · Interactive UI · Quiz Management",
+    status: "Built",
+    icon: HelpCircle,
+    color: "#8b5cf6",
+    description: "It allows users to take quizzes, view results, and manage quiz data through an interactive UI.",
+    github: "https://github.com/prefierolasoledad/QuizApp",
+  },
+  {
+    title: "AI CODE REVIEW",
+    type: "Full-Stack · Node.js · React · Gemini API",
+    status: "Built",
+    icon: Bot,
+    color: "#059669",
+    description: "A full-stack AI-powered code review tool built with Node.js, React, and Google's Gemini API.",
+    github: "https://github.com/utkarsh-chauhannn/Ai-Code-Review",
+  },
+  {
+    title: "DriveEasy",
+    type: "MERN Stack · Vehicle Rental Platform",
+    status: "Built",
+    icon: Car,
+    color: "#d97706",
+    description: "DriveEasy is a MERN stack-based car rental platform that enables users to easily browse, book, and manage vehicle rentals online.",
+    github: "https://github.com/AryanSachan12/vehicle-rental",
+  },
 ];
 
 const clubLeadership = [
@@ -139,18 +173,18 @@ const teams: Team[] = [
       "Develops web applications, AI solutions, automation tools and technical projects.",
 
     lead: {
-      name: "Place Holder",
+      name: "Mayank Bisht",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
-      linkedin: "#",
+      image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
+      github: "https://github.com/mayankbisht-tech",
+      linkedin: "https://www.linkedin.com/in/mayankbisht011/",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Pawan Yadav",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i3/Pawan Yadav.jpg",
+      github: "https://github.com/pawanydv35",
       linkedin: "#",
     },
 
@@ -164,27 +198,11 @@ const teams: Team[] = [
         bio: "We must cling to our honor, lest we become beasts ourselves.",
       },
       {
-        name: "Mayank Bisht",
-        role: "Member",
-        image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
-        github: "https://github.com/mayankbisht-tech",
-        linkedin: "https://www.linkedin.com/in/mayankbisht011/",
-        bio: "Software engineer",
-      },
-      {
         name: "DHRUV SHARMA",
         role: "Member",
         image: "/assets/xp/i3/DHRUV SHARMA.jpg",
         github: "#",
         linkedin: "#",
-      },
-      {
-        name: "Pawan Yadav",
-        role: "Member",
-        image: "/assets/xp/i3/Pawan Yadav.jpg",
-        github: "https://github.com/pawanydv35",
-        linkedin: "#",
-        bio: "Building smart models and the apps that run them",
       },
       {
         name: "Prabhat Kumar",
@@ -204,19 +222,20 @@ const teams: Team[] = [
     description: "Develops IoT and embedded systems solutions.",
 
     lead: {
-      name: "Place Holder",
+      name: "Waqar Akhtar",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/leads/Waqar Akhtar.jpeg",
+      github: "https://github.com/Waqar080206",
       linkedin: "#",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Gurmehak Singh",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
+      github: "https://github.com/niggsingh20",
       linkedin: "#",
+      bio: "Some random nobody ~",
     },
 
     members: [
@@ -236,14 +255,6 @@ const teams: Team[] = [
         bio: "If there is a God, he's a great Mathematician!",
       },
       {
-        name: "Gurmehak Singh",
-        role: "Member",
-        image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
-        github: "https://github.com/niggsingh20",
-        linkedin: "#",
-        bio: "Some random nobody ~",
-      },
-      {
         name: "Jatin Khandelwal",
         role: "Member",
         image: "/assets/xp/i5/PXL_20260104_042517377 - Jatin Khandelwal.jpg",
@@ -261,15 +272,15 @@ const teams: Team[] = [
     description: "Develops games and gaming-related applications.",
 
     lead: {
-      name: "Place Holder",
+      name: "Manandeep Singh Lamba",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
+      image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
       github: "#",
       linkedin: "#",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Pranshu Bansal",
       role: "Co Lead",
       image: "/assets/members/placeholder.png",
       github: "#",
@@ -284,13 +295,6 @@ const teams: Team[] = [
         github: "https://github.com/akul1301",
         linkedin: "https://www.linkedin.com/in/akul-malik-b65216324/",
         bio: "Building software that scales",
-      },
-      {
-        name: "MANANDEEP SINGH LAMBA",
-        role: "Member",
-        image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
-        github: "#",
-        linkedin: "#",
       },
       {
         name: "Vishesh Sagar",
@@ -310,15 +314,16 @@ const teams: Team[] = [
     description: "Handles AI development and Machine Learning projects.",
 
     lead: {
-      name: "Place Holder",
+      name: "Avish Choudhary",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i9/me - Avish Choudhary.png",
+      github: "https://github.com/choudhary-avish20",
       linkedin: "#",
+      bio: "Works, but makes sad noises",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Dishita",
       role: "Co Lead",
       image: "/assets/members/placeholder.png",
       github: "#",
@@ -349,14 +354,6 @@ const teams: Team[] = [
         github: "https://github.com/ananya-builds",
         linkedin: "#",
         bio: "Core Member - Team i9 | Turning data into decisions",
-      },
-      {
-        name: "Avish Choudhary",
-        role: "Member",
-        image: "/assets/xp/i9/me - Avish Choudhary.png",
-        github: "https://github.com/choudhary-avish20",
-        linkedin: "#",
-        bio: "Works, but makes sad noises",
       },
       {
         name: "Richik Das",
@@ -824,15 +821,15 @@ function ProjectsApp() {
   const project = projects[selected];
   const ProjectIcon = project.icon;
   return <div className="browser-app"><MenuBar /><ExplorerToolbar address="https://iosc.club/projects" /><div className="project-webpage">
-    <header><div><ChipMark compact /><strong>IoSC // oneAPI Projects</strong></div><span>Select a project to view details</span></header>
-    <div className="project-page-heading"><div><p>HETEROGENEOUS LAB</p><h2>Silicon meets graphics.</h2><span>Parallel code, visual demos, measurable performance.</span></div><div className="project-orb"><Cpu /></div></div>
-    <div className="project-browser-grid"><aside>{projects.map((item, index) => { const Icon = item.icon; return <button key={item.title} className={selected === index ? "active" : ""} onClick={() => setSelected(index)}><span style={{ backgroundColor: item.color }}><Icon /></span><p><strong>{item.title}</strong><small>{item.type}</small></p></button> })}</aside><article><div className="project-preview" style={{ "--project": project.color } as React.CSSProperties}><ProjectIcon /><span>{project.status}</span></div><p className="project-type">{project.type}</p><h3>{project.title}</h3><p>{project.description}</p><div className="project-tags"><span>Club work</span><span>Student-built</span></div><p className="project-repo-note"><Github /> Add the maintained repository link when the new project catalogue is ready.</p></article></div>
+    <header><div><ChipMark compact /><strong>IoSC // Projects</strong></div><span>Select a project to view details</span></header>
+    <div className="project-page-heading"><div><p>PROJECT SHOWCASE</p><h2>Curated club creations.</h2><span>Innovative software, AI solutions, web platforms, and IoT systems.</span></div><div className="project-orb"><Cpu /></div></div>
+    <div className="project-browser-grid"><aside>{projects.map((item, index) => { const Icon = item.icon; return <button key={item.title} className={selected === index ? "active" : ""} onClick={() => setSelected(index)}><span style={{ backgroundColor: item.color }}><Icon /></span><p><strong>{item.title}</strong><small>{item.type}</small></p></button> })}</aside><article><div className="project-preview" style={{ "--project": project.color } as React.CSSProperties}><ProjectIcon /><span>{project.status}</span></div><p className="project-type">{project.type}</p><h3>{project.title}</h3><p>{project.description}</p><div className="project-tags"><span>Club work</span><span>Student-built</span></div><p className="project-repo-note"><Github /> {project.github ? <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ color: "#164e91", textDecoration: "underline", fontWeight: 600 }}>{project.github}</a> : "Add the maintained repository link when the new project catalogue is ready."}</p></article></div>
   </div><div className="browser-status"><span>Done</span><div /><Globe2 /><span>Internet</span></div></div>;
 }
 
 function EventsApp({ openApp, eventsList, onRefresh, onRegisterClick }: { openApp: (id: AppId) => void; eventsList: typeof defaultEvents; onRefresh?: () => void; onRegisterClick?: () => void }) {
   const [view, setView] = useState<"Event archive" | "Highlights">("Event archive");
-  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2></div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
+  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2>{onRegisterClick && <button className="xp-primary-button" style={{ marginLeft: "auto" }} onClick={onRegisterClick}>📝 Register Now</button>}</div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
 }
 
 function ArchiveApp() {
@@ -931,15 +928,15 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
           <section id="tracks" className="portal-section"><h2>What we do</h2><div className="portal-rule" /><div className="portal-track-list">{[["Workshops & bootcamps", "Hands-on introductions to oneAPI toolkits and a wide range of technical topics."], ["Hackathons & projects", "Build practical solutions, collaborate across disciplines, and present working ideas."], ["Coding & creative events", "Programming competitions, design challenges, gaming events, and technical showcases."], ["Talks & networking", "Learn from practitioners and connect technical work with contemporary industry insight."]].map(([title, text], index) => <article key={title}><b>{index + 1}</b><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
 
-          <section id="club-projects" className="portal-section"><div className="portal-section-title"><h2>Selected projects</h2><button onClick={() => openDesktop("projects")}>Open Projects in Internet Explorer</button></div><div className="portal-rule" /><div className="portal-project-table">{projects.map(project => <article key={project.title}><div style={{ backgroundColor: project.color }}><Code2 /></div><section><h3>{project.title}</h3><p>{project.description}</p><small>{project.type}</small></section><span>{project.status}</span></article>)}</div></section>
+          <section id="club-projects" className="portal-section"><div className="portal-section-title"><h2>Selected projects</h2><button onClick={() => openDesktop("projects")}>Open Projects in Internet Explorer</button></div><div className="portal-rule" /><div className="portal-project-table">{projects.map(project => { const Icon = project.icon; return <article key={project.title}><div style={{ backgroundColor: project.color }}><Icon /></div><section><h3>{project.github ? <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }} className="hover:underline">{project.title}</a> : project.title}</h3><p>{project.description}</p><small>{project.type}</small></section><div style={{ display: "flex", alignItems: "center", gap: "8px" }}>{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" title="View repository on GitHub" style={{ color: "#154d84", display: "inline-flex", alignItems: "center" }}><Github style={{ width: 18, height: 18 }} /></a>}<span>{project.status}</span></div></article>; })}</div></section>
 
           <section id="club-events" className="portal-section">
             <div className="portal-section-title">
               <h2>Events Calendar</h2>
               <div className="flex items-center gap-2">
-                {/* <button className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowFormModal(true)}>
+                <button className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
                   📝 Register Now
-                </button> */}
+                </button>
                 <button onClick={() => openDesktop("events")}>Open event archive</button>
               </div>
             </div>
