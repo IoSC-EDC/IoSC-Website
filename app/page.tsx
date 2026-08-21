@@ -278,7 +278,7 @@ const teams: Team[] = [
       image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
       github: "#",
       linkedin: "#",
-      bio: "Chicks with dicks ftw!",
+      bio: "God bless Dick Cheney's America",
     },
 
     coLead: {
@@ -287,6 +287,7 @@ const teams: Team[] = [
       image: "/assets/xp/i7/prshu.jpeg",
       github: "#",
       linkedin: "#",
+      bio: "ashton's bae",
     },
 
     members: [
