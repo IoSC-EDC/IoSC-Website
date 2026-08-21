@@ -139,7 +139,7 @@ const clubLeadership = [
     image: "/assets/xp/leads/psh.png",
     github: "#",
     linkedin: "#",
-    bio: "Prithvi Premium"
+    bio: "सुधर गए तो शेर कोन कहेगा "
   },
   {
     title: "IoSC Co-Lead",
