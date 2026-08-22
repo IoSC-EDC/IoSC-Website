@@ -136,9 +136,10 @@ const clubLeadership = [
   {
     title: "IoSC Lead",
     name: "Piyush Gupta",
-    image: "/assets/xp/leads/PIYUSH GUPTA.jpg",
+    image: "/assets/xp/leads/psh.png",
     github: "#",
     linkedin: "#",
+    bio: "सुधर गए तो शेर कोन कहेगा "
   },
   {
     title: "IoSC Co-Lead",
@@ -277,14 +278,16 @@ const teams: Team[] = [
       image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
       github: "#",
       linkedin: "#",
+      bio: "God bless Dick Cheney's America",
     },
 
     coLead: {
       name: "Pranshu Bansal",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
+      image: "/assets/xp/i7/prshu.jpeg",
       github: "#",
       linkedin: "#",
+      bio: "ashton's bae",
     },
 
     members: [
@@ -294,7 +297,7 @@ const teams: Team[] = [
         image: "/assets/xp/i7/IMG-20260606-WA0023~2 - Akul Malik.jpg",
         github: "https://github.com/akul1301",
         linkedin: "https://www.linkedin.com/in/akul-malik-b65216324/",
-        bio: "Building software that scales",
+        bio: "Data Anal-yst",
       },
       {
         name: "Vishesh Sagar",
