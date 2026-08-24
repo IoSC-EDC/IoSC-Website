@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowLeft, ArrowRight, Bot, CalendarDays, Check, ChevronRight,
-  Code2, Computer, Cpu, FileText, Folder, FolderOpen, Github, Linkedin, Globe2,
+  ArrowLeft, ArrowRight, Bot, CalendarDays, Car, Check, ChevronRight,
+  Code2, Computer, Cpu, Droplets, FileText, Folder, FolderOpen, Github, Linkedin, Globe2,
   HelpCircle, Info, Mail, MapPin, Maximize2, MessageCircle, Minus, Monitor,
   MoreHorizontal, Music2, Plus, Power, Search, Send, Settings, Sparkles, Trophy,
   Wifi, X
@@ -22,38 +22,23 @@ type WindowState = {
   y: number;
 };
 
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  github: string;
+  linkedin: string;
+  bio?: string;
+};
+
 type Team = {
   id: string;
   name: string;
   image: string;
   description: string;
-
-  lead: {
-    name: string;
-    role: string;
-    image: string;
-    github: string;
-    linkedin: string;
-    bio?: string;
-  };
-
-  coLead: {
-    name: string;
-    role: string;
-    image: string;
-    github: string;
-    linkedin: string;
-    bio?: string;
-  };
-
-  members: {
-    name: string;
-    role: string;
-    image: string;
-    github: string;
-    linkedin: string;
-    bio?: string;
-  }[];
+  lead: TeamMember;
+  coLead: TeamMember;
+  members: TeamMember[];
 };
 
 type MentorProfile = {
@@ -109,17 +94,52 @@ const DEFAULT_POSITIONS: Record<AppId, { x: number; y: number }> = {
 };
 
 const projects = [
-  { title: "RAG Chatbot for IoSC", type: "Python · RAG · LLM · Embeddings", status: "Built", icon: Bot, color: "#0068b5", description: "An IoSC assistant that uses retrieval-augmented generation to answer club and community questions." },
-  { title: "HackMaze Project Track", type: "oneAPI · Intel Developer Cloud", status: "2023 archive", icon: Code2, color: "#00a3a3", description: "A project-building programme that moved teams from an online preliminary round to an offline showcase using oneAPI tooling." },
+  {
+    title: "HYDRO HEROES",
+    type: "IoT · Flow Tracking · Water Quality",
+    status: "Built",
+    icon: Droplets,
+    color: "#0284c7",
+    description: "It does realtime flow tracking to predict leaks and quality monitoring.",
+    github: "https://github.com/Waqar080206/Hydro-Heroes",
+  },
+  {
+    title: "QUIZ PLAY",
+    type: "React · Interactive UI · Quiz Management",
+    status: "Built",
+    icon: HelpCircle,
+    color: "#8b5cf6",
+    description: "It allows users to take quizzes, view results, and manage quiz data through an interactive UI.",
+    github: "https://github.com/prefierolasoledad/QuizApp",
+  },
+  {
+    title: "AI CODE REVIEW",
+    type: "Full-Stack · Node.js · React · Gemini API",
+    status: "Built",
+    icon: Bot,
+    color: "#059669",
+    description: "A full-stack AI-powered code review tool built with Node.js, React, and Google's Gemini API.",
+    github: "https://github.com/utkarsh-chauhannn/Ai-Code-Review",
+  },
+  {
+    title: "DriveEasy",
+    type: "MERN Stack · Vehicle Rental Platform",
+    status: "Built",
+    icon: Car,
+    color: "#d97706",
+    description: "DriveEasy is a MERN stack-based car rental platform that enables users to easily browse, book, and manage vehicle rentals online.",
+    github: "https://github.com/AryanSachan12/vehicle-rental",
+  },
 ];
 
 const clubLeadership = [
   {
     title: "IoSC Lead",
     name: "Piyush Gupta",
-    image: "/assets/xp/leads/PIYUSH GUPTA.jpg",
+    image: "/assets/xp/leads/psh.png",
     github: "#",
     linkedin: "#",
+    bio: "सुधर गए तो शेर कोन कहेगा "
   },
   {
     title: "IoSC Co-Lead",
@@ -145,7 +165,7 @@ const clubLeadership = [
   },
 ];
 
-const teams = [
+const teams: Team[] = [
   {
     id: "software",
     name: "i3 : Software Development Team",
@@ -154,18 +174,18 @@ const teams = [
       "Develops web applications, AI solutions, automation tools and technical projects.",
 
     lead: {
-      name: "Place Holder",
+      name: "Mayank Bisht",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
-      linkedin: "#",
+      image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
+      github: "https://github.com/mayankbisht-tech",
+      linkedin: "https://www.linkedin.com/in/mayankbisht011/",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Pawan Yadav",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i3/Pawan Yadav.jpg",
+      github: "https://github.com/pawanydv35",
       linkedin: "#",
     },
 
@@ -179,27 +199,11 @@ const teams = [
         bio: "We must cling to our honor, lest we become beasts ourselves.",
       },
       {
-        name: "Mayank Bisht",
-        role: "Member",
-        image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
-        github: "https://github.com/mayankbisht-tech",
-        linkedin: "https://www.linkedin.com/in/mayankbisht011/",
-        bio: "Software engineer",
-      },
-      {
         name: "DHRUV SHARMA",
         role: "Member",
         image: "/assets/xp/i3/DHRUV SHARMA.jpg",
         github: "#",
         linkedin: "#",
-      },
-      {
-        name: "Pawan Yadav",
-        role: "Member",
-        image: "/assets/xp/i3/Pawan Yadav.jpg",
-        github: "https://github.com/pawanydv35",
-        linkedin: "#",
-        bio: "Building smart models and the apps that run them",
       },
       {
         name: "Prabhat Kumar",
@@ -219,19 +223,20 @@ const teams = [
     description: "Develops IoT and embedded systems solutions.",
 
     lead: {
-      name: "Place Holder",
+      name: "Waqar Akhtar",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/leads/Waqar Akhtar.jpeg",
+      github: "https://github.com/Waqar080206",
       linkedin: "#",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Gurmehak Singh",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
+      github: "https://github.com/niggsingh20",
       linkedin: "#",
+      bio: "Some random nobody ~",
     },
 
     members: [
@@ -251,14 +256,6 @@ const teams = [
         bio: "If there is a God, he's a great Mathematician!",
       },
       {
-        name: "Gurmehak Singh",
-        role: "Member",
-        image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
-        github: "https://github.com/niggsingh20",
-        linkedin: "#",
-        bio: "Some random nobody ~",
-      },
-      {
         name: "Jatin Khandelwal",
         role: "Member",
         image: "/assets/xp/i5/PXL_20260104_042517377 - Jatin Khandelwal.jpg",
@@ -276,19 +273,21 @@ const teams = [
     description: "Develops games and gaming-related applications.",
 
     lead: {
-      name: "Place Holder",
+      name: "Manandeep Singh Lamba",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
+      image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
       github: "#",
       linkedin: "#",
+      bio: "God bless Dick Cheney's America",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Pranshu Bansal",
       role: "Co Lead",
-      image: "/assets/members/placeholder.png",
+      image: "/assets/xp/i7/prshu.jpeg",
       github: "#",
       linkedin: "#",
+      bio: "ashton's bae",
     },
 
     members: [
@@ -298,14 +297,7 @@ const teams = [
         image: "/assets/xp/i7/IMG-20260606-WA0023~2 - Akul Malik.jpg",
         github: "https://github.com/akul1301",
         linkedin: "https://www.linkedin.com/in/akul-malik-b65216324/",
-        bio: "Building software that scales",
-      },
-      {
-        name: "MANANDEEP SINGH LAMBA",
-        role: "Member",
-        image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
-        github: "#",
-        linkedin: "#",
+        bio: "Data Anal-yst",
       },
       {
         name: "Vishesh Sagar",
@@ -325,15 +317,16 @@ const teams = [
     description: "Handles AI development and Machine Learning projects.",
 
     lead: {
-      name: "Place Holder",
+      name: "Avish Choudhary",
       role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
+      image: "/assets/xp/i9/me - Avish Choudhary.png",
+      github: "https://github.com/choudhary-avish20",
       linkedin: "#",
+      bio: "Works, but makes sad noises",
     },
 
     coLead: {
-      name: "Place Holder",
+      name: "Dishita",
       role: "Co Lead",
       image: "/assets/members/placeholder.png",
       github: "#",
@@ -364,14 +357,6 @@ const teams = [
         github: "https://github.com/ananya-builds",
         linkedin: "#",
         bio: "Core Member - Team i9 | Turning data into decisions",
-      },
-      {
-        name: "Avish Choudhary",
-        role: "Member",
-        image: "/assets/xp/i9/me - Avish Choudhary.png",
-        github: "https://github.com/choudhary-avish20",
-        linkedin: "#",
-        bio: "Works, but makes sad noises",
       },
       {
         name: "Richik Das",
@@ -622,286 +607,112 @@ function AboutApp() {
 }
 
 function TeamsPanel() {
-  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
-
-  if (selectedTeam) {
-    return (
-      <div className="xp-team-details">
-
-        <div className="xp-team-breadcrumb">
-
-          <button
-            className="xp-back-button"
-            onClick={() => setSelectedTeam(null)}
-          >
-            ← Back
-          </button>
-
-          <span>
-            📁 Teams &gt; <b>{selectedTeam.name}</b>
-          </span>
-
-        </div>
-
-        <div className="xp-team-details-content">
-
-          <div className="xp-team-header">
-
-            <div className="xp-folder-large">
-
-              <img
-                src={selectedTeam.image}
-                alt={selectedTeam.name}
-              />
-
-            </div>
-
-            <div>
-
-              <h2>{selectedTeam.name}</h2>
-
-              <p>{selectedTeam.description}</p>
-
-            </div>
-
-          </div>
-
-          <div className="xp-lead-grid">
-
-            <div className="xp-person-card">
-
-              <img
-                src={selectedTeam.lead.image}
-                alt={selectedTeam.lead.name}
-              />
-
-              <h3>{selectedTeam.lead.name}</h3>
-
-              <span>{selectedTeam.lead.role}</span>
-              {selectedTeam.lead.bio && (
-                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{selectedTeam.lead.bio}</p>
-              )}
-              <div className="xp-social-links">
-
-                <a
-                  href={selectedTeam.lead.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-
-                <a
-                  href={selectedTeam.lead.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-
-              </div>
-            </div>
-
-            <div className="xp-person-card">
-
-              <img
-                src={selectedTeam.coLead.image}
-                alt={selectedTeam.coLead.name}
-              />
-
-              <h3>{selectedTeam.coLead.name}</h3>
-
-              <span>{selectedTeam.coLead.role}</span>
-              {selectedTeam.coLead.bio && (
-                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{selectedTeam.coLead.bio}</p>
-              )}
-              <div className="xp-social-links">
-
-                <a
-                  href={selectedTeam.coLead.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-
-                <a
-                  href={selectedTeam.coLead.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-
-              </div>
-            </div>
-
-          </div>
-
-          <div className="xp-members-section">
-
-            <div className="xp-members-title">
-
-              Members
-
-            </div>
-
-            <div className="xp-members-grid">
-
-              {selectedTeam.members.map((member) => (
-
-                <div
-                  key={member.name}
-                  className="xp-member-card"
-                >
-
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                  />
-
-                  <h4>{member.name}</h4>
-
-                  <span>{member.role}</span>
-                  {member.bio && (
-                    <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{member.bio}</p>
-                  )}
-                  <div className="xp-social-links">
-
-                    <a
-                      href={member.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      title="GitHub"
-                    >
-                      <Github size={16} />
-                    </a>
-
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      title="LinkedIn"
-                    >
-                      <Linkedin size={16} />
-                    </a>
-
-                  </div>
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    );
-  }
+  const [selectedTeam, setSelectedTeam] = useState<string | "club">("club");
+  const [selectedView, setSelectedView] = useState<"leadership" | "members">("leadership");
+  const [selectedPerson, setSelectedPerson] = useState(0);
+  const currentTeam = teams.find((team) => team.id === selectedTeam) ?? null;
+  const people = selectedTeam === "club"
+    ? clubLeadership.map((leader) => ({ name: leader.name, role: leader.title, image: leader.image, github: leader.github, linkedin: leader.linkedin, bio: "bio" in leader ? leader.bio : undefined }))
+    : selectedView === "leadership"
+      ? [currentTeam!.lead, currentTeam!.coLead]
+      : currentTeam!.members;
+  const person = people[Math.min(selectedPerson, people.length - 1)];
+  const select = (team: string | "club", view: "leadership" | "members" = "leadership") => {
+    setSelectedTeam(team);
+    setSelectedView(view);
+    setSelectedPerson(0);
+  };
+  const location = selectedTeam === "club"
+    ? "C:\\Website\\Teams\\Club Leadership"
+    : `C:\\Website\\Teams\\${currentTeam?.name.split(" : ")[0]}\\${selectedView === "leadership" ? "Team Leadership" : "Members"}`;
 
   return (
-    <div className="xp-team-panel">
-      <div className="xp-club-leadership">
-
-        <h2>Club Leadership</h2>
-
-        <div className="xp-club-lead-grid">
-
-          {clubLeadership.map((leader) => (
-
-            <div
-              key={leader.title}
-              className="xp-person-card"
-            >
-
-              <img
-                src={leader.image}
-                alt={leader.name}
-              />
-
-              <h3>{leader.name}</h3>
-
-              <span>{leader.title}</span>
-              {"bio" in leader && leader.bio && (
-                <p className="text-[11px] text-slate-600 mt-1 italic leading-tight">{leader.bio as string}</p>
-              )}
-
-              <div className="xp-social-links">
-
-                <a
-                  href={leader.github || "#"}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-
-                <a
-                  href={leader.linkedin || "#"}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-        <hr className="xp-team-divider" />
-
+    <div className="explorer-app team-explorer-shell">
+      <div className="explorer-toolbar">
+        <button type="button" aria-label="Back">
+          <ArrowLeft size={21} />
+          <span>Back</span>
+        </button>
+        <button type="button" disabled aria-label="Forward">
+          <ArrowRight size={21} />
+          <span>Forward</span>
+        </button>
+        <div className="toolbar-separator" />
+        <button type="button">
+          <FolderOpen size={21} />
+          <span>Up</span>
+        </button>
+        <button type="button">
+          <Search size={21} />
+          <span>Search</span>
+        </button>
+        <button type="button"><Folder size={21} /><span>Folders</span></button>
       </div>
 
-      {teams.map((team) => (
-
-        <div
-          key={team.id}
-          className="xp-team-card"
-          onClick={() => setSelectedTeam(team)}
-        >
-
-          <div className="xp-team-image">
-            <img src={team.image} alt={team.name} />
-          </div>
-
-          <div className="xp-team-info">
-
-            <h3>{team.name}</h3>
-
-            <span className="xp-team-lead">
-              Team Lead: <b>{team.lead.name}</b>
-            </span>
-
-            <span className="xp-team-lead">
-              Team Co-Lead: <b>{team.coLead.name}</b>
-            </span>
-
-            <p>{team.description}</p>
-
-          </div>
-
+      <div className="address-bar">
+        <span>Address</span>
+        <div>
+          <img src="/assets/xp/icons/earth.png" alt="" />
+          <p>{location}</p>
         </div>
+      </div>
 
-      ))}
+      <div className="explorer-main">
+        <aside className="explorer-sidebar">
+          <div className="sidebar-panel">
+            <div>Folders</div>
+            <section>
+              <button type="button" className="xp-tree-root" onClick={() => select("club")}>
+                <Folder size={14} />
+                <span>Teams</span>
+              </button>
+              <button
+                type="button"
+                className={`xp-tree-item xp-tree-level-one ${selectedTeam === "club" ? "selected" : ""}`}
+                onClick={() => select("club")}
+              >
+                <FolderOpen size={13} />
+                <span>Club Leadership</span>
+              </button>
+              {teams.map((team) => (
+                <div key={team.id} className="xp-tree-branch">
+                  <button type="button" className={`xp-tree-item xp-tree-level-one ${selectedTeam === team.id ? "selected" : ""}`} onClick={() => select(team.id)}>
+                    <FolderOpen size={13} />
+                    <span>{team.name.split(" : ")[0]}</span>
+                  </button>
+                  <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "leadership" ? "selected" : ""}`} onClick={() => select(team.id, "leadership")}>
+                    <Folder size={13} /><span>Team Leadership</span>
+                  </button>
+                  <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "members" ? "selected" : ""}`} onClick={() => select(team.id, "members")}>
+                    <Folder size={13} /><span>Members</span>
+                  </button>
+                </div>
+              ))}
+            </section>
+          </div>
+        </aside>
 
+        <main className="team-profile-pane">
+          <div className="xp-person-preview">
+            <img src={person.image} alt={person.name} />
+            <div>
+              <h2>{person.name}</h2>
+              <strong>{person.role}</strong>
+              <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online">Active</dd></dl>
+              {person.bio && <p>“{person.bio}”</p>}
+              <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span>
+            </div>
+          </div>
+          <div className="xp-member-list" role="listbox" aria-label="Team members">
+            <div className="xp-member-list-head"><span>Name</span><span>Role</span><span>Status</span></div>
+            {people.map((member, index) => <button key={`${member.name}-${index}`} className={index === Math.min(selectedPerson, people.length - 1) ? "selected" : ""} onClick={() => setSelectedPerson(index)}><span>{member.name}</span><span>{member.role}</span><span>Active</span></button>)}
+          </div>
+        </main>
+      </div>
+
+      <div className="status-bar">
+        <span>{people.length} object{people.length === 1 ? "" : "s"}</span><span>{selectedTeam === "club" ? "Club Leadership" : currentTeam?.name}</span>
+      </div>
     </div>
   );
 }
@@ -1013,15 +824,15 @@ function ProjectsApp() {
   const project = projects[selected];
   const ProjectIcon = project.icon;
   return <div className="browser-app"><MenuBar /><ExplorerToolbar address="https://iosc.club/projects" /><div className="project-webpage">
-    <header><div><ChipMark compact /><strong>IoSC // oneAPI Projects</strong></div><span>Select a project to view details</span></header>
-    <div className="project-page-heading"><div><p>HETEROGENEOUS LAB</p><h2>Silicon meets graphics.</h2><span>Parallel code, visual demos, measurable performance.</span></div><div className="project-orb"><Cpu /></div></div>
-    <div className="project-browser-grid"><aside>{projects.map((item, index) => { const Icon = item.icon; return <button key={item.title} className={selected === index ? "active" : ""} onClick={() => setSelected(index)}><span style={{ backgroundColor: item.color }}><Icon /></span><p><strong>{item.title}</strong><small>{item.type}</small></p></button> })}</aside><article><div className="project-preview" style={{ "--project": project.color } as React.CSSProperties}><ProjectIcon /><span>{project.status}</span></div><p className="project-type">{project.type}</p><h3>{project.title}</h3><p>{project.description}</p><div className="project-tags"><span>Club work</span><span>Student-built</span></div><p className="project-repo-note"><Github /> Add the maintained repository link when the new project catalogue is ready.</p></article></div>
+    <header><div><ChipMark compact /><strong>IoSC // Projects</strong></div><span>Select a project to view details</span></header>
+    <div className="project-page-heading"><div><p>PROJECT SHOWCASE</p><h2>Curated club creations.</h2><span>Innovative software, AI solutions, web platforms, and IoT systems.</span></div><div className="project-orb"><Cpu /></div></div>
+    <div className="project-browser-grid"><aside>{projects.map((item, index) => { const Icon = item.icon; return <button key={item.title} className={selected === index ? "active" : ""} onClick={() => setSelected(index)}><span style={{ backgroundColor: item.color }}><Icon /></span><p><strong>{item.title}</strong><small>{item.type}</small></p></button> })}</aside><article><div className="project-preview" style={{ "--project": project.color } as React.CSSProperties}><ProjectIcon /><span>{project.status}</span></div><p className="project-type">{project.type}</p><h3>{project.title}</h3><p>{project.description}</p><div className="project-tags"><span>Club work</span><span>Student-built</span></div><p className="project-repo-note"><Github /> {project.github ? <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ color: "#164e91", textDecoration: "underline", fontWeight: 600 }}>{project.github}</a> : "Add the maintained repository link when the new project catalogue is ready."}</p></article></div>
   </div><div className="browser-status"><span>Done</span><div /><Globe2 /><span>Internet</span></div></div>;
 }
 
 function EventsApp({ openApp, eventsList, onRefresh, onRegisterClick }: { openApp: (id: AppId) => void; eventsList: typeof defaultEvents; onRefresh?: () => void; onRegisterClick?: () => void }) {
   const [view, setView] = useState<"Event archive" | "Highlights">("Event archive");
-  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2></div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
+  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2>{onRegisterClick && <button className="xp-primary-button" style={{ marginLeft: "auto" }} onClick={onRegisterClick}>📝 Register Now</button>}</div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
 }
 
 function ArchiveApp() {
@@ -1120,15 +931,15 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
           <section id="tracks" className="portal-section"><h2>What we do</h2><div className="portal-rule" /><div className="portal-track-list">{[["Workshops & bootcamps", "Hands-on introductions to oneAPI toolkits and a wide range of technical topics."], ["Hackathons & projects", "Build practical solutions, collaborate across disciplines, and present working ideas."], ["Coding & creative events", "Programming competitions, design challenges, gaming events, and technical showcases."], ["Talks & networking", "Learn from practitioners and connect technical work with contemporary industry insight."]].map(([title, text], index) => <article key={title}><b>{index + 1}</b><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
 
-          <section id="club-projects" className="portal-section"><div className="portal-section-title"><h2>Selected projects</h2><button onClick={() => openDesktop("projects")}>Open Projects in Internet Explorer</button></div><div className="portal-rule" /><div className="portal-project-table">{projects.map(project => <article key={project.title}><div style={{ backgroundColor: project.color }}><Code2 /></div><section><h3>{project.title}</h3><p>{project.description}</p><small>{project.type}</small></section><span>{project.status}</span></article>)}</div></section>
+          <section id="club-projects" className="portal-section"><div className="portal-section-title"><h2>Selected projects</h2><button onClick={() => openDesktop("projects")}>Open Projects in Internet Explorer</button></div><div className="portal-rule" /><div className="portal-project-table">{projects.map(project => { const Icon = project.icon; return <article key={project.title}><div style={{ backgroundColor: project.color }}><Icon /></div><section><h3>{project.github ? <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }} className="hover:underline">{project.title}</a> : project.title}</h3><p>{project.description}</p><small>{project.type}</small></section><div style={{ display: "flex", alignItems: "center", gap: "8px" }}>{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" title="View repository on GitHub" style={{ color: "#154d84", display: "inline-flex", alignItems: "center" }}><Github style={{ width: 18, height: 18 }} /></a>}<span>{project.status}</span></div></article>; })}</div></section>
 
           <section id="club-events" className="portal-section">
             <div className="portal-section-title">
               <h2>Events Calendar</h2>
               <div className="flex items-center gap-2">
-                {/* <button className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowFormModal(true)}>
+                <button className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
                   📝 Register Now
-                </button> */}
+                </button>
                 <button onClick={() => openDesktop("events")}>Open event archive</button>
               </div>
             </div>
