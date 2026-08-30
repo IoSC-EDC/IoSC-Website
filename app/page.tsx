@@ -1091,8 +1091,8 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       <div className="guided-minimal-toolbar"><div className="address-bar"><span>Address</span><div><img src="/assets/icons/earth.png" alt="" /><p>https://iosc.club/home</p></div></div><button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> Open XP Desktop</button></div>
     </div>
 
-    <div className="portal-page">
-      <header className="portal-header" id="top"><div className="portal-brand"><span>intel</span><div><strong>oneAPI Student Club</strong><small>IoSC · GGSIPU East Delhi Campus</small></div></div><div className="portal-utility"><a href="#club-timeline">Timeline</a><a href="#club-events">Events</a></div></header>
+    <div className="portal-page" id="top">
+      <header className="portal-header"><div className="portal-brand"><span>intel</span><div><strong>oneAPI Student Club</strong><small>IoSC · GGSIPU East Delhi Campus</small></div></div><div className="portal-utility"><a href="#club-timeline">Timeline</a><a href="#club-events">Events</a></div></header>
       <nav className="portal-nav"><span className="portal-nav-brand">IoSC</span><a href="#top" className="active">Home</a><a href="#about-club">About the club</a><a href="#tracks">What we do</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><a href="#club-timeline">Timeline</a><button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> XP Desktop</button></nav>
       <div className="portal-breadcrumb">IoSC Home &nbsp;›&nbsp; Welcome</div>
 
