@@ -459,7 +459,7 @@ const mentors = [
   },
   {
     id: "drrahul",
-    name:"Dr. Rahul Johari",
+    name: "Dr. Rahul Johari",
     role: "Mentor",
     image: "/assets/mentors/Dr. Rahul Johari.png",
     description: "A former AI team member who now works on applied machine learning projects and community outreach.",
@@ -516,7 +516,7 @@ const alumni = [
   },
   {
     id: "parthmawai",
-    name: "Parth Mawai",
+    name: "Parth Awasthi",
     role: "Alumni",
     batch: "Batch 2026",
     image: "/assets/alumni/Parth Mawai.jpg",
@@ -855,7 +855,7 @@ function TeamsPanel() {
               {teams.map((team) => (
                 <div key={team.id} className="xp-tree-branch">
                   <button type="button" className={`xp-tree-item xp-tree-level-one ${selectedTeam === team.id ? "selected" : ""}`} onClick={() => select(team.id)}>
-                     <FolderOpen size={13} />
+                    <FolderOpen size={13} />
                     <span>{team.name.split(" : ")[0]}</span>
                   </button>
                   <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "leadership" ? "selected" : ""}`} onClick={() => select(team.id, "leadership")}>
