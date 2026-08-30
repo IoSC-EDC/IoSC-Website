@@ -515,11 +515,11 @@ const alumni = [
     linkedin: "#",
   },
   {
-    id: "parthmawai",
+    id: "parthawasthi",
     name: "Parth Awasthi",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/alumni/Parth Mawai.jpg",
+    image: "/assets/alumni/Parth Awasthi.jpg",
     description: "",
     highlight: "",
     github: "#",
