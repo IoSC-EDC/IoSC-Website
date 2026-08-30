@@ -526,6 +526,17 @@ const alumni = [
     linkedin: "#",
   },
   {
+    id: "parthmawai",
+    name: "Parth Mawai",
+    role: "Alumni",
+    batch: "Batch 2027",
+    image: "/assets/alumni/Parth Mawai.jpg",
+    description: "",
+    highlight: "",
+    github: "#",
+    linkedin: "#",
+  },
+  {
     id: "jaytomar",
     name: "Jay Tomar",
     role: "Alumni",
