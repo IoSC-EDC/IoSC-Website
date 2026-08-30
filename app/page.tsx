@@ -1142,7 +1142,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
             <div className="portal-section-title">
               <h2>Events Calendar</h2>
               <div className="flex items-center gap-2">
-                <button className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
+                <button className="hidden px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
                   📝 Register Now
                 </button>
                 <button onClick={() => openDesktop("events")}>Open event archive</button>
