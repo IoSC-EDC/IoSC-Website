@@ -390,6 +390,22 @@ const teams: Team[] = [
         linkedin: "#",
         bio: "“powered by caffeine and curiosity”",
       },
+      {
+        name: "Anujot Singh",
+        role: "Member",
+        image: "/assets/i9/Anujot Singh.jpg",
+        github: "#",
+        linkedin: "#",
+        bio: "Core Member - Team i9",
+      },
+      {
+        name: "Shifali",
+        role: "Member",
+        image: "/assets/i9/Shifali.jpg",
+        github: "https://github.com/shifali0156-wq",
+        linkedin: "#",
+        bio: "Just another runner in the rat race.",
+      },
     ],
   },
 
