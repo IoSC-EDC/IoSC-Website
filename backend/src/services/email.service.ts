@@ -130,7 +130,7 @@ export class EmailService {
       return false;
     }
 
-    const fromEmail = process.env.SMTP_USER || process.env.SMTP_EMAIL || "iosc.edc@gmail.com";
+    const fromEmail = process.env.SMTP_EMAIL || process.env.SMTP_USER || "iosc.edc@gmail.com";
     console.log(`[EmailService] Sending email to ${user.email} via SMTP...`);
 
     try {
