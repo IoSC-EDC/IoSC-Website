@@ -81,7 +81,12 @@ export class EmailService {
       return false;
     }
 
-    const apiKey = process.env.SMTP_KEY || process.env.SMTP_PASSWORD;
+    const rawKey = process.env.SMTP_KEY || process.env.SMTP_PASSWORD || "";
+    const apiKey = rawKey.trim();
+    if (apiKey) {
+      console.log(`[EmailService] API Key starts with "${apiKey.substring(0, 8)}" and has length ${apiKey.length}`);
+    }
+
     if (!apiKey || apiKey.includes("your_brevo_smtp_key_here") || apiKey.includes("your_16_character")) {
       console.warn("[EmailService] Brevo API Key is not configured in environment variables. Skipping email dispatch safely.");
       return false;
