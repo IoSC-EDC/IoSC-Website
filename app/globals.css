@@ -514,6 +514,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 1px
 .xp-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; background: linear-gradient(180deg,#4b87d7 0%,#2f5baf 100%); color: white; border-bottom: 1px solid #1e4d9c; }
 .xp-dialog-body { padding: 18px 18px 22px; color: #172f53; }
 .xp-form-input { display: block; width: 100%; padding: 10px 11px; border: 1px solid #7d96bf; border-radius: 4px; background: #fbfdff; color: #1c3254; font-size: 12px; box-shadow: inset 1px 1px 2px rgba(255,255,255,.85); }
+.xp-form-input.pl-9 { padding-left: 36px; }
 .xp-form-input:focus { outline: 2px solid #5d82ce; border-color: #5d82ce; box-shadow: inset 1px 1px 1px rgba(255,255,255,.9); }
 .xp-pill-button { border: 1px solid #8d9fc0; border-radius: 999px; background: linear-gradient(180deg,#f8fbff,#dee6f5); color: #203c69; font-size: 11px; font-weight: 700; padding: 7px 12px; cursor: pointer; transition: all .15s ease-in-out; }
 .xp-pill-button:hover { background: linear-gradient(180deg,#edf3fb,#d3dbe9); }
