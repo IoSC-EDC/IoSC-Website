@@ -1,4 +1,3 @@
-import nodemailer from "nodemailer";
 
 export interface RegistrationEmailUserPayload {
   name: string;
@@ -81,14 +80,18 @@ export class EmailService {
       return false;
     }
 
-    const rawKey = process.env.SMTP_KEY || process.env.SMTP_PASSWORD || "";
+    const rawKey = process.env.BREVO_API_KEY || "";
     const apiKey = rawKey.trim();
-    if (apiKey) {
-      console.log(`[EmailService] API Key starts with "${apiKey.substring(0, 8)}" and has length ${apiKey.length}`);
+
+    if (!apiKey) {
+      console.error("[EmailService] Configuration Error: BREVO_API_KEY is not defined in environment variables.");
+      return false;
     }
 
-    if (!apiKey || apiKey.includes("your_brevo_smtp_key_here") || apiKey.includes("your_16_character")) {
-      console.warn("[EmailService] Brevo API Key is not configured in environment variables. Skipping email dispatch safely.");
+    console.log(`[EmailService] API Key starts with "${apiKey.substring(0, 8)}" and has length ${apiKey.length}`);
+
+    if (apiKey.includes("your_brevo") || apiKey.includes("your_16_character")) {
+      console.error("[EmailService] Configuration Error: BREVO_API_KEY contains placeholder/template values.");
       return false;
     }
 
@@ -96,12 +99,11 @@ export class EmailService {
 
     const subject = `Welcome to Intel oneAPI Student Club!`;
     const htmlContent = this.renderBrandedEmailHtml(user, event);
-    const fromEmail = process.env.SMTP_EMAIL || process.env.SMTP_USER || "iosc.edc@gmail.com";
 
     console.log(`[EmailService] Sending email to ${user.email} via Brevo HTTP API...`);
 
     const payload = {
-      sender: { name: "Intel oneAPI Student Club", email: fromEmail },
+      sender: { name: "IoSC EDC", email: "updates@iosc.win" },
       to: [{ email: user.email, name: user.name || "Student" }],
       subject: subject,
       htmlContent: htmlContent,
@@ -120,6 +122,7 @@ export class EmailService {
 
       if (!response.ok) {
         const errorText = await response.text();
+        console.error(`[EmailService] Brevo HTTP API failed. Status: ${response.status}. Error: ${errorText}`);
         throw new Error(`Brevo HTTP API responded with status ${response.status}: ${errorText}`);
       }
 
