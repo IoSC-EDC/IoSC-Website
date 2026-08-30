@@ -20,44 +20,6 @@ export interface SendRegistrationConfirmationOptions {
 
 export class EmailService {
   /**
-   * Creates a Nodemailer transporter configured for Brevo (or legacy Gmail) SMTP
-   */
-  private static getTransporter() {
-    const host = process.env.SMTP_HOST || "smtp-relay.brevo.com";
-    const port = parseInt(process.env.SMTP_PORT || "587");
-    const user = process.env.SMTP_USER;
-    const pass = process.env.SMTP_KEY || process.env.SMTP_PASSWORD;
-
-    if (!user || !pass || pass.includes("your_brevo_smtp_key_here") || pass.includes("your_16_character")) {
-      // Legacy Gmail Fallback
-      const legacyEmail = process.env.SMTP_EMAIL;
-      const legacyPass = process.env.SMTP_PASSWORD;
-      if (!legacyEmail || !legacyPass || legacyPass.includes("your_16_character")) {
-        return null;
-      }
-      return nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: {
-          user: legacyEmail,
-          pass: legacyPass,
-        },
-      });
-    }
-
-    return nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: {
-        user,
-        pass,
-      },
-    });
-  }
-
-  /**
    * Replaces dynamic template placeholders (e.g. {{name}}, {{event_name}}, {{event_date}}, {{venue}}, {{email_body}})
    */
   private static replacePlaceholders(template: string, data: Record<string, string>): string {
@@ -109,7 +71,7 @@ export class EmailService {
   }
 
   /**
-   * Main reusable method to dispatch registration confirmation emails via Nodemailer SMTP
+   * Main reusable method to dispatch registration confirmation emails via Brevo HTTP API
    */
   static async sendRegistrationConfirmation(options: SendRegistrationConfirmationOptions): Promise<boolean> {
     const { user, event } = options;
@@ -119,38 +81,48 @@ export class EmailService {
       return false;
     }
 
+    const apiKey = process.env.SMTP_KEY || process.env.SMTP_PASSWORD;
+    if (!apiKey || apiKey.includes("your_brevo_smtp_key_here") || apiKey.includes("your_16_character")) {
+      console.warn("[EmailService] Brevo API Key is not configured in environment variables. Skipping email dispatch safely.");
+      return false;
+    }
+
     console.log(`[EmailService] Generating email template for ${user.email}...`);
 
     const subject = `Welcome to Intel oneAPI Student Club!`;
     const htmlContent = this.renderBrandedEmailHtml(user, event);
-
-    const transporter = this.getTransporter();
-    if (!transporter) {
-      console.warn("[EmailService] SMTP credentials are not configured in .env. Skipping email dispatch safely.");
-      return false;
-    }
-
     const fromEmail = process.env.SMTP_EMAIL || process.env.SMTP_USER || "iosc.edc@gmail.com";
-    console.log(`[EmailService] Sending email to ${user.email} via SMTP...`);
+
+    console.log(`[EmailService] Sending email to ${user.email} via Brevo HTTP API...`);
+
+    const payload = {
+      sender: { name: "Intel oneAPI Student Club", email: fromEmail },
+      to: [{ email: user.email, name: user.name || "Student" }],
+      subject: subject,
+      htmlContent: htmlContent,
+    };
 
     try {
-      const info = await transporter.sendMail({
-        from: `"Intel oneAPI Student Club" <${fromEmail}>`,
-        to: user.email,
-        subject: subject,
-        html: htmlContent,
+      const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "api-key": apiKey,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      console.log(`[EmailService] Email sent successfully to ${user.email}! Message ID: ${info.messageId}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Brevo HTTP API responded with status ${response.status}: ${errorText}`);
+      }
+
+      const info = await response.json() as any;
+      console.log(`[EmailService] Email sent successfully via Brevo HTTP API! Message ID: ${info.messageId}`);
       return true;
     } catch (err: any) {
-      console.error("[EmailService] Full SMTP Error during sendMail:", {
-        message: err.message,
-        code: err.code,
-        command: err.command,
-        response: err.response,
-        stack: err.stack,
-      });
+      console.error("[EmailService] Error sending email via Brevo HTTP API:", err.message);
       return false;
     }
   }
