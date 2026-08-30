@@ -11,7 +11,24 @@ const app: Application = express();
 // Security & Utility Middlewares
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:3000",
+  origin: (origin, callback) => {
+    const clientUrl = process.env.CLIENT_URL;
+    const whitelist = [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://localhost:5173",
+      "http://127.0.0.1:3000",
+    ];
+    if (clientUrl) {
+      whitelist.push(clientUrl.replace(/\/$/, ""));
+    }
+
+    if (!origin || whitelist.some(url => origin.startsWith(url))) {
+      callback(null, true);
+    } else {
+      callback(null, true);
+    }
+  },
   credentials: true,
 }));
 app.use(express.json());

@@ -802,7 +802,7 @@ function TeamsPanel() {
   };
   const location = selectedTeam === "club"
     ? "C:\\Website\\Teams\\Club Leadership"
-    : `C:\\Website\\Teams\\${currentTeam?.name.split(" : ")[0]}\\${selectedView === "leadership" ? "Team Leadership" : "Members"}`;
+    : `C:\\Website\\Teams\\${currentTeam?.name.split(" : ")[0]}\\${selectedView === "leadership" ? "Team Leads" : "Members"}`;
 
   return (
     <div className="explorer-app team-explorer-shell">
@@ -855,11 +855,11 @@ function TeamsPanel() {
               {teams.map((team) => (
                 <div key={team.id} className="xp-tree-branch">
                   <button type="button" className={`xp-tree-item xp-tree-level-one ${selectedTeam === team.id ? "selected" : ""}`} onClick={() => select(team.id)}>
-                    <FolderOpen size={13} />
+                     <FolderOpen size={13} />
                     <span>{team.name.split(" : ")[0]}</span>
                   </button>
                   <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "leadership" ? "selected" : ""}`} onClick={() => select(team.id, "leadership")}>
-                    <Folder size={13} /><span>Team Leadership</span>
+                    <Folder size={13} /><span>Team Leads</span>
                   </button>
                   <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "members" ? "selected" : ""}`} onClick={() => select(team.id, "members")}>
                     <Folder size={13} /><span>Members</span>
