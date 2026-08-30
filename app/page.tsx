@@ -78,14 +78,14 @@ const APP_META: Record<AppId, { label: string; short: string; icon: typeof Compu
 };
 
 const XP_ICONS: Record<AppId, string> = {
-  welcome: "/assets/xp/icons/tour.png",
-  about: "/assets/xp/icons/computer.png",
-  projects: "/assets/xp/icons/internet-explorer.png",
-  events: "/assets/xp/icons/events.png",
-  archive: "/assets/xp/icons/notepad.png",
-  team: "/assets/xp/icons/members.png",
-  alumni: "/assets/xp/icons/tour.png",
-  // join: "/assets/xp/icons/messenger.png",
+  welcome: "/assets/icons/tour.png",
+  about: "/assets/icons/computer.png",
+  projects: "/assets/icons/internet-explorer.png",
+  events: "/assets/icons/events.png",
+  archive: "/assets/icons/notepad.png",
+  team: "/assets/icons/members.png",
+  alumni: "/assets/icons/tour.png",
+  // join: "/assets/icons/messenger.png",
 };
 
 const DEFAULT_POSITIONS: Record<AppId, { x: number; y: number }> = {
@@ -136,7 +136,7 @@ const clubLeadership = [
   {
     title: "IoSC Lead",
     name: "Piyush Gupta",
-    image: "/assets/xp/leads/Piyush Gupta.jpg",
+    image: "/assets/leads/Piyush Gupta.jpg",
     github: "#",
     linkedin: "#",
     bio: "सुधर गए तो शेर कोन कहेगा "
@@ -144,7 +144,7 @@ const clubLeadership = [
   {
     title: "IoSC Co-Lead",
     name: "Armaan",
-    image: "/assets/xp/leads/IMG_20260612_211648_070 - Armaan _.jpg",
+    image: "/assets/leads/IMG_20260612_211648_070 - Armaan _.jpg",
     github: "#",
     linkedin: "#",
     bio: "Driven by curiosity . Defined by creativity . Blending creativity with technology",
@@ -152,14 +152,14 @@ const clubLeadership = [
   {
     title: "Technical Lead",
     name: "Waqar Akhtar",
-    image: "/assets/xp/leads/Waqar Akhtar.jpeg",
+    image: "/assets/leads/Waqar Akhtar.jpeg",
     github: "#",
     linkedin: "#",
   },
   {
     title: "Technical Co-Lead",
     name: "Rahul Bhatia",
-    image: "/assets/xp/leads/Rahul Bhatia.jpeg",
+    image: "/assets/leads/Rahul Bhatia.jpeg",
     github: "#",
     linkedin: "#",
   },
@@ -176,7 +176,7 @@ const teams: Team[] = [
     lead: {
       name: "Mayank Bisht",
       role: "Team Lead",
-      image: "/assets/xp/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
+      image: "/assets/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
       github: "https://github.com/mayankbisht-tech",
       linkedin: "https://www.linkedin.com/in/mayankbisht011/",
     },
@@ -184,7 +184,7 @@ const teams: Team[] = [
     coLead: {
       name: "Pawan Yadav",
       role: "Co Lead",
-      image: "/assets/xp/i3/Pawan Yadav.jpg",
+      image: "/assets/i3/Pawan Yadav.jpg",
       github: "https://github.com/pawanydv35",
       linkedin: "#",
     },
@@ -193,7 +193,7 @@ const teams: Team[] = [
       {
         name: "Jayant Baliyan",
         role: "Member",
-        image: "/assets/xp/i3/IMG20250822141950 - Jayant Baliyan.jpg",
+        image: "/assets/i3/IMG20250822141950 - Jayant Baliyan.jpg",
         github: "https://github.com/Jayant-Baliyan",
         linkedin: "https://www.linkedin.com/in/jayant-baliyan/",
         bio: "We must cling to our honor, lest we become beasts ourselves.",
@@ -201,14 +201,14 @@ const teams: Team[] = [
       {
         name: "DHRUV SHARMA",
         role: "Member",
-        image: "/assets/xp/i3/DHRUV SHARMA.jpg",
+        image: "/assets/i3/DHRUV SHARMA.jpg",
         github: "#",
         linkedin: "#",
       },
       {
         name: "Prabhat Kumar",
         role: "Member",
-        image: "/assets/xp/i3/Prabhat Kumar - Prabhat Kumar.png",
+        image: "/assets/i3/Prabhat Kumar - Prabhat Kumar.png",
         github: "https://github.com/PrabhatKumar-06",
         linkedin: "#",
         bio: "Heavy are the hands that center a div.",
@@ -225,7 +225,7 @@ const teams: Team[] = [
     lead: {
       name: "Waqar Akhtar",
       role: "Team Lead",
-      image: "/assets/xp/leads/Waqar Akhtar.jpeg",
+      image: "/assets/leads/Waqar Akhtar.jpeg",
       github: "https://github.com/Waqar080206",
       linkedin: "#",
     },
@@ -233,7 +233,7 @@ const teams: Team[] = [
     coLead: {
       name: "Gurmehak Singh",
       role: "Co Lead",
-      image: "/assets/xp/i5/IMG_20260727_005348 - Gurmehak Singh.png",
+      image: "/assets/i5/IMG_20260727_005348 - Gurmehak Singh.png",
       github: "https://github.com/niggsingh20",
       linkedin: "#",
       bio: "Some random nobody ~",
@@ -243,14 +243,14 @@ const teams: Team[] = [
       {
         name: "Shourya Upadhyay",
         role: "Member",
-        image: "/assets/xp/i5/20260708_114840 - Shourya Upadhyay.jpg",
+        image: "/assets/i5/20260708_114840 - Shourya Upadhyay.jpg",
         github: "https://github.com/shouryaupadhyay2029",
         linkedin: "#",
       },
       {
         name: "Aditya Bhatnagar",
         role: "Member",
-        image: "/assets/xp/i5/IMG_20260130_044912_379 - Aditya Bhatnagar.webp",
+        image: "/assets/i5/IMG_20260130_044912_379 - Aditya Bhatnagar.webp",
         github: "https://github.com/adityabhatnagar1",
         linkedin: "#",
         bio: "If there is a God, he's a great Mathematician!",
@@ -258,7 +258,7 @@ const teams: Team[] = [
       {
         name: "Jatin Khandelwal",
         role: "Member",
-        image: "/assets/xp/i5/PXL_20260104_042517377 - Jatin Khandelwal.jpg",
+        image: "/assets/i5/PXL_20260104_042517377 - Jatin Khandelwal.jpg",
         github: "https://github.com/jatinkhandelwal662-jk",
         linkedin: "#",
         bio: "The Pragmatic Builder",
@@ -275,7 +275,7 @@ const teams: Team[] = [
     lead: {
       name: "Manandeep Singh Lamba",
       role: "Team Lead",
-      image: "/assets/xp/i7/MANANDEEP SINGH LAMBA.jpeg",
+      image: "/assets/i7/MANANDEEP SINGH LAMBA.jpeg",
       github: "#",
       linkedin: "#",
       bio: "God bless Dick Cheney's America",
@@ -284,7 +284,7 @@ const teams: Team[] = [
     coLead: {
       name: "Pranshu Bansal",
       role: "Co Lead",
-      image: "/assets/xp/i7/prshu.jpeg",
+      image: "/assets/i7/prshu.jpeg",
       github: "#",
       linkedin: "#",
       bio: "ashton's bae",
@@ -294,7 +294,7 @@ const teams: Team[] = [
       {
         name: "Akul Malik",
         role: "Member",
-        image: "/assets/xp/i7/IMG-20260606-WA0023~2 - Akul Malik.jpg",
+        image: "/assets/i7/IMG-20260606-WA0023~2 - Akul Malik.jpg",
         github: "https://github.com/akul1301",
         linkedin: "https://www.linkedin.com/in/akul-malik-b65216324/",
         bio: "Data Anal-yst",
@@ -302,7 +302,7 @@ const teams: Team[] = [
       {
         name: "Vishesh Sagar",
         role: "Member",
-        image: "/assets/xp/i7/WhatsApp Image 2026-07-26 at 22.07.39 - Vishesh Sagar.jpeg",
+        image: "/assets/i7/WhatsApp Image 2026-07-26 at 22.07.39 - Vishesh Sagar.jpeg",
         github: "https://github.com/visheshsagar0501-prog",
         linkedin: "#",
         bio: "Professional Ctrl + C, ctrl + V ; Part time coder",
@@ -310,7 +310,7 @@ const teams: Team[] = [
       {
         name: "Mohd Ayan",
         role: "Member",
-        image: "/assets/xp/i7/Mohd Ayan.png",
+        image: "/assets/i7/Mohd Ayan.png",
         github: "#",
         linkedin: "#",
         bio: "Just trying to be better every day",
@@ -327,7 +327,7 @@ const teams: Team[] = [
     lead: {
       name: "Avish Choudhary",
       role: "Team Lead",
-      image: "/assets/xp/i9/me - Avish Choudhary.png",
+      image: "/assets/i9/me - Avish Choudhary.png",
       github: "https://github.com/choudhary-avish20",
       linkedin: "#",
       bio: "Works, but makes sad noises",
@@ -336,7 +336,7 @@ const teams: Team[] = [
     coLead: {
       name: "Dishita Sinha",
       role: "Co Lead",
-      image: "/assets/xp/i9/Dishita Sinha.jpg",
+      image: "/assets/i9/Dishita Sinha.jpg",
       github: "#",
       linkedin: "#",
     },
@@ -345,7 +345,7 @@ const teams: Team[] = [
       {
         name: "PUSHPENDRA SINGH",
         role: "Member",
-        image: "/assets/xp/i9/IMG-20260411-WA0020 - PUSHPENDRA SINGH.jpg",
+        image: "/assets/i9/IMG-20260411-WA0020 - PUSHPENDRA SINGH.jpg",
         github: "https://github.com/Pushpendra2006/Pushpendra2006",
         linkedin: "https://www.linkedin.com/in/pushpendra-singh-69a768333/",
         bio: "Most people ask AI for answers.I spend time figuring out how AI finds them",
@@ -353,7 +353,7 @@ const teams: Team[] = [
       {
         name: "Chaitanya Mangla",
         role: "Member",
-        image: "/assets/xp/i9/College photo - Chaitanya Mangla.jpeg",
+        image: "/assets/i9/College photo - Chaitanya Mangla.jpeg",
         github: "https://github.com/cmangla581",
         linkedin: "#",
         bio: "Passionate about Mathematics, Physics and Artificial Intelligence.  Also, allergic to giving up.",
@@ -361,7 +361,7 @@ const teams: Team[] = [
       {
         name: "Ananya Sharma",
         role: "Member",
-        image: "/assets/xp/i9/IMG_20260726_181547 - Ananya Sharma.jpg",
+        image: "/assets/i9/IMG_20260726_181547 - Ananya Sharma.jpg",
         github: "https://github.com/ananya-builds",
         linkedin: "#",
         bio: "Core Member - Team i9 | Turning data into decisions",
@@ -369,7 +369,7 @@ const teams: Team[] = [
       {
         name: "Richik Das",
         role: "Member",
-        image: "/assets/xp/i9/WhatsApp Image 2026-07-26 at 21.55.35 - Richik Das.jpeg",
+        image: "/assets/i9/WhatsApp Image 2026-07-26 at 21.55.35 - Richik Das.jpeg",
         github: "https://github.com/Richik06",
         linkedin: "#",
         bio: "Aspiring AI Engineer",
@@ -377,7 +377,7 @@ const teams: Team[] = [
       {
         name: "Anannya Negi",
         role: "Member",
-        image: "/assets/xp/i9/Anannya Negi.jpg",
+        image: "/assets/i9/Anannya Negi.jpg",
         github: "#",
         linkedin: "#",
         bio: "Turning data into actionable insights",
@@ -385,7 +385,7 @@ const teams: Team[] = [
       {
         name: "Navya Kashyap",
         role: "Member",
-        image: "/assets/xp/i9/Navya Kashyap.jpg",
+        image: "/assets/i9/Navya Kashyap.jpg",
         github: "#",
         linkedin: "#",
         bio: "“powered by caffeine and curiosity”",
@@ -451,7 +451,7 @@ const mentors = [
     id: "drkhyati",
     name: "Dr. Khyati Chopra",
     role: "Mentor",
-    image: "/assets/xp/mentors/Dr Khyati Chopra.png",
+    image: "/assets/mentors/Dr Khyati Chopra.png",
     description: "A former club lead who now builds scalable web products and mentors the next generation of developers.",
     highlight: "Mentored workshops and helped launch the first club portal experience.",
     github: "#",
@@ -461,7 +461,7 @@ const mentors = [
     id: "drrahul",
     name:"Dr. Rahul Johari",
     role: "Mentor",
-    image: "/assets/xp/mentors/Dr. Rahul Johari.png",
+    image: "/assets/mentors/Dr. Rahul Johari.png",
     description: "A former AI team member who now works on applied machine learning projects and community outreach.",
     highlight: "Guided the club’s AI track and supported student hackathon projects.",
     github: "#",
@@ -475,7 +475,7 @@ const alumni = [
     name: "Divyansh",
     role: "Alumni",
     batch: "Batch 2025",
-    image: "/assets/xp/alumni/Divyansh.jpg",
+    image: "/assets/alumni/Divyansh.jpg",
     description: "An alumnus known for turning technical concepts into elegant, accessible product experiences.",
     highlight: "Shaped the club’s visual identity and helped run design-focused events.",
     github: "#",
@@ -486,7 +486,7 @@ const alumni = [
     name: "Siddharth Gupta",
     role: "Alumni",
     batch: "Batch 2025",
-    image: "/assets/xp/alumni/Siddharth Gupta.jpg",
+    image: "/assets/alumni/Siddharth Gupta.jpg",
     description: "A prior IoT team member who now works on connected devices and hands-on engineering education.",
     highlight: "Continues to mentor embedded systems projects and technical workshops.",
     github: "#",
@@ -497,7 +497,7 @@ const alumni = [
     name: "Aryan Khanna",
     role: "Alumni",
     batch: "Batch 2025",
-    image: "/assets/xp/alumni/Aryan Khanna.jpg",
+    image: "/assets/alumni/Aryan Khanna.jpg",
     description: "A former club lead who now builds scalable web products and mentors the next generation of developers.",
     highlight: "Mentored workshops and helped launch the first club portal experience.",
     github: "#",
@@ -508,7 +508,7 @@ const alumni = [
     name: "Avinash Srivastava",
     role: "Alumni",
     batch: "Batch 2025",
-    image: "/assets/xp/alumni/Avinash Srivastava.jpg",
+    image: "/assets/alumni/Avinash Srivastava.jpg",
     description: "A former AI team member who now works on applied machine learning projects and community outreach.",
     highlight: "Guided the club’s AI track and supported student hackathon projects.",
     github: "#",
@@ -519,7 +519,7 @@ const alumni = [
     name: "Parth Mawai",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Parth Mawai.jpg",
+    image: "/assets/alumni/Parth Mawai.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -530,7 +530,7 @@ const alumni = [
     name: "Jay Tomar",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Jay Tomar.jpg",
+    image: "/assets/alumni/Jay Tomar.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -541,7 +541,7 @@ const alumni = [
     name: "Ishan Gupta",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Ishan Gupta.jpg",
+    image: "/assets/alumni/Ishan Gupta.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -552,7 +552,7 @@ const alumni = [
     name: "Dipti singh",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Dipti singh.jpg",
+    image: "/assets/alumni/Dipti singh.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -563,7 +563,7 @@ const alumni = [
     name: "AKSHAT SARASWAT",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/AKSHAT SARASWAT.jpg",
+    image: "/assets/alumni/AKSHAT SARASWAT.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -574,7 +574,7 @@ const alumni = [
     name: "Pari Dudeja",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Pari Dudeja.jpg",
+    image: "/assets/alumni/Pari Dudeja.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -585,7 +585,7 @@ const alumni = [
     name: "Yash Gupta",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Yash Gupta.jpg",
+    image: "/assets/alumni/Yash Gupta.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -596,7 +596,7 @@ const alumni = [
     name: "Khushi Thakur",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Khushi Thakur.jpg",
+    image: "/assets/alumni/Khushi Thakur.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -607,7 +607,7 @@ const alumni = [
     name: "Alisha Godara",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Alisha Godara.png",
+    image: "/assets/alumni/Alisha Godara.png",
     description: "",
     highlight: "",
     github: "#",
@@ -618,7 +618,7 @@ const alumni = [
     name: "Utkarsh Chauhan",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Utkarsh Chauhan.jpg",
+    image: "/assets/alumni/Utkarsh Chauhan.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -629,7 +629,7 @@ const alumni = [
     name: "Aryan Sachan",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Aryan Sachan.jpg",
+    image: "/assets/alumni/Aryan Sachan.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -640,7 +640,7 @@ const alumni = [
     name: "Samarth Yadav",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Samarth Yadav.jpg",
+    image: "/assets/alumni/Samarth Yadav.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -651,7 +651,7 @@ const alumni = [
     name: "Vasu Tohangar",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Vasu Tohangar.jpg",
+    image: "/assets/alumni/Vasu Tohangar.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -662,7 +662,7 @@ const alumni = [
     name: "Karan Bhatt",
     role: "Alumni",
     batch: "Batch 2026",
-    image: "/assets/xp/alumni/Karan Bhatt.jpg",
+    image: "/assets/alumni/Karan Bhatt.jpg",
     description: "",
     highlight: "",
     github: "#",
@@ -745,7 +745,7 @@ function MenuBar({ items = ["File", "Edit", "View", "Favorites", "Tools", "Help"
 }
 
 function ExplorerToolbar({ address }: { address: string }) {
-  return <div className="address-bar"><span>Address</span><div><img src="/assets/xp/icons/earth.png" alt="" /><p>{address}</p></div></div>;
+  return <div className="address-bar"><span>Address</span><div><img src="/assets/icons/earth.png" alt="" /><p>{address}</p></div></div>;
 }
 
 function WelcomeApp({ openApp }: { openApp: (id: AppId) => void }) {
@@ -830,7 +830,7 @@ function TeamsPanel() {
       <div className="address-bar">
         <span>Address</span>
         <div>
-          <img src="/assets/xp/icons/earth.png" alt="" />
+          <img src="/assets/icons/earth.png" alt="" />
           <p>{location}</p>
         </div>
       </div>
@@ -1076,7 +1076,7 @@ function StartMenu({ openApp, close, openGuide }: { openApp: (id: AppId) => void
     </div><div className="start-right">
         {(["about", "team", "alumni", "projects", "events", "archive"] as AppId[]).map(id => <button key={id} onClick={() => openApp(id)}><AppIcon id={id} size="small" /><span>{APP_META[id].short}</span></button>)}
       </div></div>
-    <div className="start-footer"><button onClick={openGuide}><img src="/assets/xp/icons/tour.png" alt="" /> Guided website</button><button onClick={close}><X /> Close menu</button></div>
+    <div className="start-footer"><button onClick={openGuide}><img src="/assets/icons/tour.png" alt="" /> Guided website</button><button onClick={close}><X /> Close menu</button></div>
   </div>;
 }
 
@@ -1088,12 +1088,12 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
     <div className="guided-browser-chrome">
       <div className="window-titlebar window-titlebar--active"><div className="window-title"><AppIcon id="projects" size="small" /><span>IoSC Home - Intel oneAPI Student Club - Internet Explorer</span></div><div className="window-controls"><button className="window-close" onClick={() => openDesktop()} aria-label="Open XP desktop"><X /></button></div></div>
       <MenuBar />
-      <div className="guided-minimal-toolbar"><div className="address-bar"><span>Address</span><div><img src="/assets/xp/icons/earth.png" alt="" /><p>https://iosc.club/home</p></div></div><button onClick={() => openDesktop()}><img src="/assets/xp/icons/computer.png" alt="" /> Open XP Desktop</button></div>
+      <div className="guided-minimal-toolbar"><div className="address-bar"><span>Address</span><div><img src="/assets/icons/earth.png" alt="" /><p>https://iosc.club/home</p></div></div><button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> Open XP Desktop</button></div>
     </div>
 
     <div className="portal-page">
       <header className="portal-header" id="top"><div className="portal-brand"><span>intel</span><div><strong>oneAPI Student Club</strong><small>IoSC · GGSIPU East Delhi Campus</small></div></div><div className="portal-utility"><a href="#club-timeline">Timeline</a><a href="#club-events">Events</a></div></header>
-      <nav className="portal-nav"><span className="portal-nav-brand">IoSC</span><a href="#top" className="active">Home</a><a href="#about-club">About the club</a><a href="#tracks">What we do</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><a href="#club-timeline">Timeline</a><button onClick={() => openDesktop()}><img src="/assets/xp/icons/computer.png" alt="" /> XP Desktop</button></nav>
+      <nav className="portal-nav"><span className="portal-nav-brand">IoSC</span><a href="#top" className="active">Home</a><a href="#about-club">About the club</a><a href="#tracks">What we do</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><a href="#club-timeline">Timeline</a><button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> XP Desktop</button></nav>
       <div className="portal-breadcrumb">IoSC Home &nbsp;›&nbsp; Welcome</div>
 
       <div className="portal-layout">
@@ -1105,7 +1105,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
           <div className="portal-notice"><strong>From the archive:</strong> HackMaze turned oneAPI learning into a project-building journey. <button onClick={() => openDesktop("events")}>View event archive »</button></div>
 
-          <section id="about-club" className="portal-section"><h2>About the club</h2><div className="portal-rule" /><p>IoSC-EDC is a community of people who love technology and innovative development across design, system integration, game development, robotics, web, management, and more.</p><p>Our mission is to bring hands-on education based on collaboration and real-life problem solving through workshops, hackathons, coding competitions, and networking sessions—building contemporary skills and industry insight along the way.</p><button className="portal-link" onClick={() => openDesktop("about")}><img src="/assets/xp/icons/computer.png" alt="" /> View club information</button></section>
+          <section id="about-club" className="portal-section"><h2>About the club</h2><div className="portal-rule" /><p>IoSC-EDC is a community of people who love technology and innovative development across design, system integration, game development, robotics, web, management, and more.</p><p>Our mission is to bring hands-on education based on collaboration and real-life problem solving through workshops, hackathons, coding competitions, and networking sessions—building contemporary skills and industry insight along the way.</p><button className="portal-link" onClick={() => openDesktop("about")}><img src="/assets/icons/computer.png" alt="" /> View club information</button></section>
 
           <section id="tracks" className="portal-section"><h2>What we do</h2><div className="portal-rule" /><div className="portal-track-list">{[["Workshops & bootcamps", "Hands-on introductions to oneAPI toolkits and a wide range of technical topics."], ["Hackathons & projects", "Build practical solutions, collaborate across disciplines, and present working ideas."], ["Coding & creative events", "Programming competitions, design challenges, gaming events, and technical showcases."], ["Talks & networking", "Learn from practitioners and connect technical work with contemporary industry insight."]].map(([title, text], index) => <article key={title}><b>{index + 1}</b><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
 
@@ -1133,8 +1133,8 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
         <aside className="portal-sidebar">
           <section><h2>Club links</h2>
-            {/* <button onClick={() => openDesktop("join")}><img src="/assets/xp/icons/messenger.png" alt="" /><span><strong>Join IoSC</strong><small>Membership interest form</small></span></button> */}
-            <button onClick={() => openDesktop("projects")}><img src="/assets/xp/icons/folder.png" alt="" /><span><strong>Project archive</strong><small>Code, demos, and reports</small></span></button><button onClick={() => openDesktop("archive")}><img src="/assets/xp/icons/notepad.png" alt="" /><span><strong>Club timeline</strong><small>Past sessions and milestones</small></span></button></section>
+            {/* <button onClick={() => openDesktop("join")}><img src="/assets/icons/messenger.png" alt="" /><span><strong>Join IoSC</strong><small>Membership interest form</small></span></button> */}
+            <button onClick={() => openDesktop("projects")}><img src="/assets/icons/folder.png" alt="" /><span><strong>Project archive</strong><small>Code, demos, and reports</small></span></button><button onClick={() => openDesktop("archive")}><img src="/assets/icons/notepad.png" alt="" /><span><strong>Club timeline</strong><small>Past sessions and milestones</small></span></button></section>
           <section><h2>Campus</h2><div className="portal-meeting"><strong>GGSIPU East Delhi Campus</strong><span>University School of Automation and Robotics</span><p>133, Patel Street, Vishwas Nagar, Shahdara, New Delhi 110032.</p></div></section>
           <section><h2>Official channels</h2><ul><li><a href="https://www.linkedin.com/company/iosc-usar/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li><li><a href="https://instagram.com/iosc_edc" target="_blank" rel="noreferrer">Instagram ↗</a></li><li><a href="https://youtube.com/@IoSCUSAR" target="_blank" rel="noreferrer">YouTube ↗</a></li><li><a href="https://linktr.ee/iosc_ggsipuedc" target="_blank" rel="noreferrer">All official links ↗</a></li></ul></section>
           <section className="portal-status"><h2>Club record</h2><p><i /> Founded in 2023</p><p><i /> Student technology community</p><p><i /> Workshops, projects &amp; hackathons</p></section>
@@ -1144,7 +1144,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       <footer className="portal-footer"><div><strong>Intel oneAPI Student Club</strong><span>IoSC · Student chapter website</span></div><nav><a href="#about-club">About</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><button onClick={() => openDesktop()}>XP Desktop</button></nav><small>This student website is a design draft and is not an official Intel website.</small></footer>
     </div>
 
-    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/xp/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/xp/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/xp/icons/internet-explorer.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
+    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
 
     {showFormModal && (
       <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowFormModal(false)}>
@@ -1275,7 +1275,7 @@ export default function Home() {
         />
       ))}
     </div>
-    <button className="desktop-guide-toggle" onClick={(event) => { event.stopPropagation(); setViewMode("guided"); }}><img src="/assets/xp/icons/tour.png" alt="" /> Guided website</button>
+    <button className="desktop-guide-toggle" onClick={(event) => { event.stopPropagation(); setViewMode("guided"); }}><img src="/assets/icons/tour.png" alt="" /> Guided website</button>
     <div className="desktop-tip"><MousePointerIcon /><span>Double-click an icon<br />or use the Start menu</span></div>
 
     {windows.map((win, index) => !win.minimized && <section
@@ -1295,7 +1295,7 @@ export default function Home() {
     )}
     <footer className="taskbar" onClick={event => event.stopPropagation()}>
       <button className={`start-button ${startOpen ? "pressed" : ""}`} onClick={() => setStartOpen(!startOpen)}><WindowsFlag small /><em>start</em></button>
-      <div className="quick-launch"><button title="Show desktop" onClick={() => setWindows(current => current.map(win => ({ ...win, minimized: true })))}><img src="/assets/xp/icons/computer.png" alt="" /></button><button title="Guided website" onClick={() => setViewMode("guided")}><img src="/assets/xp/icons/internet-explorer.png" alt="" /></button></div>
+      <div className="quick-launch"><button title="Show desktop" onClick={() => setWindows(current => current.map(win => ({ ...win, minimized: true })))}><img src="/assets/icons/computer.png" alt="" /></button><button title="Guided website" onClick={() => setViewMode("guided")}><img src="/assets/icons/internet-explorer.png" alt="" /></button></div>
       <div className="task-divider" />
       <div className="task-items">{windows.map(win => <button key={win.id} className={active === win.id && !win.minimized ? "active" : ""} onClick={() => win.minimized || active !== win.id ? focusWindow(win.id) : minimizeWindow(win.id)}><AppIcon id={win.id} size="small" /><span>{APP_META[win.id].short}</span></button>)}</div>
       <div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div>
@@ -1323,4 +1323,5 @@ export default function Home() {
 }
 
 function MousePointerIcon() { return <span className="pixel-pointer">↖</span>; }
+
 
