@@ -600,7 +600,7 @@ const alumni = [
     id: "paridudeja",
     name: "Pari Dudeja",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Pari Dudeja.jpg",
     description: "",
     highlight: "",
@@ -611,7 +611,7 @@ const alumni = [
     id: "yashgupta",
     name: "Yash Gupta",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Yash Gupta.jpg",
     description: "",
     highlight: "",
@@ -622,7 +622,7 @@ const alumni = [
     id: "khushithakur",
     name: "Khushi Thakur",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Khushi Thakur.jpg",
     description: "",
     highlight: "",
@@ -633,7 +633,7 @@ const alumni = [
     id: "alishagodara",
     name: "Alisha Godara",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Alisha Godara.png",
     description: "",
     highlight: "",
@@ -644,7 +644,7 @@ const alumni = [
     id: "utkarshchauhan",
     name: "Utkarsh Chauhan",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Utkarsh Chauhan.jpg",
     description: "",
     highlight: "",
@@ -655,7 +655,7 @@ const alumni = [
     id: "aryansachan",
     name: "Aryan Sachan",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Aryan Sachan.jpg",
     description: "",
     highlight: "",
@@ -666,7 +666,7 @@ const alumni = [
     id: "samarthyadav",
     name: "Samarth Yadav",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Samarth Yadav.jpg",
     description: "",
     highlight: "",
@@ -677,7 +677,7 @@ const alumni = [
     id: "vasutohangar",
     name: "Vasu Tohangar",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Vasu Tohangar.jpg",
     description: "",
     highlight: "",
@@ -688,7 +688,7 @@ const alumni = [
     id: "karanbhatt",
     name: "Karan Bhatt",
     role: "Alumni",
-    batch: "Batch 2026",
+    batch: "Batch 2027",
     image: "/assets/alumni/Karan Bhatt.jpg",
     description: "",
     highlight: "",
@@ -1003,23 +1003,40 @@ function AlumniPanel() {
         <p className="xp-alumni-intro">Former members who continue to inspire the community through their work and leadership.</p>
       </div>
 
-      <div className="xp-alumni-grid">
-        {alumni.map((person) => (
-          <button key={person.id} type="button" className="xp-alumni-card" onClick={() => setSelectedProfile(person)}>
-            <div className="xp-alumni-image">
-              <img src={person.image} alt={person.name} />
+      {[
+        { title: "Batch of 2025", batchKey: "Batch 2025" },
+        { title: "Batch of 2026", batchKey: "Batch 2026" },
+        { title: "Batch of 2027", batchKey: "Batch 2027" },
+      ].map((batchSection) => {
+        const batchMembers = alumni.filter((person) => person.batch === batchSection.batchKey);
+        if (batchMembers.length === 0) return null;
+
+        return (
+          <div key={batchSection.batchKey} className="xp-batch-section">
+            <div className="xp-batch-header">
+              <h3>{batchSection.title}</h3>
+              <span className="xp-batch-tag">{batchMembers.length} {batchMembers.length === 1 ? "Member" : "Members"}</span>
             </div>
-            <div className="xp-alumni-info">
-              <h3>{person.name}</h3>
-              <span className="xp-team-lead">
-                <b>{person.role}</b>
-              </span>
-              <span className="xp-team-lead">{person.batch}</span>
-              <p>{person.description}</p>
+
+            <div className="xp-alumni-grid">
+              {batchMembers.map((person) => (
+                <button key={person.id} type="button" className="xp-alumni-card" onClick={() => setSelectedProfile(person)}>
+                  <div className="xp-alumni-image">
+                    <img src={person.image} alt={person.name} />
+                  </div>
+                  <div className="xp-alumni-info">
+                    <h3>{person.name}</h3>
+                    <span className="xp-team-lead">
+                      <b>{person.role}</b>
+                    </span>
+                    <p>{person.description}</p>
+                  </div>
+                </button>
+              ))}
             </div>
-          </button>
-        ))}
-      </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
