@@ -916,6 +916,44 @@ button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 1px
     gap:14px;
 }
 
+.xp-batch-section{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:6px;
+}
+
+.xp-batch-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 12px;
+    border:1px solid #b7cbe6;
+    border-left:4px solid #0a4c8a;
+    background:linear-gradient(180deg, #f7fbff 0%, #edf4fb 100%);
+    box-shadow:inset 1px 1px #fff, inset -1px -1px #dbe7f2;
+}
+
+.xp-batch-header h3{
+    margin:0;
+    color:#0a4c8a;
+    font-family:Tahoma, Verdana, sans-serif;
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:.2px;
+}
+
+.xp-batch-tag{
+    font-size:11px;
+    color:#355f83;
+    background:#ffffff;
+    border:1px solid #b7cbe6;
+    padding:2px 8px;
+    border-radius:10px;
+    font-family:Tahoma, Verdana, sans-serif;
+    font-weight:600;
+}
+
 .xp-alumni-intro{
     margin:4px 0 0;
     color:#4f5d6b;
