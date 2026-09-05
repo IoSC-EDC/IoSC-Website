@@ -506,7 +506,7 @@ const alumni = [
     description: "A prior IoT team member who now works on connected devices and hands-on engineering education.",
     highlight: "Continues to mentor embedded systems projects and technical workshops.",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/cyddharth",
   },
   {
     id: "aryan",
@@ -528,7 +528,7 @@ const alumni = [
     description: "A former AI team member who now works on applied machine learning projects and community outreach.",
     highlight: "Guided the club’s AI track and supported student hackathon projects.",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/avinash-kumar-srivastava-112450298",
   },
   {
     id: "parthawasthi",
@@ -536,10 +536,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2026",
     image: "/assets/alumni/Parth Awasthi.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Lead who guides the team with strong direction, coordination, and a focus on achieving successful outcomes.",
+    highlight: "Organiser of First Edition of Vespera",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/parthawasthi19",
   },
   {
     id: "parthmawai",
@@ -547,10 +548,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Parth Mawai.jpg",
-    description: "",
+    description:
+      "The Co-Lead of I9, known for supporting team coordination, collaboration, and driving projects toward successful outcomes.",
     highlight: "",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/parth-mawai-b84816204",
   },
   {
     id: "jaytomar",
@@ -558,10 +560,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2026",
     image: "/assets/alumni/Jay Tomar.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Tech Lead known for guiding technical development, solving challenges, and driving effective technical solutions.",
+    highlight: "Tech Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/jtmr",
   },
   {
     id: "ishangupta",
@@ -569,21 +572,23 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2026",
     image: "/assets/alumni/Ishan Gupta.jpg",
-    description: "",
+    description:
+      "A valued team member known for contributing to projects and bringing a collaborative approach to the team.",
     highlight: "",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/ishan26gupta",
   },
   {
     id: "diptisingh",
-    name: "Dipti singh",
+    name: "Dipti Singh",
     role: "Alumni",
     batch: "Batch 2026",
     image: "/assets/alumni/Dipti singh.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Co-Lead who supports team coordination, collaboration, and helps drive projects toward successful completion.",
+    highlight: "Co-Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/dipti-singh031",
   },
   {
     id: "akshatsaraswat",
@@ -591,10 +596,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2026",
     image: "/assets/alumni/AKSHAT SARASWAT.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Tech Co-Lead, known for supporting technical development, problem-solving, and guiding the team's technical direction.",
+    highlight: "Tech Co-Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/akshatsaraswat26",
   },
   {
     id: "paridudeja",
@@ -602,10 +608,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Pari Dudeja.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Lead of the I9 AI & ML Team, known for guiding the team and turning innovative ideas into impactful solutions.",
+    highlight: "I9 AI & ML Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/pari-dudeja-525a78291",
   },
   {
     id: "yashgupta",
@@ -613,10 +620,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Yash Gupta.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Co-Lead, known for supporting team leadership, coordinating projects, and contributing to the team's overall growth.",
+    highlight: "Co-Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/yash-gupta-usar",
   },
   {
     id: "khushithakur",
@@ -624,10 +632,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Khushi Thakur.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Lead of Team ARC Design & Creative, known for driving creative ideas and shaping engaging visual experiences.",
+    highlight: "ARC Design & Creative Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/khushi-thakur-91590a308",
   },
   {
     id: "alishagodara",
@@ -635,10 +644,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Alisha Godara.png",
-    description: "",
+    description:
+      "A valued team member known for her contribution, collaboration, and dedication toward the team's projects and activities.",
     highlight: "",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/alisha-godara-5a3067230",
   },
   {
     id: "utkarshchauhan",
@@ -646,10 +656,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Utkarsh Chauhan.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Lead, known for taking initiative, guiding the team, and ensuring projects move forward with strong execution.",
+    highlight: "Team Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/utkarsh-chauhan-a10248262",
   },
   {
     id: "aryansachan",
@@ -657,10 +668,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Aryan Sachan.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Tech Lead, known for driving technical development, solving challenges, and supporting the team with effective solutions.",
+    highlight: "Tech Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/aryan-sachan-386216134",
   },
   {
     id: "samarthyadav",
@@ -668,10 +680,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Samarth Yadav.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Lead of the I5 IoT & Embedded Systems Team, focused on building innovative systems and bringing technical ideas to life.",
+    highlight: "I5 IoT & Embedded Systems Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/samarth-yadav-18a49527b",
   },
   {
     id: "vasutohangar",
@@ -679,10 +692,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Vasu Tohangar.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Lead of the I3 Web Development Team, known for guiding development efforts and building impactful web experiences.",
+    highlight: "I3 Web Development Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/vasu-tohangar-659793291",
   },
   {
     id: "karanbhatt",
@@ -690,10 +704,11 @@ const alumni = [
     role: "Alumni",
     batch: "Batch 2027",
     image: "/assets/alumni/Karan Bhatt.jpg",
-    description: "",
-    highlight: "",
+    description:
+      "The Tech Co-Lead, known for supporting technical development, problem-solving, and guiding the team's technical direction.",
+    highlight: "Tech Co-Lead",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/karan-bhatt-0081a0295",
   },
 ];
 
