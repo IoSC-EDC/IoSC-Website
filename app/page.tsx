@@ -153,8 +153,9 @@ const clubLeadership = [
     title: "Technical Lead",
     name: "Waqar Akhtar",
     image: "/assets/leads/Waqar Akhtar.jpeg",
-    github: "#",
+    github: "#https://github.com/Waqar080206",
     linkedin: "#",
+    bio: "Artificial intelligence is no match for natural stupidity",
   },
   {
     title: "Technical Co-Lead",
