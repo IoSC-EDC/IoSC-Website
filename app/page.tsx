@@ -264,6 +264,14 @@ const teams: Team[] = [
         linkedin: "#",
         bio: "The Pragmatic Builder",
       },
+      {
+        name: "Parshv Jain",
+        role: "Member",
+        image: "/assests/i5/parshv.jpeg",
+        github: "https://github.com/parshvjain1912-byte",
+        linkedin: "https://www.linkedin.com/in/parshv-jain-46a066380/",
+        bio: "A passionate Computer Science student who enjoys coding, innovation, hackathons, and exploring new technologies. Always eager to learn, collaborate, and contribute to impactful projects. ",
+      },
     ],
   },
 
