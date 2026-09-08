@@ -224,11 +224,12 @@ const teams: Team[] = [
     description: "Develops IoT and embedded systems solutions.",
 
     lead: {
-      name: "Waqar Akhtar",
+      name: "Akshat Talwar",
       role: "Team Lead",
-      image: "/assets/leads/Waqar Akhtar.jpeg",
-      github: "https://github.com/Waqar080206",
-      linkedin: "#",
+      image: "/assets/i5/AkshatTalwar.jpg",
+      github: "https://github.com/akshattalwar001",
+      linkedin: "https://www.linkedin.com/in/akshat-talwar/",
+      bio: "Trying to do better",
     },
 
     coLead: {
