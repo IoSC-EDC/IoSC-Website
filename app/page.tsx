@@ -26,8 +26,8 @@ type TeamMember = {
   name: string;
   role: string;
   image: string;
-  github: string;
-  linkedin: string;
+  github?: string;
+  linkedin?: string;
   bio?: string;
 };
 
@@ -48,7 +48,7 @@ type MentorProfile = {
   image: string;
   description: string;
   highlight: string;
-  github: string;
+  github?: string;
   linkedin: string;
 };
 
@@ -60,7 +60,7 @@ type AlumniProfile = {
   image: string;
   description: string;
   highlight: string;
-  github: string;
+  github?: string;
   linkedin: string;
 };
 
@@ -137,32 +137,32 @@ const clubLeadership = [
     title: "IoSC Lead",
     name: "Piyush Gupta",
     image: "/assets/leads/Piyush Gupta.jpg",
-    github: "#",
-    linkedin: "#",
-    bio: "सुधर गए तो शेर कोन कहेगा "
+    github: "https://github.com/Piyush-xo-19",
+    linkedin: "https://www.linkedin.com/in/piyush-gupta-358800324/",
+    // bio: " "
   },
   {
     title: "IoSC Co-Lead",
     name: "Armaan",
     image: "/assets/leads/IMG_20260612_211648_070 - Armaan _.jpg",
-    github: "#",
-    linkedin: "#",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/armaansheikhh/",
     bio: "Driven by curiosity . Defined by creativity . Blending creativity with technology",
   },
   {
     title: "Technical Lead",
     name: "Waqar Akhtar",
     image: "/assets/leads/Waqar Akhtar.jpeg",
-    github: "#https://github.com/Waqar080206",
-    linkedin: "#",
+    github: "https://github.com/Waqar080206",
+    linkedin: "https://www.linkedin.com/in/waqar08/",
     bio: "Artificial intelligence is no match for natural stupidity",
   },
   {
     title: "Technical Co-Lead",
     name: "Rahul Bhatia",
     image: "/assets/leads/Rahul Bhatia.jpeg",
-    github: "#",
-    linkedin: "#",
+    github: "https://github.com/rahulbhatia775",
+    linkedin: "https://www.linkedin.com/in/rahul-bhatia-9782802b2/",
   },
 ];
 
@@ -187,7 +187,7 @@ const teams: Team[] = [
       role: "Co Lead",
       image: "/assets/i3/Pawan Yadav.jpg",
       github: "https://github.com/pawanydv35",
-      linkedin: "#",
+      linkedin: "www.linkedin.com/in/pawan-yadav17",
     },
 
     members: [
@@ -199,19 +199,13 @@ const teams: Team[] = [
         linkedin: "https://www.linkedin.com/in/jayant-baliyan/",
         bio: "We must cling to our honor, lest we become beasts ourselves.",
       },
-      {
-        name: "DHRUV SHARMA",
-        role: "Member",
-        image: "/assets/i3/DHRUV SHARMA.jpg",
-        github: "#",
-        linkedin: "#",
-      },
+
       {
         name: "Prabhat Kumar",
         role: "Member",
         image: "/assets/i3/Prabhat Kumar - Prabhat Kumar.png",
         github: "https://github.com/PrabhatKumar-06",
-        linkedin: "#",
+        // linkedin: "#",
         bio: "Heavy are the hands that center a div.",
       },
     ],
@@ -224,11 +218,11 @@ const teams: Team[] = [
     description: "Develops IoT and embedded systems solutions.",
 
     lead: {
-      name: "Waqar Akhtar",
+      name: "Akshat Talwar",
       role: "Team Lead",
-      image: "/assets/leads/Waqar Akhtar.jpeg",
-      github: "https://github.com/Waqar080206",
-      linkedin: "#",
+      image: "/assets/leads/image.png",
+      github: "https://github.com/akshattalwar001",
+      linkedin: "https://www.linkedin.com/in/akshat-talwar/",
     },
 
     coLead: {
@@ -236,7 +230,7 @@ const teams: Team[] = [
       role: "Co Lead",
       image: "/assets/i5/IMG_20260727_005348 - Gurmehak Singh.png",
       github: "https://github.com/niggsingh20",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/gurmehak-singh-484763364",
       bio: "Some random nobody ~",
     },
 
@@ -246,14 +240,14 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i5/20260708_114840 - Shourya Upadhyay.jpg",
         github: "https://github.com/shouryaupadhyay2029",
-        linkedin: "#",
+        // linkedin: "#",
       },
       {
         name: "Aditya Bhatnagar",
         role: "Member",
         image: "/assets/i5/IMG_20260130_044912_379 - Aditya Bhatnagar.webp",
         github: "https://github.com/adityabhatnagar1",
-        linkedin: "#",
+        // linkedin: "#",
         bio: "If there is a God, he's a great Mathematician!",
       },
       {
@@ -261,16 +255,23 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i5/PXL_20260104_042517377 - Jatin Khandelwal.jpg",
         github: "https://github.com/jatinkhandelwal662-jk",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/jatin-khandelwal08",
         bio: "The Pragmatic Builder",
       },
-      {
-        name: "Parshv Jain",
+       {
+        name: "Rudra Narayan Paliwal",
         role: "Member",
-        image: "/assests/i5/parshv.jpeg",
-        github: "https://github.com/parshvjain1912-byte",
+        image: "/assets/i5/RP.jpeg",
+        github: "https://github.com/rudrapaliwal-1",
+        linkedin: "https://www.linkedin.com/in/rudra-narayan-paliwal/",
+      },
+    {
+        name: "Parshv jain",
+        role: "Member",
+        image: "/assets/i5/PS.jpeg",
+        github: "https://github.com/parshvjain1912-byte/sheild-x",
         linkedin: "https://www.linkedin.com/in/parshv-jain-46a066380/",
-        bio: "A passionate Computer Science student who enjoys coding, innovation, hackathons, and exploring new technologies. Always eager to learn, collaborate, and contribute to impactful projects. ",
+        // bio: "Building AI, vision & immersive experiences.",
       },
     ],
   },
@@ -285,18 +286,18 @@ const teams: Team[] = [
       name: "Manandeep Singh Lamba",
       role: "Team Lead",
       image: "/assets/i7/MANANDEEP SINGH LAMBA.jpeg",
-      github: "#",
-      linkedin: "#",
-      bio: "God bless Dick Cheney's America",
+      github: "https://github.com/ManandeepSingh1196",
+      linkedin: "https://www.linkedin.com/in/manandeep-singh-lamba/",
+      // bio: " ",
     },
 
     coLead: {
       name: "Pranshu Bansal",
       role: "Co Lead",
-      image: "/assets/i7/prshu.jpeg",
-      github: "#",
-      linkedin: "#",
-      bio: "ashton's bae",
+      image: "/assets/i7/Pranshu-speaking-1.jpeg",
+      github: "https://github.com/Pranshu640",
+      linkedin: "https://www.linkedin.com/in/pranshu-bansal-dev/",
+      bio: "Building till codex limits hit",
     },
 
     members: [
@@ -313,17 +314,34 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i7/WhatsApp Image 2026-07-26 at 22.07.39 - Vishesh Sagar.jpeg",
         github: "https://github.com/visheshsagar0501-prog",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/vishesh-sagar-723704362/",
         bio: "Professional Ctrl + C, ctrl + V ; Part time coder",
       },
       {
         name: "Mohd Ayan",
         role: "Member",
         image: "/assets/i7/Mohd Ayan.png",
-        github: "#",
-        linkedin: "#",
+        // github: "#",
+        // linkedin: "#",
         bio: "Just trying to be better every day",
       },
+      {
+        name: "Tushar Singh",
+        role: "Member",
+        image: "/assets/i7/TS.jpeg",
+        github: "https://github.com/tusharsingh3199",
+        linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
+        bio: "Building AI, vision & immersive experiences.",
+      },
+        {
+        name: "Aditya Dash",
+        role: "Member",
+        image: "/assets/i7/AD.jpeg",
+        github: "https://github.com/ozzymandias1576",
+        // linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
+        // bio: "Building AI, vision & immersive experiences.",
+      },
+    
     ],
   },
 
@@ -338,16 +356,17 @@ const teams: Team[] = [
       role: "Team Lead",
       image: "/assets/i9/me - Avish Choudhary.png",
       github: "https://github.com/choudhary-avish20",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/c2avish/",
       bio: "Works, but makes sad noises",
     },
 
     coLead: {
       name: "Dishita Sinha",
       role: "Co Lead",
-      image: "/assets/i9/Dishita Sinha.jpg",
-      github: "#",
-      linkedin: "#",
+      image: "/assets/i9/DS.jpeg",
+      github: "https://share.google/Av30hbYaudmSY48us",
+      linkedin: "https://in.linkedin.com/in/dsinha007",
+      bio: "Late nights. Quiet screens. Beautiful logic",
     },
 
     members: [
@@ -364,7 +383,7 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/College photo - Chaitanya Mangla.jpeg",
         github: "https://github.com/cmangla581",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/chaitanya-mangla-252606377/",
         bio: "Passionate about Mathematics, Physics and Artificial Intelligence.  Also, allergic to giving up.",
       },
       {
@@ -372,7 +391,7 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/IMG_20260726_181547 - Ananya Sharma.jpg",
         github: "https://github.com/ananya-builds",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/ananya-sharma-278a85381/",
         bio: "Core Member - Team i9 | Turning data into decisions",
       },
       {
@@ -380,31 +399,31 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/WhatsApp Image 2026-07-26 at 21.55.35 - Richik Das.jpeg",
         github: "https://github.com/Richik06",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/richik-das-7aa8b12b7/",
         bio: "Aspiring AI Engineer",
       },
       {
         name: "Anannya Negi",
         role: "Member",
         image: "/assets/i9/Anannya Negi.jpg",
-        github: "#",
-        linkedin: "#",
+        // github: "#",
+        // linkedin: "#",
         bio: "Turning data into actionable insights",
       },
       {
         name: "Navya Kashyap",
         role: "Member",
         image: "/assets/i9/Navya Kashyap.jpg",
-        github: "#",
-        linkedin: "#",
+        // github: "#",
+        // linkedin: "#",
         bio: "“powered by caffeine and curiosity”",
       },
       {
         name: "Anujot Singh",
         role: "Member",
         image: "/assets/i9/Anujot Singh.jpg",
-        github: "#",
-        linkedin: "#",
+        github: "https://github.com/anujott-codes",
+        linkedin: "https://www.linkedin.com/in/anujotsingh/",
         bio: "Core Member - Team i9",
       },
       {
@@ -412,8 +431,16 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/Shifali.jpg",
         github: "https://github.com/shifali0156-wq",
-        linkedin: "#",
+        // linkedin: "#",
         bio: "Just another runner in the rat race.",
+      },
+        {
+        name: "Priya Chaurasia",
+        role: "Member",
+        image: "/assets/i9/px.jpeg",
+        github: "https://github.com/noticeablestar",
+        linkedin: "https://www.linkedin.com/in/priyachaurasia",
+        bio: "Harnessing human intelligence",
       },
     ],
   },
@@ -477,20 +504,20 @@ const mentors = [
     name: "Dr. Khyati Chopra",
     role: "Mentor",
     image: "/assets/mentors/Dr Khyati Chopra.png",
-    description: "A former club lead who now builds scalable web products and mentors the next generation of developers.",
-    highlight: "Mentored workshops and helped launch the first club portal experience.",
-    github: "#",
-    linkedin: "#",
+    description: "Assistant Professor at USAR, GGSIPU, New Delhi, and Mentor of IOSC. PhD from IIT Delhi, with research expertise in AIoT, wireless security, cooperative communication, cognitive radio networks, and digital twin technology.",
+    highlight: "Assistant Professor & IOSC Mentor | PhD, IIT Delhi | AIoT & Wireless Security Researcher",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/dr-khyati-chopra-8332b5253/",
   },
   {
     id: "drrahul",
     name: "Dr. Rahul Johari",
     role: "Mentor",
     image: "/assets/mentors/Dr. Rahul Johari.png",
-    description: "A former AI team member who now works on applied machine learning projects and community outreach.",
-    highlight: "Guided the club’s AI track and supported student hackathon projects.",
-    github: "#",
-    linkedin: "#",
+    description: "Professor and Mentor of IOSC, Program Coordinator for PhD and B.Tech (AI-DS & AR), and member of the SWINGER Research Group. Microsoft & Google Certified, with 7 patents, H-Index 18, 132 Scopus-indexed publications, and 223+ invited talks. TEDx Speaker.",
+    highlight: "Professor & IOSC Mentor | PhD Program Coordinator | Research & Innovation Leader",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/rahuljohari7/",
   },
 ];
 
@@ -503,8 +530,8 @@ const alumni = [
     image: "/assets/alumni/Divyansh.jpg",
     description: "An alumnus known for turning technical concepts into elegant, accessible product experiences.",
     highlight: "Shaped the club’s visual identity and helped run design-focused events.",
-    github: "#",
-    linkedin: "#",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/divyansh-nautiyal-149817280",
   },
   {
     id: "siddharth",
@@ -514,7 +541,7 @@ const alumni = [
     image: "/assets/alumni/Siddharth Gupta.jpg",
     description: "A prior IoT team member who now works on connected devices and hands-on engineering education.",
     highlight: "Continues to mentor embedded systems projects and technical workshops.",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/cyddharth",
   },
   {
@@ -525,8 +552,8 @@ const alumni = [
     image: "/assets/alumni/Aryan Khanna.jpg",
     description: "A former club lead who now builds scalable web products and mentors the next generation of developers.",
     highlight: "Mentored workshops and helped launch the first club portal experience.",
-    github: "#",
-    linkedin: "#",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/aryankhanna208",
   },
   {
     id: "avinash",
@@ -536,7 +563,7 @@ const alumni = [
     image: "/assets/alumni/Avinash Srivastava.jpg",
     description: "A former AI team member who now works on applied machine learning projects and community outreach.",
     highlight: "Guided the club’s AI track and supported student hackathon projects.",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/avinash-kumar-srivastava-112450298",
   },
   {
@@ -548,7 +575,7 @@ const alumni = [
     description:
       "The Lead who guides the team with strong direction, coordination, and a focus on achieving successful outcomes.",
     highlight: "Organiser of First Edition of Vespera",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/parthawasthi19",
   },
   {
@@ -560,7 +587,7 @@ const alumni = [
     description:
       "The Co-Lead of I9, known for supporting team coordination, collaboration, and driving projects toward successful outcomes.",
     highlight: "",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/parth-mawai-b84816204",
   },
   {
@@ -572,7 +599,7 @@ const alumni = [
     description:
       "The Tech Lead known for guiding technical development, solving challenges, and driving effective technical solutions.",
     highlight: "Tech Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/jtmr",
   },
   {
@@ -584,7 +611,7 @@ const alumni = [
     description:
       "A valued team member known for contributing to projects and bringing a collaborative approach to the team.",
     highlight: "",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/ishan26gupta",
   },
   {
@@ -596,7 +623,7 @@ const alumni = [
     description:
       "The Co-Lead who supports team coordination, collaboration, and helps drive projects toward successful completion.",
     highlight: "Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/dipti-singh031",
   },
   {
@@ -608,7 +635,7 @@ const alumni = [
     description:
       "The Tech Co-Lead, known for supporting technical development, problem-solving, and guiding the team's technical direction.",
     highlight: "Tech Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/akshatsaraswat26",
   },
   {
@@ -620,7 +647,7 @@ const alumni = [
     description:
       "The Lead of the I9 AI & ML Team, known for guiding the team and turning innovative ideas into impactful solutions.",
     highlight: "I9 AI & ML Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/pari-dudeja-525a78291",
   },
   {
@@ -632,7 +659,7 @@ const alumni = [
     description:
       "The Co-Lead, known for supporting team leadership, coordinating projects, and contributing to the team's overall growth.",
     highlight: "Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/yash-gupta-usar",
   },
   {
@@ -644,7 +671,7 @@ const alumni = [
     description:
       "The Lead of Team ARC Design & Creative, known for driving creative ideas and shaping engaging visual experiences.",
     highlight: "ARC Design & Creative Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/khushi-thakur-91590a308",
   },
   {
@@ -656,7 +683,7 @@ const alumni = [
     description:
       "A valued team member known for her contribution, collaboration, and dedication toward the team's projects and activities.",
     highlight: "",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/alisha-godara-5a3067230",
   },
   {
@@ -668,7 +695,7 @@ const alumni = [
     description:
       "The Lead, known for taking initiative, guiding the team, and ensuring projects move forward with strong execution.",
     highlight: "Team Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/utkarsh-chauhan-a10248262",
   },
   {
@@ -680,7 +707,7 @@ const alumni = [
     description:
       "The Tech Lead, known for driving technical development, solving challenges, and supporting the team with effective solutions.",
     highlight: "Tech Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/aryan-sachan-386216134",
   },
   {
@@ -692,7 +719,7 @@ const alumni = [
     description:
       "The Lead of the I5 IoT & Embedded Systems Team, focused on building innovative systems and bringing technical ideas to life.",
     highlight: "I5 IoT & Embedded Systems Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/samarth-yadav-18a49527b",
   },
   {
@@ -704,7 +731,7 @@ const alumni = [
     description:
       "The Lead of the I3 Web Development Team, known for guiding development efforts and building impactful web experiences.",
     highlight: "I3 Web Development Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/vasu-tohangar-659793291",
   },
   {
@@ -716,7 +743,7 @@ const alumni = [
     description:
       "The Tech Co-Lead, known for supporting technical development, problem-solving, and guiding the team's technical direction.",
     highlight: "Tech Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/karan-bhatt-0081a0295",
   },
 ];
@@ -929,7 +956,32 @@ function TeamsPanel() {
               <strong>{person.role}</strong>
               <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online">Active</dd></dl>
               {person.bio && <p>“{person.bio}”</p>}
-              <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span>
+              {/* <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span> */}
+                          <span className="xp-person-social">
+              {person.github && person.github !== "#" && (
+                <a
+                  href={person.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="GitHub"
+                >
+                  <Github size={22} />
+                  GitHub
+                </a>
+              )}
+
+              {person.linkedin && person.linkedin !== "#" && (
+                <a
+                  href={person.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="LinkedIn"
+                >
+                  <Linkedin size={22} />
+                  LinkedIn
+                </a>
+              )}
+            </span>
             </div>
           </div>
           <div className="xp-member-list" role="listbox" aria-label="Team members">
@@ -988,7 +1040,11 @@ function AlumniPanel() {
             <article>
               <h3>Stay connected</h3>
               <div className="xp-social-links">
-                <a href={selectedProfile.github} target="_blank" rel="noreferrer" title="GitHub"><Github size={16} /></a>
+               {selectedProfile.github && (
+  <a href={selectedProfile.github} target="_blank" rel="noreferrer" title="GitHub">
+    <Github size={16} />
+  </a>
+)} 
                 <a href={selectedProfile.linkedin} target="_blank" rel="noreferrer" title="LinkedIn"><Linkedin size={16} /></a>
               </div>
             </article>
@@ -1391,5 +1447,6 @@ export default function Home() {
 }
 
 function MousePointerIcon() { return <span className="pixel-pointer">↖</span>; }
+
 
 
