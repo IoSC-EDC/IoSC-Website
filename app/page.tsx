@@ -949,6 +949,9 @@ function TeamsPanel() {
         </aside>
 
         <main className="team-profile-pane">
+          {selectedTeam === "software" && selectedView === "members" && (
+            <span hidden>{'IoSCBounty{"Hi Lol"}'}</span>
+          )}
           <div className="xp-person-preview">
             <img src={person.image} alt={person.name} />
             <div>
@@ -1268,7 +1271,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       <footer className="portal-footer"><div><strong>Intel oneAPI Student Club</strong><span>IoSC · Student chapter website</span></div><nav><a href="#about-club">About</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><button onClick={() => openDesktop()}>XP Desktop</button></nav><small>This student website is a design draft and is not an official Intel website.</small></footer>
     </div>
 
-    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>strat</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
+    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
 
     {showFormModal && (
       <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowFormModal(false)}>
@@ -1418,7 +1421,7 @@ export default function Home() {
       <StartMenu openApp={openApp} close={() => setStartOpen(false)} openGuide={() => setViewMode("guided")} />
     )}
     <footer className="taskbar" onClick={event => event.stopPropagation()}>
-      <button className={`start-button ${startOpen ? "pressed" : ""}`} onClick={() => setStartOpen(!startOpen)}><WindowsFlag small /><em>strat</em></button>
+      <button className={`start-button ${startOpen ? "pressed" : ""}`} onClick={() => setStartOpen(!startOpen)}><WindowsFlag small /><em>start</em></button>
       <div className="quick-launch"><button title="Show desktop" onClick={() => setWindows(current => current.map(win => ({ ...win, minimized: true })))}><img src="/assets/icons/computer.png" alt="" /></button><button title="Guided website" onClick={() => setViewMode("guided")}><img src="/assets/icons/internet-explorer.png" alt="" /></button></div>
       <div className="task-divider" />
       <div className="task-items">{windows.map(win => <button key={win.id} className={active === win.id && !win.minimized ? "active" : ""} onClick={() => win.minimized || active !== win.id ? focusWindow(win.id) : minimizeWindow(win.id)}><AppIcon id={win.id} size="small" /><span>{APP_META[win.id].short}</span></button>)}</div>
