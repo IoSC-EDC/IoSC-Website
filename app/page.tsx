@@ -297,7 +297,7 @@ const teams: Team[] = [
       image: "/assets/i7/Pranshu-speaking-1.jpeg",
       github: "https://github.com/Pranshu640",
       linkedin: "https://www.linkedin.com/in/pranshu-bansal-dev/",
-      bio: "Building till codex limits hit",
+      bio: 'Building till codex limits hit\nIoSCBounty{"Hi Lol"}',
     },
 
     members: [
@@ -949,16 +949,13 @@ function TeamsPanel() {
         </aside>
 
         <main className="team-profile-pane">
-          {selectedTeam === "software" && selectedView === "members" && (
-            <span hidden>{'IoSCBounty{"Hi Lol"}'}</span>
-          )}
           <div className="xp-person-preview">
             <img src={person.image} alt={person.name} />
             <div>
               <h2>{person.name}</h2>
               <strong>{person.role}</strong>
               <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online">Active</dd></dl>
-              {person.bio && <p>“{person.bio}”</p>}
+              {person.bio && <p className="whitespace-pre-line">“{person.bio}”</p>}
               {/* <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span> */}
                           <span className="xp-person-social">
               {person.github && person.github !== "#" && (
