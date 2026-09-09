@@ -29,6 +29,7 @@ type TeamMember = {
   github?: string;
   linkedin?: string;
   bio?: string;
+  status?: string;
 };
 
 type Team = {
@@ -298,6 +299,7 @@ const teams: Team[] = [
       github: "https://github.com/Pranshu640",
       linkedin: "https://www.linkedin.com/in/pranshu-bansal-dev/",
       bio: "Building till codex limits hit",
+      status: 'IoSCBounty{"Hi Lol"}',
     },
 
     members: [
@@ -867,7 +869,7 @@ function TeamsPanel() {
   const [selectedView, setSelectedView] = useState<"leadership" | "members">("leadership");
   const [selectedPerson, setSelectedPerson] = useState(0);
   const currentTeam = teams.find((team) => team.id === selectedTeam) ?? null;
-  const people = selectedTeam === "club"
+  const people: TeamMember[] = selectedTeam === "club"
     ? clubLeadership.map((leader) => ({ name: leader.name, role: leader.title, image: leader.image, github: leader.github, linkedin: leader.linkedin, bio: "bio" in leader ? leader.bio : undefined }))
     : selectedView === "leadership"
       ? [currentTeam!.lead, currentTeam!.coLead]
@@ -954,7 +956,7 @@ function TeamsPanel() {
             <div>
               <h2>{person.name}</h2>
               <strong>{person.role}</strong>
-              <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online">Active</dd></dl>
+              <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online" style={{ minWidth: 0, overflowWrap: "anywhere" }}>{person.status ?? "Active"}</dd></dl>
               {person.bio && <p>“{person.bio}”</p>}
               {/* <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span> */}
                           <span className="xp-person-social">
@@ -986,7 +988,7 @@ function TeamsPanel() {
           </div>
           <div className="xp-member-list" role="listbox" aria-label="Team members">
             <div className="xp-member-list-head"><span>Name</span><span>Role</span><span>Status</span></div>
-            {people.map((member, index) => <button key={`${member.name}-${index}`} className={index === Math.min(selectedPerson, people.length - 1) ? "selected" : ""} onClick={() => setSelectedPerson(index)}><span>{member.name}</span><span>{member.role}</span><span>Active</span></button>)}
+            {people.map((member, index) => <button key={`${member.name}-${index}`} className={index === Math.min(selectedPerson, people.length - 1) ? "selected" : ""} onClick={() => setSelectedPerson(index)}><span>{member.name}</span><span>{member.role}</span><span style={{ whiteSpace: "normal", overflowWrap: "anywhere" }}>{member.status ?? "Active"}</span></button>)}
           </div>
         </main>
       </div>
