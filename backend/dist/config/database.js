@@ -7,19 +7,22 @@ exports.pool = void 0;
 const pg_1 = require("pg");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const connectionString = process.env.DATABASE_URL;
+const rawUrl = process.env.DATABASE_URL;
+const connectionString = rawUrl ? rawUrl.replace(/&channel_binding=require/g, "").trim() : "";
 if (!connectionString) {
     console.warn("⚠️ DATABASE_URL is not defined in environment variables. Database features will fail until configured.");
 }
 exports.pool = new pg_1.Pool({
-    connectionString,
+    connectionString: connectionString || undefined,
     ssl: process.env.NODE_ENV === "production" || connectionString?.includes("neon.tech")
         ? { rejectUnauthorized: false }
         : false,
+    connectionTimeoutMillis: 5000,
+    idleTimeoutMillis: 30000,
 });
 exports.pool.on("connect", () => {
     console.log("🐘 Connected to PostgreSQL database pool.");
 });
 exports.pool.on("error", (err) => {
-    console.error("❌ Unexpected PostgreSQL Pool Error:", err);
+    console.error("❌ Unexpected PostgreSQL Pool Error:", err.message);
 });

@@ -60,10 +60,11 @@ const projects = [
 ];
 
 const events = [
-  { year: "2023", date: "10—12 Oct", title: "HackMaze", type: "Hackathon", place: "Online prelims · Offline showcase" },
-  { year: "2023", date: "The first gathering", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus" },
-  { year: "2024", date: "Two days", title: "Vespera", type: "Campus tech fest", place: "USAR, GGSIPU EDC" },
+  { year: "2026", date: "17 Sept", title: "IoSC Interviews", type: "Interview", place: "A501, IIoT Lab · Click Register Now!" },
   { year: "2025", date: "15—16 Oct", title: "AzinHack ’25", type: "24-hour hackathon", place: "USAR, GGSIPU EDC" },
+  { year: "2024", date: "Two days", title: "Vespera", type: "Campus tech fest", place: "USAR, GGSIPU EDC" },
+  { year: "2023", date: "The first gathering", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus" },
+  { year: "2023", date: "10—12 Oct", title: "HackMaze", type: "Hackathon", place: "Online prelims · Offline showcase" },
 ];
 
 const chronicles = [
