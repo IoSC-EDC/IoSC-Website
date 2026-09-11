@@ -259,14 +259,14 @@ const teams: Team[] = [
         linkedin: "https://www.linkedin.com/in/jatin-khandelwal08",
         bio: "The Pragmatic Builder",
       },
-       {
+      {
         name: "Rudra Narayan Paliwal",
         role: "Member",
         image: "/assets/i5/RP.jpeg",
         github: "https://github.com/rudrapaliwal-1",
         linkedin: "https://www.linkedin.com/in/rudra-narayan-paliwal/",
       },
-    {
+      {
         name: "Parshv jain",
         role: "Member",
         image: "/assets/i5/PS.jpeg",
@@ -335,7 +335,7 @@ const teams: Team[] = [
         linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
         bio: "Building AI, vision & immersive experiences.",
       },
-        {
+      {
         name: "Aditya Dash",
         role: "Member",
         image: "/assets/i7/AD.jpeg",
@@ -343,7 +343,7 @@ const teams: Team[] = [
         // linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
         // bio: "Building AI, vision & immersive experiences.",
       },
-    
+
     ],
   },
 
@@ -436,7 +436,7 @@ const teams: Team[] = [
         // linkedin: "#",
         bio: "Just another runner in the rat race.",
       },
-        {
+      {
         name: "Priya Chaurasia",
         role: "Member",
         image: "/assets/i9/px.jpeg",
@@ -755,6 +755,7 @@ const defaultEvents = [
   { day: "15–16", month: "OCT 2025", title: "AzinHack ’25", type: "24-hour hackathon", place: "USAR, GGSIPU EDC", accent: "#875fa0" },
   { day: "2024", month: "ARCHIVE", title: "Vespera", type: "Two-day tech fest", place: "USAR, GGSIPU EDC", accent: "#ce7b25" },
   { day: "2023", month: "ARCHIVE", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus", accent: "#00a3a3" },
+  { day: "10–12", month: "OCT 2023", title: "HackMaze", type: "Hackathon", place: "Online prelims · Offline project showcase", accent: "#0068b5" },
 ];
 
 
@@ -959,31 +960,31 @@ function TeamsPanel() {
               <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online" style={{ minWidth: 0, overflowWrap: "anywhere" }}>{person.status ?? "Active"}</dd></dl>
               {person.bio && <p>“{person.bio}”</p>}
               {/* <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span> */}
-                          <span className="xp-person-social">
-              {person.github && person.github !== "#" && (
-                <a
-                  href={person.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="GitHub"
-                >
-                  <Github size={22} />
-                  GitHub
-                </a>
-              )}
+              <span className="xp-person-social">
+                {person.github && person.github !== "#" && (
+                  <a
+                    href={person.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="GitHub"
+                  >
+                    <Github size={22} />
+                    GitHub
+                  </a>
+                )}
 
-              {person.linkedin && person.linkedin !== "#" && (
-                <a
-                  href={person.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="LinkedIn"
-                >
-                  <Linkedin size={22} />
-                  LinkedIn
-                </a>
-              )}
-            </span>
+                {person.linkedin && person.linkedin !== "#" && (
+                  <a
+                    href={person.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="LinkedIn"
+                  >
+                    <Linkedin size={22} />
+                    LinkedIn
+                  </a>
+                )}
+              </span>
             </div>
           </div>
           <div className="xp-member-list" role="listbox" aria-label="Team members">
@@ -1042,11 +1043,11 @@ function AlumniPanel() {
             <article>
               <h3>Stay connected</h3>
               <div className="xp-social-links">
-               {selectedProfile.github && (
-  <a href={selectedProfile.github} target="_blank" rel="noreferrer" title="GitHub">
-    <Github size={16} />
-  </a>
-)} 
+                {selectedProfile.github && (
+                  <a href={selectedProfile.github} target="_blank" rel="noreferrer" title="GitHub">
+                    <Github size={16} />
+                  </a>
+                )}
                 <a href={selectedProfile.linkedin} target="_blank" rel="noreferrer" title="LinkedIn"><Linkedin size={16} /></a>
               </div>
             </article>
@@ -1206,9 +1207,88 @@ function StartMenu({ openApp, close, openGuide }: { openApp: (id: AppId) => void
   </div>;
 }
 
+function XpNotificationPopup({
+  onOpenRegistration,
+  onClose,
+}: {
+  onOpenRegistration: () => void;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-[430px] bg-[#ece9d8] border-2 border-[#0054e3] rounded-t-lg rounded-b shadow-[0_25px_60px_rgba(0,0,0,0.85)] font-sans text-slate-900 select-none animate-in zoom-in-95 duration-200"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Title Bar */}
+        <div className="flex items-center justify-between px-2.5 py-1.5 bg-gradient-to-r from-[#0058ee] via-[#3593ff] to-[#0058ee] text-white rounded-t-[5px] border-b border-[#003cb3]">
+          <div className="flex items-center gap-1.5 font-bold text-xs tracking-wide">
+            <img src="/assets/icons/tour.png" className="w-4 h-4" alt="XP Icon" />
+            <span>Windows XP - IoSC Team Selection Announcement</span>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-5 h-5 bg-[#e81123] hover:bg-[#f45462] active:bg-[#c00f1c] text-white flex items-center justify-center font-bold text-xs rounded-[2px] border border-white/80 shadow-inner cursor-pointer"
+            title="Cancel / Close"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="p-4 bg-[#ece9d8]">
+          <div className="flex items-start gap-3.5">
+            <div className="w-12 h-12 flex-shrink-0 bg-white p-1 rounded border border-[#7f9db9] shadow-inner flex items-center justify-center">
+              <img src="/assets/icons/messenger.png" className="w-10 h-10 object-contain" alt="XP Messenger" />
+            </div>
+            <div className="flex-1 text-xs">
+              <h4 className="font-bold text-[#0a246a] text-sm mb-1 flex items-center gap-1">
+                <span>⚡</span> IoSC Team Selection 2026 Live!
+              </h4>
+              <p className="text-slate-800 leading-relaxed mb-2">
+                Apply now to join <strong>Intel oneAPI Student Club</strong> teams (<strong>i3</strong>, <strong>i5</strong>, <strong>i7</strong>, <strong>i9</strong>). Relevant study resources are sent directly to your email!
+              </p>
+              <div className="text-[11px] text-[#0054e3] font-semibold flex items-center gap-1 bg-white/90 p-1.5 rounded border border-[#a6b9d0]">
+                <span>★</span> <span>GitHub profile recommended for Team i3 applicants.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* XP Beveled Footer Buttons */}
+          <div className="mt-4 pt-3 border-t border-[#c0bba6] flex items-center justify-end gap-2.5">
+            <button
+              onClick={onClose}
+              className="px-3.5 py-1.5 bg-gradient-to-b from-white to-[#e3decc] hover:from-[#f5f2e6] hover:to-[#dad4c0] active:bg-[#c8c2b0] text-[#111] text-xs font-semibold rounded border border-[#7f9db9] shadow-[inset_1px_1px_0_#fff] cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => {
+                onClose();
+                onOpenRegistration();
+              }}
+              className="glowing-register-btn px-4 py-1.5 bg-gradient-to-b from-[#3593ff] to-[#0054e3] hover:from-[#4ba0ff] hover:to-[#0060f0] text-white text-xs font-bold rounded border border-[#003cb3] flex items-center gap-1.5 cursor-pointer"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-80"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              </span>
+              <span>📝</span> Apply / Register Now ➔
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop: (id?: AppId) => void; time: string; eventsList: typeof defaultEvents; onRefresh: () => void }) {
   const [showFormModal, setShowFormModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [showXpPopup, setShowXpPopup] = useState(true);
 
   return <main className="guided-shell portal-shell relative">
     <div className="guided-browser-chrome">
@@ -1219,7 +1299,26 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
     <div className="portal-page" id="top">
       <header className="portal-header"><div className="portal-brand"><span>intel</span><div><strong>oneAPI Student Club</strong><small>IoSC · GGSIPU East Delhi Campus</small></div></div><div className="portal-utility"><a href="#club-timeline">Timeline</a><a href="#club-events">Events</a></div></header>
-      <nav className="portal-nav"><span className="portal-nav-brand">IoSC</span><a href="#top" className="active">Home</a><a href="#about-club">About the club</a><a href="#tracks">What we do</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><a href="#club-timeline">Timeline</a><button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> XP Desktop</button></nav>
+      <nav className="portal-nav">
+        <span className="portal-nav-brand">IoSC</span>
+        <a href="#top" className="active">Home</a>
+        <a href="#about-club">About the club</a>
+        <a href="#tracks">What we do</a>
+        <a href="#club-projects">Projects</a>
+        <a href="#club-events">Events</a>
+        <a href="#club-timeline">Timeline</a>
+        <button
+          onClick={() => setShowRegisterModal(true)}
+          className="glowing-register-btn px-3.5 py-1 bg-gradient-to-b from-[#3593ff] to-[#0054e3] hover:from-[#4ba0ff] hover:to-[#0060f0] text-white font-bold text-xs rounded border border-[#003cb3] flex items-center gap-1.5 cursor-pointer ml-auto"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-80"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+          </span>
+          <span>📝</span> Apply / Register
+        </button>
+        <button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> XP Desktop</button>
+      </nav>
       <div className="portal-breadcrumb">IoSC Home &nbsp;›&nbsp; Welcome</div>
 
       <div className="portal-layout">
@@ -1241,8 +1340,12 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
             <div className="portal-section-title">
               <h2>Events Calendar</h2>
               <div className="flex items-center gap-2">
-                <button className=" px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
-                  📝 Register Now
+                <button className="glowing-register-btn px-4 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded text-xs font-bold cursor-pointer transition-all flex items-center gap-2 border border-emerald-400/50" onClick={() => setShowRegisterModal(true)}>
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-90"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-300"></span>
+                  </span>
+                  <span>📝</span> Apply / Register Now
                 </button>
                 <button onClick={() => openDesktop("events")}>Open event archive</button>
               </div>
@@ -1259,7 +1362,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
         <aside className="portal-sidebar">
           <section><h2>Club links</h2>
-            {/* <button onClick={() => openDesktop("join")}><img src="/assets/icons/messenger.png" alt="" /><span><strong>Join IoSC</strong><small>Membership interest form</small></span></button> */}
+            <button onClick={() => setShowRegisterModal(true)}><img src="/assets/icons/messenger.png" alt="" /><span><strong>Join IoSC / Apply</strong><small>Membership & Team Selection</small></span></button>
             <button onClick={() => openDesktop("projects")}><img src="/assets/icons/folder.png" alt="" /><span><strong>Project archive</strong><small>Code, demos, and reports</small></span></button><button onClick={() => openDesktop("archive")}><img src="/assets/icons/notepad.png" alt="" /><span><strong>Club timeline</strong><small>Past sessions and milestones</small></span></button></section>
           <section><h2>Campus</h2><div className="portal-meeting"><strong>GGSIPU East Delhi Campus</strong><span>University School of Automation and Robotics</span><p>133, Patel Street, Vishwas Nagar, Shahdara, New Delhi 110032.</p></div></section>
           <section><h2>Official channels</h2><ul><li><a href="https://www.linkedin.com/company/iosc-usar/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li><li><a href="https://instagram.com/iosc_edc" target="_blank" rel="noreferrer">Instagram ↗</a></li><li><a href="https://youtube.com/@IoSCUSAR" target="_blank" rel="noreferrer">YouTube ↗</a></li><li><a href="https://linktr.ee/iosc_ggsipuedc" target="_blank" rel="noreferrer">All official links ↗</a></li></ul></section>
@@ -1270,7 +1373,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       <footer className="portal-footer"><div><strong>Intel oneAPI Student Club</strong><span>IoSC · Student chapter website</span></div><nav><a href="#about-club">About</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><button onClick={() => openDesktop()}>XP Desktop</button></nav><small>This student website is a design draft and is not an official Intel website.</small></footer>
     </div>
 
-    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
+    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button><button title="Apply / Register Now" onClick={() => setShowRegisterModal(true)}><img src="/assets/icons/messenger.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
 
     {showFormModal && (
       <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowFormModal(false)}>
@@ -1284,22 +1387,36 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
     )}
 
     {showRegisterModal && (
-      <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-start justify-center py-6 overflow-y-auto" onClick={() => setShowRegisterModal(false)}>
-        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-2xl p-3 max-h-[calc(100vh-3rem)] overflow-y-auto text-slate-900" onClick={(e) => e.stopPropagation()}>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-[#7f9db9] pb-3 mb-2">
-            <div>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <span className="text-emerald-400">📝</span> IoSC Event & Membership Registration
-              </h3>
-              <p className="text-xs text-slate-400">Submit your application to participate in upcoming events & workshops</p>
+      <div className="fixed inset-0 z-[110] bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200" onClick={() => setShowRegisterModal(false)}>
+        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-4 sm:p-6 max-h-[92vh] overflow-y-auto text-slate-900 animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between border-b border-[#7f9db9] pb-3 mb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">📝</span>
+              <div>
+                <h3 className="text-base font-bold text-[#0a246a]">
+                  IoSC Event & Membership Registration
+                </h3>
+                <p className="text-xs text-slate-600">Submit your application to participate in upcoming events & workshops</p>
+              </div>
             </div>
-            <button onClick={() => setShowRegisterModal(false)} className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors">
-              <X className="w-5 h-5" />
+            <button
+              onClick={() => setShowRegisterModal(false)}
+              className="w-6 h-6 bg-[#e81123] hover:bg-[#f45462] active:bg-[#c00f1c] text-white flex items-center justify-center font-bold text-xs rounded border border-white/80 cursor-pointer shadow-inner"
+              title="Close window"
+            >
+              ✕
             </button>
           </div>
-          <JoinForm />
+          <JoinForm onClose={() => setShowRegisterModal(false)} />
         </div>
       </div>
+    )}
+
+    {showXpPopup && (
+      <XpNotificationPopup
+        onOpenRegistration={() => setShowRegisterModal(true)}
+        onClose={() => setShowXpPopup(false)}
+      />
     )}
   </main>;
 }
@@ -1323,7 +1440,13 @@ export default function Home() {
       const res = await fetchEvents();
       if (res && res.data && Array.isArray(res.data) && res.data.length > 0) {
         const formatted = res.data.map(formatEventForDisplay);
-        setEventsList(formatted);
+        const merged = [...defaultEvents];
+        formatted.forEach((item: typeof defaultEvents[number]) => {
+          if (!merged.some(e => e.title.toLowerCase() === item.title.toLowerCase())) {
+            merged.push(item);
+          }
+        });
+        setEventsList(merged);
       }
     } catch (err) {
       console.warn("Backend server offline or unreachable. Displaying fallback event list.", err);
@@ -1428,20 +1551,27 @@ export default function Home() {
     </footer>
 
     {showRegisterModal && (
-      <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-start justify-center py-6 overflow-y-auto" onClick={() => setShowRegisterModal(false)}>
-        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-2xl p-3 max-h-[calc(100vh-3rem)] overflow-y-auto text-slate-900" onClick={(e) => e.stopPropagation()}>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-[#7f9db9] pb-3 mb-2">
-            <div>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <span className="text-emerald-400">📝</span> IoSC Event & Membership Registration
-              </h3>
-              <p className="text-xs text-slate-400">Submit your application to participate in upcoming events & workshops</p>
+      <div className="fixed inset-0 z-[110] bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200" onClick={() => setShowRegisterModal(false)}>
+        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-4 sm:p-6 max-h-[92vh] overflow-y-auto text-slate-900 animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between border-b border-[#7f9db9] pb-3 mb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">📝</span>
+              <div>
+                <h3 className="text-base font-bold text-[#0a246a]">
+                  IoSC Event & Membership Registration
+                </h3>
+                <p className="text-xs text-slate-600">Submit your application to participate in upcoming events & workshops</p>
+              </div>
             </div>
-            <button onClick={() => setShowRegisterModal(false)} className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors">
-              <X className="w-5 h-5" />
+            <button
+              onClick={() => setShowRegisterModal(false)}
+              className="w-6 h-6 bg-[#e81123] hover:bg-[#f45462] active:bg-[#c00f1c] text-white flex items-center justify-center font-bold text-xs rounded border border-white/80 cursor-pointer shadow-inner"
+              title="Close window"
+            >
+              ✕
             </button>
           </div>
-          <JoinForm />
+          <JoinForm onClose={() => setShowRegisterModal(false)} />
         </div>
       </div>
     )}
