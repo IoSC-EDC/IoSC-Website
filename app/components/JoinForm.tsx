@@ -17,8 +17,8 @@ const INTEREST_OPTIONS = [
   "i5",
   "i7",
   "i9",
-  "Xeon",
-  "Arc",
+  "Editing",
+  "Designing",
 ];
 
 const initialFormData: ApplicationData = {
