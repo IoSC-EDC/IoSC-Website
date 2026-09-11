@@ -5,3 +5,4 @@ out/
 .vercel
 .env*
 !.env.example
+.DS_Store

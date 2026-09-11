@@ -751,10 +751,10 @@ const alumni = [
 ];
 
 const defaultEvents = [
-  { day: "10–12", month: "OCT 2023", title: "HackMaze", type: "Hackathon", place: "Online prelims · Offline project showcase", accent: "#0068b5" },
-  { day: "2023", month: "ARCHIVE", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus", accent: "#00a3a3" },
-  { day: "2024", month: "ARCHIVE", title: "Vespera", type: "Two-day tech fest", place: "USAR, GGSIPU EDC", accent: "#ce7b25" },
+  { day: "17th", month: "SEPT 2026", title: "IoSC Interviews", type: "Interview", place: "A501, IIoT Lab · Click Register Now!", accent: "#0068b5" },
   { day: "15–16", month: "OCT 2025", title: "AzinHack ’25", type: "24-hour hackathon", place: "USAR, GGSIPU EDC", accent: "#875fa0" },
+  { day: "2024", month: "ARCHIVE", title: "Vespera", type: "Two-day tech fest", place: "USAR, GGSIPU EDC", accent: "#ce7b25" },
+  { day: "2023", month: "ARCHIVE", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus", accent: "#00a3a3" },
 ];
 
 
@@ -1241,7 +1241,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
             <div className="portal-section-title">
               <h2>Events Calendar</h2>
               <div className="flex items-center gap-2">
-                <button className="hidden px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
+                <button className=" px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
                   📝 Register Now
                 </button>
                 <button onClick={() => openDesktop("events")}>Open event archive</button>
