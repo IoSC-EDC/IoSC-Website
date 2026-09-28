@@ -9,6 +9,7 @@ import {
   Wifi, X
 } from "lucide-react";
 import { fetchEvents, formatEventForDisplay } from "../lib/api";
+import { REGISTRATIONS_OPEN } from "../lib/registration";
 import EventForm from "./components/EventForm";
 import JoinForm from "./components/JoinForm";
 
@@ -751,7 +752,7 @@ const alumni = [
 ];
 
 const defaultEvents = [
-  { day: "17th", month: "SEPT 2026", title: "IoSC Interviews", type: "Interview", place: "A501, IIoT Lab · Click Register Now!", accent: "#0068b5" },
+  { day: "17th", month: "SEPT 2026", title: "IoSC Interviews", type: "Interview", place: "A501, IIoT Lab", accent: "#0068b5" },
   { day: "15–16", month: "OCT 2025", title: "AzinHack ’25", type: "24-hour hackathon", place: "USAR, GGSIPU EDC", accent: "#875fa0" },
   { day: "2024", month: "ARCHIVE", title: "Vespera", type: "Two-day tech fest", place: "USAR, GGSIPU EDC", accent: "#ce7b25" },
   { day: "2023", month: "ARCHIVE", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus", accent: "#00a3a3" },
@@ -1137,7 +1138,7 @@ function ProjectsApp() {
 
 function EventsApp({ openApp, eventsList, onRefresh, onRegisterClick }: { openApp: (id: AppId) => void; eventsList: typeof defaultEvents; onRefresh?: () => void; onRegisterClick?: () => void }) {
   const [view, setView] = useState<"Event archive" | "Highlights">("Event archive");
-  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2>{onRegisterClick && <button className="xp-primary-button" style={{ marginLeft: "auto" }} onClick={onRegisterClick}>📝 Register Now</button>}</div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
+  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2>{REGISTRATIONS_OPEN && onRegisterClick && <button className="xp-primary-button" style={{ marginLeft: "auto" }} onClick={onRegisterClick}>📝 Register Now</button>}</div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
 }
 
 function ArchiveApp() {
@@ -1288,7 +1289,8 @@ function XpNotificationPopup({
 function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop: (id?: AppId) => void; time: string; eventsList: typeof defaultEvents; onRefresh: () => void }) {
   const [showFormModal, setShowFormModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
-  const [showXpPopup, setShowXpPopup] = useState(true);
+  // Gated by REGISTRATIONS_OPEN (lib/registration.ts) — false while closed, so no auto-popup.
+  const [showXpPopup, setShowXpPopup] = useState(REGISTRATIONS_OPEN);
 
   return <main className="guided-shell portal-shell relative">
     <div className="guided-browser-chrome">
@@ -1307,6 +1309,8 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
         <a href="#club-projects">Projects</a>
         <a href="#club-events">Events</a>
         <a href="#club-timeline">Timeline</a>
+        {/* REGISTRATION SWITCH (lib/registration.ts): hidden while REGISTRATIONS_OPEN=false. Flip to true to reopen. */}
+        {REGISTRATIONS_OPEN && (
         <button
           onClick={() => setShowRegisterModal(true)}
           className="glowing-register-btn px-3.5 py-1 bg-gradient-to-b from-[#3593ff] to-[#0054e3] hover:from-[#4ba0ff] hover:to-[#0060f0] text-white font-bold text-xs rounded border border-[#003cb3] flex items-center gap-1.5 cursor-pointer ml-auto"
@@ -1317,6 +1321,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
           </span>
           <span>📝</span> Apply / Register
         </button>
+        )}
         <button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> XP Desktop</button>
       </nav>
       <div className="portal-breadcrumb">IoSC Home &nbsp;›&nbsp; Welcome</div>
@@ -1340,6 +1345,8 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
             <div className="portal-section-title">
               <h2>Events Calendar</h2>
               <div className="flex items-center gap-2">
+                {/* REGISTRATION SWITCH: hidden while closed. See lib/registration.ts */}
+                {REGISTRATIONS_OPEN && (
                 <button className="glowing-register-btn px-4 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded text-xs font-bold cursor-pointer transition-all flex items-center gap-2 border border-emerald-400/50" onClick={() => setShowRegisterModal(true)}>
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-90"></span>
@@ -1347,6 +1354,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
                   </span>
                   <span>📝</span> Apply / Register Now
                 </button>
+                )}
                 <button onClick={() => openDesktop("events")}>Open event archive</button>
               </div>
             </div>
@@ -1362,7 +1370,10 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
         <aside className="portal-sidebar">
           <section><h2>Club links</h2>
+            {/* REGISTRATION SWITCH: hidden while closed. See lib/registration.ts */}
+            {REGISTRATIONS_OPEN && (
             <button onClick={() => setShowRegisterModal(true)}><img src="/assets/icons/messenger.png" alt="" /><span><strong>Join IoSC / Apply</strong><small>Membership & Team Selection</small></span></button>
+            )}
             <button onClick={() => openDesktop("projects")}><img src="/assets/icons/folder.png" alt="" /><span><strong>Project archive</strong><small>Code, demos, and reports</small></span></button><button onClick={() => openDesktop("archive")}><img src="/assets/icons/notepad.png" alt="" /><span><strong>Club timeline</strong><small>Past sessions and milestones</small></span></button></section>
           <section><h2>Campus</h2><div className="portal-meeting"><strong>GGSIPU East Delhi Campus</strong><span>University School of Automation and Robotics</span><p>133, Patel Street, Vishwas Nagar, Shahdara, New Delhi 110032.</p></div></section>
           <section><h2>Official channels</h2><ul><li><a href="https://www.linkedin.com/company/iosc-usar/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li><li><a href="https://instagram.com/iosc_edc" target="_blank" rel="noreferrer">Instagram ↗</a></li><li><a href="https://youtube.com/@IoSCUSAR" target="_blank" rel="noreferrer">YouTube ↗</a></li><li><a href="https://linktr.ee/iosc_ggsipuedc" target="_blank" rel="noreferrer">All official links ↗</a></li></ul></section>
@@ -1373,7 +1384,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       <footer className="portal-footer"><div><strong>Intel oneAPI Student Club</strong><span>IoSC · Student chapter website</span></div><nav><a href="#about-club">About</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><button onClick={() => openDesktop()}>XP Desktop</button></nav><small>This student website is a design draft and is not an official Intel website.</small></footer>
     </div>
 
-    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button><button title="Apply / Register Now" onClick={() => setShowRegisterModal(true)}><img src="/assets/icons/messenger.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
+    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button>{REGISTRATIONS_OPEN && <button title="Apply / Register Now" onClick={() => setShowRegisterModal(true)}><img src="/assets/icons/messenger.png" alt="" /></button>}</div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
 
     {showFormModal && (
       <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowFormModal(false)}>
@@ -1386,7 +1397,8 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       </div>
     )}
 
-    {showRegisterModal && (
+    {/* REGISTRATION SWITCH: JoinForm system kept intact for reopen (see lib/registration.ts). Hidden while closed. */}
+    {REGISTRATIONS_OPEN && showRegisterModal && (
       <div className="fixed inset-0 z-[110] bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200" onClick={() => setShowRegisterModal(false)}>
         <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-4 sm:p-6 max-h-[92vh] overflow-y-auto text-slate-900 animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
           <div className="flex items-center justify-between border-b border-[#7f9db9] pb-3 mb-4">
@@ -1412,7 +1424,8 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       </div>
     )}
 
-    {showXpPopup && (
+    {/* REGISTRATION SWITCH: auto-popup disabled while closed. See lib/registration.ts */}
+    {REGISTRATIONS_OPEN && showXpPopup && (
       <XpNotificationPopup
         onOpenRegistration={() => setShowRegisterModal(true)}
         onClose={() => setShowXpPopup(false)}
@@ -1534,7 +1547,7 @@ export default function Home() {
       onPointerDown={() => focusWindow(win.id)}
     >
       <TitleBar id={win.id} active={active === win.id} maximized={win.maximized} onFocus={() => focusWindow(win.id)} onMinimize={() => minimizeWindow(win.id)} onMaximize={() => maximizeWindow(win.id)} onClose={() => closeWindow(win.id)} onDragStart={(event) => startDrag(win.id, event)} />
-      <div className="app-content"><AppContent id={win.id} openApp={openApp} eventsList={eventsList} onRefresh={loadEvents} onRegisterClick={() => setShowRegisterModal(true)} /></div>
+      <div className="app-content"><AppContent id={win.id} openApp={openApp} eventsList={eventsList} onRefresh={loadEvents} onRegisterClick={REGISTRATIONS_OPEN ? () => setShowRegisterModal(true) : undefined} /></div>
     </section>)}
 
     {contextMenu && <div className="context-menu" style={{ left: contextMenu.x, top: contextMenu.y }} onClick={event => event.stopPropagation()}><button onClick={() => setViewMode("guided")}>Open guided website</button><hr /><button onClick={() => openApp("about")}>Club properties</button></div>}
@@ -1550,7 +1563,8 @@ export default function Home() {
       <div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div>
     </footer>
 
-    {showRegisterModal && (
+    {/* REGISTRATION SWITCH: JoinForm system kept intact for reopen (see lib/registration.ts). Hidden while closed. */}
+    {REGISTRATIONS_OPEN && showRegisterModal && (
       <div className="fixed inset-0 z-[110] bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200" onClick={() => setShowRegisterModal(false)}>
         <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-4 sm:p-6 max-h-[92vh] overflow-y-auto text-slate-900 animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
           <div className="flex items-center justify-between border-b border-[#7f9db9] pb-3 mb-4">
