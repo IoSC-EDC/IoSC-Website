@@ -789,7 +789,7 @@ function BootScreen({ done }: { done: () => void }) {
   useEffect(() => {
     const timer = window.setTimeout(done, 1550);
     return () => window.clearTimeout(timer);
-  }, [done]);
+  }, []);
   return <button className="boot-screen" onClick={done} aria-label="Skip boot animation">
     <div className="boot-brand"><div><span>intel</span><sup>student club</sup></div><strong>oneAPI</strong></div>
     <p>Initializing heterogeneous computing environment...</p>
