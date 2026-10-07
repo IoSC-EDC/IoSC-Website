@@ -9,6 +9,7 @@ import {
   Wifi, X
 } from "lucide-react";
 import { fetchEvents, formatEventForDisplay } from "../lib/api";
+import { REGISTRATIONS_OPEN } from "../lib/registration";
 import EventForm from "./components/EventForm";
 import JoinForm from "./components/JoinForm";
 
@@ -26,9 +27,10 @@ type TeamMember = {
   name: string;
   role: string;
   image: string;
-  github: string;
-  linkedin: string;
+  github?: string;
+  linkedin?: string;
   bio?: string;
+  status?: string;
 };
 
 type Team = {
@@ -48,7 +50,7 @@ type MentorProfile = {
   image: string;
   description: string;
   highlight: string;
-  github: string;
+  github?: string;
   linkedin: string;
 };
 
@@ -60,7 +62,7 @@ type AlumniProfile = {
   image: string;
   description: string;
   highlight: string;
-  github: string;
+  github?: string;
   linkedin: string;
 };
 
@@ -137,32 +139,32 @@ const clubLeadership = [
     title: "IoSC Lead",
     name: "Piyush Gupta",
     image: "/assets/leads/Piyush Gupta.jpg",
-    github: "#",
-    linkedin: "#",
-    bio: "सुधर गए तो शेर कोन कहेगा "
+    github: "https://github.com/Piyush-xo-19",
+    linkedin: "https://www.linkedin.com/in/piyush-gupta-358800324/",
+    // bio: " "
   },
   {
     title: "IoSC Co-Lead",
     name: "Armaan",
     image: "/assets/leads/IMG_20260612_211648_070 - Armaan _.jpg",
-    github: "#",
-    linkedin: "#",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/armaansheikhh/",
     bio: "Driven by curiosity . Defined by creativity . Blending creativity with technology",
   },
   {
     title: "Technical Lead",
     name: "Waqar Akhtar",
     image: "/assets/leads/Waqar Akhtar.jpeg",
-    github: "#https://github.com/Waqar080206",
-    linkedin: "#",
+    github: "https://github.com/Waqar080206",
+    linkedin: "https://www.linkedin.com/in/waqar08/",
     bio: "Artificial intelligence is no match for natural stupidity",
   },
   {
     title: "Technical Co-Lead",
     name: "Rahul Bhatia",
     image: "/assets/leads/Rahul Bhatia.jpeg",
-    github: "#",
-    linkedin: "#",
+    github: "https://github.com/rahulbhatia775",
+    linkedin: "https://www.linkedin.com/in/rahul-bhatia-9782802b2/",
   },
 ];
 
@@ -187,7 +189,7 @@ const teams: Team[] = [
       role: "Co Lead",
       image: "/assets/i3/Pawan Yadav.jpg",
       github: "https://github.com/pawanydv35",
-      linkedin: "#",
+      linkedin: "www.linkedin.com/in/pawan-yadav17",
     },
 
     members: [
@@ -199,19 +201,13 @@ const teams: Team[] = [
         linkedin: "https://www.linkedin.com/in/jayant-baliyan/",
         bio: "We must cling to our honor, lest we become beasts ourselves.",
       },
-      {
-        name: "DHRUV SHARMA",
-        role: "Member",
-        image: "/assets/i3/DHRUV SHARMA.jpg",
-        github: "#",
-        linkedin: "#",
-      },
+
       {
         name: "Prabhat Kumar",
         role: "Member",
         image: "/assets/i3/Prabhat Kumar - Prabhat Kumar.png",
         github: "https://github.com/PrabhatKumar-06",
-        linkedin: "#",
+        // linkedin: "#",
         bio: "Heavy are the hands that center a div.",
       },
     ],
@@ -224,11 +220,11 @@ const teams: Team[] = [
     description: "Develops IoT and embedded systems solutions.",
 
     lead: {
-      name: "Waqar Akhtar",
+      name: "Akshat Talwar",
       role: "Team Lead",
-      image: "/assets/leads/Waqar Akhtar.jpeg",
-      github: "https://github.com/Waqar080206",
-      linkedin: "#",
+      image: "/assets/leads/image.png",
+      github: "https://github.com/akshattalwar001",
+      linkedin: "https://www.linkedin.com/in/akshat-talwar/",
     },
 
     coLead: {
@@ -236,7 +232,7 @@ const teams: Team[] = [
       role: "Co Lead",
       image: "/assets/i5/IMG_20260727_005348 - Gurmehak Singh.png",
       github: "https://github.com/niggsingh20",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/gurmehak-singh-484763364",
       bio: "Some random nobody ~",
     },
 
@@ -246,14 +242,14 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i5/20260708_114840 - Shourya Upadhyay.jpg",
         github: "https://github.com/shouryaupadhyay2029",
-        linkedin: "#",
+        // linkedin: "#",
       },
       {
         name: "Aditya Bhatnagar",
         role: "Member",
         image: "/assets/i5/IMG_20260130_044912_379 - Aditya Bhatnagar.webp",
         github: "https://github.com/adityabhatnagar1",
-        linkedin: "#",
+        // linkedin: "#",
         bio: "If there is a God, he's a great Mathematician!",
       },
       {
@@ -261,16 +257,23 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i5/PXL_20260104_042517377 - Jatin Khandelwal.jpg",
         github: "https://github.com/jatinkhandelwal662-jk",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/jatin-khandelwal08",
         bio: "The Pragmatic Builder",
       },
       {
-        name: "Parshv Jain",
+        name: "Rudra Narayan Paliwal",
         role: "Member",
-        image: "/assests/i5/parshv.jpeg",
-        github: "https://github.com/parshvjain1912-byte",
+        image: "/assets/i5/RP.jpeg",
+        github: "https://github.com/rudrapaliwal-1",
+        linkedin: "https://www.linkedin.com/in/rudra-narayan-paliwal/",
+      },
+      {
+        name: "Parshv jain",
+        role: "Member",
+        image: "/assets/i5/PS.jpeg",
+        github: "https://github.com/parshvjain1912-byte/sheild-x",
         linkedin: "https://www.linkedin.com/in/parshv-jain-46a066380/",
-        bio: "A passionate Computer Science student who enjoys coding, innovation, hackathons, and exploring new technologies. Always eager to learn, collaborate, and contribute to impactful projects. ",
+        // bio: "Building AI, vision & immersive experiences.",
       },
     ],
   },
@@ -285,18 +288,19 @@ const teams: Team[] = [
       name: "Manandeep Singh Lamba",
       role: "Team Lead",
       image: "/assets/i7/MANANDEEP SINGH LAMBA.jpeg",
-      github: "#",
-      linkedin: "#",
-      bio: "God bless Dick Cheney's America",
+      github: "https://github.com/ManandeepSingh1196",
+      linkedin: "https://www.linkedin.com/in/manandeep-singh-lamba/",
+      // bio: " ",
     },
 
     coLead: {
       name: "Pranshu Bansal",
       role: "Co Lead",
-      image: "/assets/i7/prshu.jpeg",
-      github: "#",
-      linkedin: "#",
-      bio: "ashton's bae",
+      image: "/assets/i7/Pranshu-speaking-1.jpeg",
+      github: "https://github.com/Pranshu640",
+      linkedin: "https://www.linkedin.com/in/pranshu-bansal-dev/",
+      bio: "Building till codex limits hit",
+      status: 'IoSCBounty{"Hi Lol"}',
     },
 
     members: [
@@ -313,17 +317,34 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i7/WhatsApp Image 2026-07-26 at 22.07.39 - Vishesh Sagar.jpeg",
         github: "https://github.com/visheshsagar0501-prog",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/vishesh-sagar-723704362/",
         bio: "Professional Ctrl + C, ctrl + V ; Part time coder",
       },
       {
         name: "Mohd Ayan",
         role: "Member",
         image: "/assets/i7/Mohd Ayan.png",
-        github: "#",
-        linkedin: "#",
+        // github: "#",
+        // linkedin: "#",
         bio: "Just trying to be better every day",
       },
+      {
+        name: "Tushar Singh",
+        role: "Member",
+        image: "/assets/i7/TS.jpeg",
+        github: "https://github.com/tusharsingh3199",
+        linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
+        bio: "Building AI, vision & immersive experiences.",
+      },
+      {
+        name: "Aditya Dash",
+        role: "Member",
+        image: "/assets/i7/AD.jpeg",
+        github: "https://github.com/ozzymandias1576",
+        // linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
+        // bio: "Building AI, vision & immersive experiences.",
+      },
+
     ],
   },
 
@@ -338,16 +359,17 @@ const teams: Team[] = [
       role: "Team Lead",
       image: "/assets/i9/me - Avish Choudhary.png",
       github: "https://github.com/choudhary-avish20",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/c2avish/",
       bio: "Works, but makes sad noises",
     },
 
     coLead: {
       name: "Dishita Sinha",
       role: "Co Lead",
-      image: "/assets/i9/Dishita Sinha.jpg",
-      github: "#",
-      linkedin: "#",
+      image: "/assets/i9/DS.jpeg",
+      github: "https://share.google/Av30hbYaudmSY48us",
+      linkedin: "https://in.linkedin.com/in/dsinha007",
+      bio: "Late nights. Quiet screens. Beautiful logic",
     },
 
     members: [
@@ -364,7 +386,7 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/College photo - Chaitanya Mangla.jpeg",
         github: "https://github.com/cmangla581",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/chaitanya-mangla-252606377/",
         bio: "Passionate about Mathematics, Physics and Artificial Intelligence.  Also, allergic to giving up.",
       },
       {
@@ -372,7 +394,7 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/IMG_20260726_181547 - Ananya Sharma.jpg",
         github: "https://github.com/ananya-builds",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/ananya-sharma-278a85381/",
         bio: "Core Member - Team i9 | Turning data into decisions",
       },
       {
@@ -380,31 +402,31 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/WhatsApp Image 2026-07-26 at 21.55.35 - Richik Das.jpeg",
         github: "https://github.com/Richik06",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/richik-das-7aa8b12b7/",
         bio: "Aspiring AI Engineer",
       },
       {
         name: "Anannya Negi",
         role: "Member",
         image: "/assets/i9/Anannya Negi.jpg",
-        github: "#",
-        linkedin: "#",
+        // github: "#",
+        // linkedin: "#",
         bio: "Turning data into actionable insights",
       },
       {
         name: "Navya Kashyap",
         role: "Member",
         image: "/assets/i9/Navya Kashyap.jpg",
-        github: "#",
-        linkedin: "#",
+        // github: "#",
+        // linkedin: "#",
         bio: "“powered by caffeine and curiosity”",
       },
       {
         name: "Anujot Singh",
         role: "Member",
         image: "/assets/i9/Anujot Singh.jpg",
-        github: "#",
-        linkedin: "#",
+        github: "https://github.com/anujott-codes",
+        linkedin: "https://www.linkedin.com/in/anujotsingh/",
         bio: "Core Member - Team i9",
       },
       {
@@ -412,8 +434,16 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i9/Shifali.jpg",
         github: "https://github.com/shifali0156-wq",
-        linkedin: "#",
+        // linkedin: "#",
         bio: "Just another runner in the rat race.",
+      },
+      {
+        name: "Priya Chaurasia",
+        role: "Member",
+        image: "/assets/i9/px.jpeg",
+        github: "https://github.com/noticeablestar",
+        linkedin: "https://www.linkedin.com/in/priyachaurasia",
+        bio: "Harnessing human intelligence",
       },
     ],
   },
@@ -477,20 +507,20 @@ const mentors = [
     name: "Dr. Khyati Chopra",
     role: "Mentor",
     image: "/assets/mentors/Dr Khyati Chopra.png",
-    description: "A former club lead who now builds scalable web products and mentors the next generation of developers.",
-    highlight: "Mentored workshops and helped launch the first club portal experience.",
-    github: "#",
-    linkedin: "#",
+    description: "Assistant Professor at USAR, GGSIPU, New Delhi, and Mentor of IOSC. PhD from IIT Delhi, with research expertise in AIoT, wireless security, cooperative communication, cognitive radio networks, and digital twin technology.",
+    highlight: "Assistant Professor & IOSC Mentor | PhD, IIT Delhi | AIoT & Wireless Security Researcher",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/dr-khyati-chopra-8332b5253/",
   },
   {
     id: "drrahul",
     name: "Dr. Rahul Johari",
     role: "Mentor",
     image: "/assets/mentors/Dr. Rahul Johari.png",
-    description: "A former AI team member who now works on applied machine learning projects and community outreach.",
-    highlight: "Guided the club’s AI track and supported student hackathon projects.",
-    github: "#",
-    linkedin: "#",
+    description: "Professor and Mentor of IOSC, Program Coordinator for PhD and B.Tech (AI-DS & AR), and member of the SWINGER Research Group. Microsoft & Google Certified, with 7 patents, H-Index 18, 132 Scopus-indexed publications, and 223+ invited talks. TEDx Speaker.",
+    highlight: "Professor & IOSC Mentor | PhD Program Coordinator | Research & Innovation Leader",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/rahuljohari7/",
   },
 ];
 
@@ -503,8 +533,8 @@ const alumni = [
     image: "/assets/alumni/Divyansh.jpg",
     description: "An alumnus known for turning technical concepts into elegant, accessible product experiences.",
     highlight: "Shaped the club’s visual identity and helped run design-focused events.",
-    github: "#",
-    linkedin: "#",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/divyansh-nautiyal-149817280",
   },
   {
     id: "siddharth",
@@ -514,7 +544,7 @@ const alumni = [
     image: "/assets/alumni/Siddharth Gupta.jpg",
     description: "A prior IoT team member who now works on connected devices and hands-on engineering education.",
     highlight: "Continues to mentor embedded systems projects and technical workshops.",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/cyddharth",
   },
   {
@@ -525,8 +555,8 @@ const alumni = [
     image: "/assets/alumni/Aryan Khanna.jpg",
     description: "A former club lead who now builds scalable web products and mentors the next generation of developers.",
     highlight: "Mentored workshops and helped launch the first club portal experience.",
-    github: "#",
-    linkedin: "#",
+    // github: "#",
+    linkedin: "https://www.linkedin.com/in/aryankhanna208",
   },
   {
     id: "avinash",
@@ -536,7 +566,7 @@ const alumni = [
     image: "/assets/alumni/Avinash Srivastava.jpg",
     description: "A former AI team member who now works on applied machine learning projects and community outreach.",
     highlight: "Guided the club’s AI track and supported student hackathon projects.",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/avinash-kumar-srivastava-112450298",
   },
   {
@@ -548,7 +578,7 @@ const alumni = [
     description:
       "The Lead who guides the team with strong direction, coordination, and a focus on achieving successful outcomes.",
     highlight: "Organiser of First Edition of Vespera",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/parthawasthi19",
   },
   {
@@ -560,7 +590,7 @@ const alumni = [
     description:
       "The Co-Lead of I9, known for supporting team coordination, collaboration, and driving projects toward successful outcomes.",
     highlight: "",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/parth-mawai-b84816204",
   },
   {
@@ -572,7 +602,7 @@ const alumni = [
     description:
       "The Tech Lead known for guiding technical development, solving challenges, and driving effective technical solutions.",
     highlight: "Tech Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/jtmr",
   },
   {
@@ -584,7 +614,7 @@ const alumni = [
     description:
       "A valued team member known for contributing to projects and bringing a collaborative approach to the team.",
     highlight: "",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/ishan26gupta",
   },
   {
@@ -596,7 +626,7 @@ const alumni = [
     description:
       "The Co-Lead who supports team coordination, collaboration, and helps drive projects toward successful completion.",
     highlight: "Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/dipti-singh031",
   },
   {
@@ -608,7 +638,7 @@ const alumni = [
     description:
       "The Tech Co-Lead, known for supporting technical development, problem-solving, and guiding the team's technical direction.",
     highlight: "Tech Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/akshatsaraswat26",
   },
   {
@@ -620,7 +650,7 @@ const alumni = [
     description:
       "The Lead of the I9 AI & ML Team, known for guiding the team and turning innovative ideas into impactful solutions.",
     highlight: "I9 AI & ML Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/pari-dudeja-525a78291",
   },
   {
@@ -632,7 +662,7 @@ const alumni = [
     description:
       "The Co-Lead, known for supporting team leadership, coordinating projects, and contributing to the team's overall growth.",
     highlight: "Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/yash-gupta-usar",
   },
   {
@@ -644,7 +674,7 @@ const alumni = [
     description:
       "The Lead of Team ARC Design & Creative, known for driving creative ideas and shaping engaging visual experiences.",
     highlight: "ARC Design & Creative Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/khushi-thakur-91590a308",
   },
   {
@@ -656,7 +686,7 @@ const alumni = [
     description:
       "A valued team member known for her contribution, collaboration, and dedication toward the team's projects and activities.",
     highlight: "",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/alisha-godara-5a3067230",
   },
   {
@@ -668,7 +698,7 @@ const alumni = [
     description:
       "The Lead, known for taking initiative, guiding the team, and ensuring projects move forward with strong execution.",
     highlight: "Team Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/utkarsh-chauhan-a10248262",
   },
   {
@@ -680,7 +710,7 @@ const alumni = [
     description:
       "The Tech Lead, known for driving technical development, solving challenges, and supporting the team with effective solutions.",
     highlight: "Tech Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/aryan-sachan-386216134",
   },
   {
@@ -692,7 +722,7 @@ const alumni = [
     description:
       "The Lead of the I5 IoT & Embedded Systems Team, focused on building innovative systems and bringing technical ideas to life.",
     highlight: "I5 IoT & Embedded Systems Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/samarth-yadav-18a49527b",
   },
   {
@@ -704,7 +734,7 @@ const alumni = [
     description:
       "The Lead of the I3 Web Development Team, known for guiding development efforts and building impactful web experiences.",
     highlight: "I3 Web Development Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/vasu-tohangar-659793291",
   },
   {
@@ -716,16 +746,17 @@ const alumni = [
     description:
       "The Tech Co-Lead, known for supporting technical development, problem-solving, and guiding the team's technical direction.",
     highlight: "Tech Co-Lead",
-    github: "#",
+    // github: "#",
     linkedin: "https://www.linkedin.com/in/karan-bhatt-0081a0295",
   },
 ];
 
 const defaultEvents = [
-  { day: "10–12", month: "OCT 2023", title: "HackMaze", type: "Hackathon", place: "Online prelims · Offline project showcase", accent: "#0068b5" },
-  { day: "2023", month: "ARCHIVE", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus", accent: "#00a3a3" },
-  { day: "2024", month: "ARCHIVE", title: "Vespera", type: "Two-day tech fest", place: "USAR, GGSIPU EDC", accent: "#ce7b25" },
+  { day: "17th", month: "SEPT 2026", title: "IoSC Interviews", type: "Interview", place: "A501, IIoT Lab", accent: "#0068b5" },
   { day: "15–16", month: "OCT 2025", title: "AzinHack ’25", type: "24-hour hackathon", place: "USAR, GGSIPU EDC", accent: "#875fa0" },
+  { day: "2024", month: "ARCHIVE", title: "Vespera", type: "Two-day tech fest", place: "USAR, GGSIPU EDC", accent: "#ce7b25" },
+  { day: "2023", month: "ARCHIVE", title: "Azintek", type: "Tech event", place: "GGSIPU East Delhi Campus", accent: "#00a3a3" },
+  { day: "10–12", month: "OCT 2023", title: "HackMaze", type: "Hackathon", place: "Online prelims · Offline project showcase", accent: "#0068b5" },
 ];
 
 
@@ -840,7 +871,7 @@ function TeamsPanel() {
   const [selectedView, setSelectedView] = useState<"leadership" | "members">("leadership");
   const [selectedPerson, setSelectedPerson] = useState(0);
   const currentTeam = teams.find((team) => team.id === selectedTeam) ?? null;
-  const people = selectedTeam === "club"
+  const people: TeamMember[] = selectedTeam === "club"
     ? clubLeadership.map((leader) => ({ name: leader.name, role: leader.title, image: leader.image, github: leader.github, linkedin: leader.linkedin, bio: "bio" in leader ? leader.bio : undefined }))
     : selectedView === "leadership"
       ? [currentTeam!.lead, currentTeam!.coLead]
@@ -927,14 +958,39 @@ function TeamsPanel() {
             <div>
               <h2>{person.name}</h2>
               <strong>{person.role}</strong>
-              <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online">Active</dd></dl>
+              <dl><dt>Team:</dt><dd>{selectedTeam === "club" ? "Intel oneAPI Student Club" : currentTeam?.name}</dd><dt>Status:</dt><dd className="online" style={{ minWidth: 0, overflowWrap: "anywhere" }}>{person.status ?? "Active"}</dd></dl>
               {person.bio && <p>“{person.bio}”</p>}
-              <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span>
+              {/* <span className="xp-person-social"><a href={person.github} target="_blank" rel="noreferrer"><Github size={22} /> GitHub</a><a href={person.linkedin} target="_blank" rel="noreferrer"><Linkedin size={22} /> LinkedIn</a></span> */}
+              <span className="xp-person-social">
+                {person.github && person.github !== "#" && (
+                  <a
+                    href={person.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="GitHub"
+                  >
+                    <Github size={22} />
+                    GitHub
+                  </a>
+                )}
+
+                {person.linkedin && person.linkedin !== "#" && (
+                  <a
+                    href={person.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="LinkedIn"
+                  >
+                    <Linkedin size={22} />
+                    LinkedIn
+                  </a>
+                )}
+              </span>
             </div>
           </div>
           <div className="xp-member-list" role="listbox" aria-label="Team members">
             <div className="xp-member-list-head"><span>Name</span><span>Role</span><span>Status</span></div>
-            {people.map((member, index) => <button key={`${member.name}-${index}`} className={index === Math.min(selectedPerson, people.length - 1) ? "selected" : ""} onClick={() => setSelectedPerson(index)}><span>{member.name}</span><span>{member.role}</span><span>Active</span></button>)}
+            {people.map((member, index) => <button key={`${member.name}-${index}`} className={index === Math.min(selectedPerson, people.length - 1) ? "selected" : ""} onClick={() => setSelectedPerson(index)}><span>{member.name}</span><span>{member.role}</span><span style={{ whiteSpace: "normal", overflowWrap: "anywhere" }}>{member.status ?? "Active"}</span></button>)}
           </div>
         </main>
       </div>
@@ -988,7 +1044,11 @@ function AlumniPanel() {
             <article>
               <h3>Stay connected</h3>
               <div className="xp-social-links">
-                <a href={selectedProfile.github} target="_blank" rel="noreferrer" title="GitHub"><Github size={16} /></a>
+                {selectedProfile.github && (
+                  <a href={selectedProfile.github} target="_blank" rel="noreferrer" title="GitHub">
+                    <Github size={16} />
+                  </a>
+                )}
                 <a href={selectedProfile.linkedin} target="_blank" rel="noreferrer" title="LinkedIn"><Linkedin size={16} /></a>
               </div>
             </article>
@@ -1078,7 +1138,7 @@ function ProjectsApp() {
 
 function EventsApp({ openApp, eventsList, onRefresh, onRegisterClick }: { openApp: (id: AppId) => void; eventsList: typeof defaultEvents; onRefresh?: () => void; onRegisterClick?: () => void }) {
   const [view, setView] = useState<"Event archive" | "Highlights">("Event archive");
-  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2>{onRegisterClick && <button className="xp-primary-button" style={{ marginLeft: "auto" }} onClick={onRegisterClick}>📝 Register Now</button>}</div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
+  return <div className="events-app"><MenuBar items={["File", "Edit", "View", "Tools", "Help"]} /><div className="events-period"><CalendarDays /> IoSC event archive · 2023—2026</div><div className="events-shell"><aside><div className="mini-calendar"><strong>October 2023</strong><div className="calendar-week">S M T W T F S</div><div className="calendar-days">{Array.from({ length: 31 }, (_, i) => <span className={i + 1 >= 10 && i + 1 <= 12 ? "active" : ""} key={i}>{i + 1}</span>)}</div></div><div className="event-filters"><button className={view === "Event archive" ? "active" : ""} onClick={() => setView("Event archive")}>Event archive</button><button className={view === "Highlights" ? "active" : ""} onClick={() => setView("Highlights")}>Highlights</button></div></aside><main><div className="events-heading"><h2>{view}</h2>{REGISTRATIONS_OPEN && onRegisterClick && <button className="xp-primary-button" style={{ marginLeft: "auto" }} onClick={onRegisterClick}>📝 Register Now</button>}</div>{view === "Event archive" ? <div className="event-list">{eventsList.map(event => <article key={event.title}><div className="event-date" style={{ borderColor: event.accent }}><strong>{event.day}</strong><small>{event.month}</small></div><div><span style={{ color: event.accent }}>{event.type}</span><h3>{event.title}</h3><p><MapPin /> {event.place}</p></div></article>)}</div> : <div className="past-events"><Trophy /><h3>Learning through making.</h3><p>oneAPI introductions · HackMaze project building · DesignBlitz · coding and gaming competitions · speaker sessions · Vespera · AzinHack ’25</p><button onClick={() => openApp("archive")}>Open club timeline</button></div>}</main></div><div className="status-bar"><span>{view === "Event archive" ? `${eventsList.length} verified event records` : "Selected programme highlights"}</span><span>Archive view</span></div></div>;
 }
 
 function ArchiveApp() {
@@ -1148,9 +1208,89 @@ function StartMenu({ openApp, close, openGuide }: { openApp: (id: AppId) => void
   </div>;
 }
 
+function XpNotificationPopup({
+  onOpenRegistration,
+  onClose,
+}: {
+  onOpenRegistration: () => void;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-[430px] bg-[#ece9d8] border-2 border-[#0054e3] rounded-t-lg rounded-b shadow-[0_25px_60px_rgba(0,0,0,0.85)] font-sans text-slate-900 select-none animate-in zoom-in-95 duration-200"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Title Bar */}
+        <div className="flex items-center justify-between px-2.5 py-1.5 bg-gradient-to-r from-[#0058ee] via-[#3593ff] to-[#0058ee] text-white rounded-t-[5px] border-b border-[#003cb3]">
+          <div className="flex items-center gap-1.5 font-bold text-xs tracking-wide">
+            <img src="/assets/icons/tour.png" className="w-4 h-4" alt="XP Icon" />
+            <span>Windows XP - IoSC Team Selection Announcement</span>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-5 h-5 bg-[#e81123] hover:bg-[#f45462] active:bg-[#c00f1c] text-white flex items-center justify-center font-bold text-xs rounded-[2px] border border-white/80 shadow-inner cursor-pointer"
+            title="Cancel / Close"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="p-4 bg-[#ece9d8]">
+          <div className="flex items-start gap-3.5">
+            <div className="w-12 h-12 flex-shrink-0 bg-white p-1 rounded border border-[#7f9db9] shadow-inner flex items-center justify-center">
+              <img src="/assets/icons/messenger.png" className="w-10 h-10 object-contain" alt="XP Messenger" />
+            </div>
+            <div className="flex-1 text-xs">
+              <h4 className="font-bold text-[#0a246a] text-sm mb-1 flex items-center gap-1">
+                <span>⚡</span> IoSC Team Selection 2026 Live!
+              </h4>
+              <p className="text-slate-800 leading-relaxed mb-2">
+                Apply now to join <strong>Intel oneAPI Student Club</strong> teams (<strong>i3</strong>, <strong>i5</strong>, <strong>i7</strong>, <strong>i9</strong>). Relevant study resources are sent directly to your email!
+              </p>
+              <div className="text-[11px] text-[#0054e3] font-semibold flex items-center gap-1 bg-white/90 p-1.5 rounded border border-[#a6b9d0]">
+                <span>★</span> <span>GitHub profile recommended for Team i3 applicants.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* XP Beveled Footer Buttons */}
+          <div className="mt-4 pt-3 border-t border-[#c0bba6] flex items-center justify-end gap-2.5">
+            <button
+              onClick={onClose}
+              className="px-3.5 py-1.5 bg-gradient-to-b from-white to-[#e3decc] hover:from-[#f5f2e6] hover:to-[#dad4c0] active:bg-[#c8c2b0] text-[#111] text-xs font-semibold rounded border border-[#7f9db9] shadow-[inset_1px_1px_0_#fff] cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => {
+                onClose();
+                onOpenRegistration();
+              }}
+              className="glowing-register-btn px-4 py-1.5 bg-gradient-to-b from-[#3593ff] to-[#0054e3] hover:from-[#4ba0ff] hover:to-[#0060f0] text-white text-xs font-bold rounded border border-[#003cb3] flex items-center gap-1.5 cursor-pointer"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-80"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              </span>
+              <span>📝</span> Apply / Register Now ➔
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop: (id?: AppId) => void; time: string; eventsList: typeof defaultEvents; onRefresh: () => void }) {
   const [showFormModal, setShowFormModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  // Gated by REGISTRATIONS_OPEN (lib/registration.ts) — false while closed, so no auto-popup.
+  const [showXpPopup, setShowXpPopup] = useState(REGISTRATIONS_OPEN);
 
   return <main className="guided-shell portal-shell relative">
     <div className="guided-browser-chrome">
@@ -1161,7 +1301,29 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
     <div className="portal-page" id="top">
       <header className="portal-header"><div className="portal-brand"><span>intel</span><div><strong>oneAPI Student Club</strong><small>IoSC · GGSIPU East Delhi Campus</small></div></div><div className="portal-utility"><a href="#club-timeline">Timeline</a><a href="#club-events">Events</a></div></header>
-      <nav className="portal-nav"><span className="portal-nav-brand">IoSC</span><a href="#top" className="active">Home</a><a href="#about-club">About the club</a><a href="#tracks">What we do</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><a href="#club-timeline">Timeline</a><button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> XP Desktop</button></nav>
+      <nav className="portal-nav">
+        <span className="portal-nav-brand">IoSC</span>
+        <a href="#top" className="active">Home</a>
+        <a href="#about-club">About the club</a>
+        <a href="#tracks">What we do</a>
+        <a href="#club-projects">Projects</a>
+        <a href="#club-events">Events</a>
+        <a href="#club-timeline">Timeline</a>
+        {/* REGISTRATION SWITCH (lib/registration.ts): hidden while REGISTRATIONS_OPEN=false. Flip to true to reopen. */}
+        {REGISTRATIONS_OPEN && (
+        <button
+          onClick={() => setShowRegisterModal(true)}
+          className="glowing-register-btn px-3.5 py-1 bg-gradient-to-b from-[#3593ff] to-[#0054e3] hover:from-[#4ba0ff] hover:to-[#0060f0] text-white font-bold text-xs rounded border border-[#003cb3] flex items-center gap-1.5 cursor-pointer ml-auto"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-80"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+          </span>
+          <span>📝</span> Apply / Register
+        </button>
+        )}
+        <button onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /> XP Desktop</button>
+      </nav>
       <div className="portal-breadcrumb">IoSC Home &nbsp;›&nbsp; Welcome</div>
 
       <div className="portal-layout">
@@ -1183,9 +1345,16 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
             <div className="portal-section-title">
               <h2>Events Calendar</h2>
               <div className="flex items-center gap-2">
-                <button className="hidden px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-semibold cursor-pointer transition-colors flex items-center gap-1 shadow" onClick={() => setShowRegisterModal(true)}>
-                  📝 Register Now
+                {/* REGISTRATION SWITCH: hidden while closed. See lib/registration.ts */}
+                {REGISTRATIONS_OPEN && (
+                <button className="glowing-register-btn px-4 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded text-xs font-bold cursor-pointer transition-all flex items-center gap-2 border border-emerald-400/50" onClick={() => setShowRegisterModal(true)}>
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-90"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-300"></span>
+                  </span>
+                  <span>📝</span> Apply / Register Now
                 </button>
+                )}
                 <button onClick={() => openDesktop("events")}>Open event archive</button>
               </div>
             </div>
@@ -1201,7 +1370,10 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
 
         <aside className="portal-sidebar">
           <section><h2>Club links</h2>
-            {/* <button onClick={() => openDesktop("join")}><img src="/assets/icons/messenger.png" alt="" /><span><strong>Join IoSC</strong><small>Membership interest form</small></span></button> */}
+            {/* REGISTRATION SWITCH: hidden while closed. See lib/registration.ts */}
+            {REGISTRATIONS_OPEN && (
+            <button onClick={() => setShowRegisterModal(true)}><img src="/assets/icons/messenger.png" alt="" /><span><strong>Join IoSC / Apply</strong><small>Membership & Team Selection</small></span></button>
+            )}
             <button onClick={() => openDesktop("projects")}><img src="/assets/icons/folder.png" alt="" /><span><strong>Project archive</strong><small>Code, demos, and reports</small></span></button><button onClick={() => openDesktop("archive")}><img src="/assets/icons/notepad.png" alt="" /><span><strong>Club timeline</strong><small>Past sessions and milestones</small></span></button></section>
           <section><h2>Campus</h2><div className="portal-meeting"><strong>GGSIPU East Delhi Campus</strong><span>University School of Automation and Robotics</span><p>133, Patel Street, Vishwas Nagar, Shahdara, New Delhi 110032.</p></div></section>
           <section><h2>Official channels</h2><ul><li><a href="https://www.linkedin.com/company/iosc-usar/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li><li><a href="https://instagram.com/iosc_edc" target="_blank" rel="noreferrer">Instagram ↗</a></li><li><a href="https://youtube.com/@IoSCUSAR" target="_blank" rel="noreferrer">YouTube ↗</a></li><li><a href="https://linktr.ee/iosc_ggsipuedc" target="_blank" rel="noreferrer">All official links ↗</a></li></ul></section>
@@ -1212,7 +1384,7 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       <footer className="portal-footer"><div><strong>Intel oneAPI Student Club</strong><span>IoSC · Student chapter website</span></div><nav><a href="#about-club">About</a><a href="#club-projects">Projects</a><a href="#club-events">Events</a><button onClick={() => openDesktop()}>XP Desktop</button></nav><small>This student website is a design draft and is not an official Intel website.</small></footer>
     </div>
 
-    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button></div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
+    <footer className="taskbar guided-taskbar"><button className="start-button" onClick={() => openDesktop()}><img src="/assets/icons/windows.png" alt="" /><em>start</em></button><div className="quick-launch"><button title="Open XP desktop" onClick={() => openDesktop()}><img src="/assets/icons/computer.png" alt="" /></button><button title="IoSC Home" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><img src="/assets/icons/internet-explorer.png" alt="" /></button>{REGISTRATIONS_OPEN && <button title="Apply / Register Now" onClick={() => setShowRegisterModal(true)}><img src="/assets/icons/messenger.png" alt="" /></button>}</div><div className="task-divider" /><div className="task-items"><button className="active" onClick={() => document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })}><AppIcon id="projects" size="small" /><span>IoSC Home - Internet Explorer</span></button></div><div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div></footer>
 
     {showFormModal && (
       <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowFormModal(false)}>
@@ -1225,23 +1397,39 @@ function GuidedSite({ openDesktop, time, eventsList, onRefresh }: { openDesktop:
       </div>
     )}
 
-    {showRegisterModal && (
-      <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-start justify-center py-6 overflow-y-auto" onClick={() => setShowRegisterModal(false)}>
-        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-2xl p-3 max-h-[calc(100vh-3rem)] overflow-y-auto text-slate-900" onClick={(e) => e.stopPropagation()}>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-[#7f9db9] pb-3 mb-2">
-            <div>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <span className="text-emerald-400">📝</span> IoSC Event & Membership Registration
-              </h3>
-              <p className="text-xs text-slate-400">Submit your application to participate in upcoming events & workshops</p>
+    {/* REGISTRATION SWITCH: JoinForm system kept intact for reopen (see lib/registration.ts). Hidden while closed. */}
+    {REGISTRATIONS_OPEN && showRegisterModal && (
+      <div className="fixed inset-0 z-[110] bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200" onClick={() => setShowRegisterModal(false)}>
+        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-4 sm:p-6 max-h-[92vh] overflow-y-auto text-slate-900 animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between border-b border-[#7f9db9] pb-3 mb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">📝</span>
+              <div>
+                <h3 className="text-base font-bold text-[#0a246a]">
+                  IoSC Event & Membership Registration
+                </h3>
+                <p className="text-xs text-slate-600">Submit your application to participate in upcoming events & workshops</p>
+              </div>
             </div>
-            <button onClick={() => setShowRegisterModal(false)} className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors">
-              <X className="w-5 h-5" />
+            <button
+              onClick={() => setShowRegisterModal(false)}
+              className="w-6 h-6 bg-[#e81123] hover:bg-[#f45462] active:bg-[#c00f1c] text-white flex items-center justify-center font-bold text-xs rounded border border-white/80 cursor-pointer shadow-inner"
+              title="Close window"
+            >
+              ✕
             </button>
           </div>
-          <JoinForm />
+          <JoinForm onClose={() => setShowRegisterModal(false)} />
         </div>
       </div>
+    )}
+
+    {/* REGISTRATION SWITCH: auto-popup disabled while closed. See lib/registration.ts */}
+    {REGISTRATIONS_OPEN && showXpPopup && (
+      <XpNotificationPopup
+        onOpenRegistration={() => setShowRegisterModal(true)}
+        onClose={() => setShowXpPopup(false)}
+      />
     )}
   </main>;
 }
@@ -1265,7 +1453,13 @@ export default function Home() {
       const res = await fetchEvents();
       if (res && res.data && Array.isArray(res.data) && res.data.length > 0) {
         const formatted = res.data.map(formatEventForDisplay);
-        setEventsList(formatted);
+        const merged = [...defaultEvents];
+        formatted.forEach((item: typeof defaultEvents[number]) => {
+          if (!merged.some(e => e.title.toLowerCase() === item.title.toLowerCase())) {
+            merged.push(item);
+          }
+        });
+        setEventsList(merged);
       }
     } catch (err) {
       console.warn("Backend server offline or unreachable. Displaying fallback event list.", err);
@@ -1353,7 +1547,7 @@ export default function Home() {
       onPointerDown={() => focusWindow(win.id)}
     >
       <TitleBar id={win.id} active={active === win.id} maximized={win.maximized} onFocus={() => focusWindow(win.id)} onMinimize={() => minimizeWindow(win.id)} onMaximize={() => maximizeWindow(win.id)} onClose={() => closeWindow(win.id)} onDragStart={(event) => startDrag(win.id, event)} />
-      <div className="app-content"><AppContent id={win.id} openApp={openApp} eventsList={eventsList} onRefresh={loadEvents} onRegisterClick={() => setShowRegisterModal(true)} /></div>
+      <div className="app-content"><AppContent id={win.id} openApp={openApp} eventsList={eventsList} onRefresh={loadEvents} onRegisterClick={REGISTRATIONS_OPEN ? () => setShowRegisterModal(true) : undefined} /></div>
     </section>)}
 
     {contextMenu && <div className="context-menu" style={{ left: contextMenu.x, top: contextMenu.y }} onClick={event => event.stopPropagation()}><button onClick={() => setViewMode("guided")}>Open guided website</button><hr /><button onClick={() => openApp("about")}>Club properties</button></div>}
@@ -1369,21 +1563,29 @@ export default function Home() {
       <div className="system-tray"><span className="tray-hide">‹</span><Wifi /><Music2 /><span>{time}</span></div>
     </footer>
 
-    {showRegisterModal && (
-      <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-start justify-center py-6 overflow-y-auto" onClick={() => setShowRegisterModal(false)}>
-        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-2xl p-3 max-h-[calc(100vh-3rem)] overflow-y-auto text-slate-900" onClick={(e) => e.stopPropagation()}>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-[#7f9db9] pb-3 mb-2">
-            <div>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <span className="text-emerald-400">📝</span> IoSC Event & Membership Registration
-              </h3>
-              <p className="text-xs text-slate-400">Submit your application to participate in upcoming events & workshops</p>
+    {/* REGISTRATION SWITCH: JoinForm system kept intact for reopen (see lib/registration.ts). Hidden while closed. */}
+    {REGISTRATIONS_OPEN && showRegisterModal && (
+      <div className="fixed inset-0 z-[110] bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200" onClick={() => setShowRegisterModal(false)}>
+        <div className="relative mx-auto w-full max-w-2xl bg-[#ece9d8] rounded-xl border-4 border-[#0054e3] shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-4 sm:p-6 max-h-[92vh] overflow-y-auto text-slate-900 animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between border-b border-[#7f9db9] pb-3 mb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">📝</span>
+              <div>
+                <h3 className="text-base font-bold text-[#0a246a]">
+                  IoSC Event & Membership Registration
+                </h3>
+                <p className="text-xs text-slate-600">Submit your application to participate in upcoming events & workshops</p>
+              </div>
             </div>
-            <button onClick={() => setShowRegisterModal(false)} className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors">
-              <X className="w-5 h-5" />
+            <button
+              onClick={() => setShowRegisterModal(false)}
+              className="w-6 h-6 bg-[#e81123] hover:bg-[#f45462] active:bg-[#c00f1c] text-white flex items-center justify-center font-bold text-xs rounded border border-white/80 cursor-pointer shadow-inner"
+              title="Close window"
+            >
+              ✕
             </button>
           </div>
-          <JoinForm />
+          <JoinForm onClose={() => setShowRegisterModal(false)} />
         </div>
       </div>
     )}
@@ -1391,5 +1593,6 @@ export default function Home() {
 }
 
 function MousePointerIcon() { return <span className="pixel-pointer">↖</span>; }
+
 
 

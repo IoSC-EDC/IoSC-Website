@@ -18,13 +18,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@types/nodemailer": "^8.0.1",
+    "@types/ws": "^8.18.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
     "nodemailer": "^9.0.3",
     "pg": "^8.13.1",
+    "ws": "^8.21.3",
     "zod": "^3.24.1"
   },
   "devDependencies": {
