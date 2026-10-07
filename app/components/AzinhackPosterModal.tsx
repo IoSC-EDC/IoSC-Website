@@ -130,12 +130,12 @@ export default function AzinhackPosterModal() {
           </div>
 
           {/* TinyFish Sponsor Note */}
-          <div className="p-3 bg-[#161712] text-white rounded-xl flex items-center justify-between gap-3 text-xs">
+          <div className="p-3 bg-[#D8B4E2] text-white rounded-xl flex items-center justify-between gap-3 text-xs">
             <div className="flex items-center gap-2">
-              <Image src="/sponsors/tinyfish.svg" alt="TinyFish" width={85} height={20} className="invert brightness-200 object-contain" />
-              <span className="text-[#a6b5ca]">Title Sponsor & Mandatory Integration</span>
+              <Image src="/sponsors/tinyfish.svg" alt="TinyFish" width={85} height={20} className="object-contain" />
+              <span className="text-[#55286F]">Title Sponsor & Mandatory Integration</span>
             </div>
-            <span className="text-[#ff6700] font-mono text-[10px] font-bold">POWERED BY</span>
+            <span className="text-[#210B2C] font-mono text-[10px] font-bold">POWERED BY</span>
           </div>
 
           {/* CTA Buttons */}
