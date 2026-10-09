@@ -32,3 +32,154 @@ export const faqs = [
   { q: 'What is the team size?', a: 'Team size, eligibility, and participation requirements will be announced with the official registration details.' },
   { q: 'How will the prizes be distributed?', a: 'The total prize pool is ₹1,00,000. The final prize allocation and judging criteria will be announced by the organizers.' },
 ];
+
+export interface OrganizerMember {
+  id: string;
+  name: string;
+  role: string;
+  badge: string;
+  team: string;
+  image: string;
+  github?: string;
+  linkedin?: string;
+  bio?: string;
+  isSpecial?: boolean;
+  objectPosition?: string;
+}
+
+export const organizers: OrganizerMember[] = [
+  {
+    id: "pranshu-bansal",
+    name: "Pranshu Bansal",
+    role: "TinyFish Ambassador & i7 Gaming Co-Lead",
+    badge: "TINYFISH AMBASSADOR",
+    team: "TinyFish & i7 Gaming",
+    image: "/assets/i7/Pranshu-speaking-1.jpeg",
+    github: "https://github.com/Pranshu640",
+    linkedin: "https://www.linkedin.com/in/pranshu-bansal-dev/",
+    bio: "Building till codex limits hit",
+    isSpecial: true,
+  },
+  {
+    id: "piyush-gupta",
+    name: "Piyush Gupta",
+    role: "Organizer Head & IoSC Lead",
+    badge: "ORGANIZER HEAD",
+    team: "Club Leadership",
+    image: "/assets/leads/Piyush Gupta.jpg",
+    github: "https://github.com/Piyush-xo-19",
+    linkedin: "https://www.linkedin.com/in/piyush-gupta-358800324/",
+    bio: "Lead · Intel oneAPI Student Club",
+  },
+  {
+    id: "armaan-sheikh",
+    name: "Armaan",
+    role: "Organizer Head & IoSC Co-Lead",
+    badge: "ORGANIZER HEAD",
+    team: "Club Leadership",
+    image: "/assets/leads/IMG_20260612_211648_070 - Armaan _.jpg",
+    linkedin: "https://www.linkedin.com/in/armaansheikhh/",
+    bio: "Co-Lead · Intel oneAPI Student Club",
+  },
+  {
+    id: "waqar-akhtar",
+    name: "Waqar Akhtar",
+    role: "Organizer Head & Technical Lead",
+    badge: "ORGANIZER HEAD",
+    team: "Technical Team",
+    image: "/assets/leads/Waqar Akhtar.jpeg",
+    github: "https://github.com/Waqar080206",
+    linkedin: "https://www.linkedin.com/in/waqar08/",
+    bio: "Technical Lead · Intel oneAPI Student Club",
+  },
+  {
+    id: "rahul-bhatia",
+    name: "Rahul Bhatia",
+    role: "Organizer Head & Technical Co-Lead",
+    badge: "ORGANIZER HEAD",
+    team: "Technical Team",
+    image: "/assets/leads/Rahul Bhatia.jpeg",
+    github: "https://github.com/rahulbhatia775",
+    linkedin: "https://www.linkedin.com/in/rahul-bhatia-9782802b2/",
+    bio: "Technical Co-Lead · Intel oneAPI Student Club",
+  },
+  {
+    id: "mayank-bisht",
+    name: "Mayank Bisht",
+    role: "Software Team Lead",
+    badge: "TEAM LEAD",
+    team: "i3 : Software Development",
+    image: "/assets/i3/IMG-20250822-WA0032 - Mayank Bisht.jpg",
+    github: "https://github.com/mayankbisht-tech",
+    linkedin: "https://www.linkedin.com/in/mayankbisht011/",
+    bio: "Software Development Lead",
+  },
+  {
+    id: "pawan-yadav",
+    name: "Pawan Yadav",
+    role: "Software Team Co-Lead",
+    badge: "TEAM CO-LEAD",
+    team: "i3 : Software Development",
+    image: "/assets/i3/Pawan Yadav.jpg",
+    github: "https://github.com/pawanydv35",
+    linkedin: "https://www.linkedin.com/in/pawan-yadav17/",
+    bio: "Software Development Co-Lead",
+  },
+  {
+    id: "akshat-talwar",
+    name: "Akshat Talwar",
+    role: "IoT & Embedded Team Lead",
+    badge: "TEAM LEAD",
+    team: "i5 : IoT & Embedded",
+    image: "/assets/leads/image.png",
+    github: "https://github.com/akshattalwar001",
+    linkedin: "https://www.linkedin.com/in/akshat-talwar/",
+    bio: "IoT & Embedded Systems Lead",
+  },
+  {
+    id: "gurmehak-singh",
+    name: "Gurmehak Singh",
+    role: "IoT & Embedded Team Co-Lead",
+    badge: "TEAM CO-LEAD",
+    team: "i5 : IoT & Embedded",
+    image: "/assets/i5/Gurmehak-Singh.png",
+    github: "https://github.com/niggsingh20",
+    linkedin: "https://www.linkedin.com/in/gurmehak-singh-484763364/",
+    bio: "IoT & Embedded Systems Co-Lead",
+    objectPosition: "center top",
+  },
+  {
+    id: "manandeep-singh",
+    name: "Manandeep Singh Lamba",
+    role: "Gaming & Dev Team Lead",
+    badge: "TEAM LEAD",
+    team: "i7 : Gaming and Development",
+    image: "/assets/i7/MANANDEEP SINGH LAMBA.jpeg",
+    github: "https://github.com/ManandeepSingh1196",
+    linkedin: "https://www.linkedin.com/in/manandeep-singh-lamba/",
+    bio: "Gaming & Development Lead",
+  },
+  {
+    id: "avish-choudhary",
+    name: "Avish Choudhary",
+    role: "AI Development Team Lead",
+    badge: "TEAM LEAD",
+    team: "i9 : AI Development",
+    image: "/assets/i9/me - Avish Choudhary.png",
+    github: "https://github.com/choudhary-avish20",
+    linkedin: "https://www.linkedin.com/in/c2avish/",
+    bio: "AI Development Lead",
+  },
+  {
+    id: "dishita-sinha",
+    name: "Dishita Sinha",
+    role: "AI Development Team Co-Lead",
+    badge: "TEAM CO-LEAD",
+    team: "i9 : AI Development",
+    image: "/assets/i9/DS.jpeg",
+    github: "https://share.google/Av30hbYaudmSY48us",
+    linkedin: "https://in.linkedin.com/in/dsinha007",
+    bio: "AI Development Co-Lead",
+  },
+];
+

@@ -230,7 +230,7 @@ const teams: Team[] = [
     coLead: {
       name: "Gurmehak Singh",
       role: "Co Lead",
-      image: "/assets/i5/IMG_20260727_005348 - Gurmehak Singh.png",
+      image: "/assets/i5/Gurmehak-Singh.png",
       github: "https://github.com/niggsingh20",
       linkedin: "https://www.linkedin.com/in/gurmehak-singh-484763364",
       bio: "Some random nobody ~",
