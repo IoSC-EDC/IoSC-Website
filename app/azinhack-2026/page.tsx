@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { event, faqs, gallery, journey, organizers } from '../../lib/event';
+import { event, faqs, gallery, journey, organizers, communityPartners } from '../../lib/event';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -136,6 +136,7 @@ export default function AzinhackPage() {
         });
         gsap.from('.sponsor-card', { y: 30, opacity: 0, stagger: 0.12, duration: 0.6, ease: 'power2.out', scrollTrigger: { trigger: '#sponsors', start: 'top 75%', once: true } });
         gsap.from('.fish-copy, .terminal', { y: 40, opacity: 0, stagger: 0.1, duration: 0.75, ease: 'power2.out', scrollTrigger: { trigger: '#tinyfish', start: 'top 75%', once: true } });
+        gsap.from('.community-card', { y: 30, opacity: 0, stagger: 0.12, duration: 0.6, ease: 'power2.out', scrollTrigger: { trigger: '#community-partners', start: 'top 75%', once: true } });
         gsap.from('.organizer-card', { y: 30, opacity: 0, stagger: 0.08, duration: 0.6, ease: 'power2.out', scrollTrigger: { trigger: '#organizers', start: 'top 75%', once: true } });
       }
       ScrollTrigger.sort();
@@ -168,7 +169,7 @@ export default function AzinhackPage() {
       <header className="header">
         <button className="brand" onClick={() => navigate('home')} aria-label="AZINHACK home"><PixelStar /><span className="brand-word">AZIN<span className="brand-hack">HACK</span><span className="brand-year">’26</span></span></button>
         <nav id="mobile-nav" className={menuOpen ? 'nav is-open' : 'nav'} aria-label="Main navigation">
-          {[{ label: 'About', id: 'about' }, { label: 'Track', id: 'challenge' }, { label: 'Journey', id: 'journey' }, { label: 'Sponsors', id: 'sponsors' }, { label: 'Organizers', id: 'organizers' }, { label: 'Gallery', id: 'gallery' }].map(item => <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); navigate(item.id); }}>{item.label}</a>)}
+          {[{ label: 'About', id: 'about' }, { label: 'Track', id: 'challenge' }, { label: 'Journey', id: 'journey' }, { label: 'Sponsors', id: 'sponsors' }, { label: 'Partners', id: 'community-partners' }, { label: 'Organizers', id: 'organizers' }, { label: 'Gallery', id: 'gallery' }].map(item => <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); navigate(item.id); }}>{item.label}</a>)}
         </nav>
         <a className="header-cta" href={event.registrationUrl} target="_blank" rel="noopener noreferrer">Register now<span className="button-pixel" aria-hidden="true">✳</span></a>
         <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}>{menuOpen ? '−' : '+'}</button>
@@ -253,8 +254,47 @@ export default function AzinhackPage() {
         <div className="fish-layout"><div className="fish-copy"><a className="fish-brand" href={event.tinyfishUrl} target="_blank" rel="noopener noreferrer" aria-label="Create your TinyFish account"><Image src="/sponsors/tinyfish.svg" alt="TinyFish" width={731} height={166} /></a><h2>A BIG IDEA.<br />A <i>TINY FISH.</i></h2><p>Give your idea a connection to the live web. Discover information, read pages, or automate a useful website workflow.</p><p className="fish-requirement">Every AZINHACK project must integrate TinyFish.</p><a className="button button-dark" href={event.tinyfishUrl} target="_blank" rel="noopener noreferrer">Get started with TinyFish<PixelStar /></a></div><div className="terminal"><div className="terminal-bar mono"><span><i /><i /><i /></span><span>IDEA_TO_REALITY.ts</span><span>+</span></div><div className="terminal-body"><p className="terminal-comment">// good ideas need real-world input</p><p><span className="code-blue">const</span> problem = <span className="code-white">"something that matters"</span>;</p><p><span className="code-blue">const</span> possibility = <span className="code-white">"the live web"</span>;</p><p className="terminal-spacer"><span className="code-blue">build</span>({'{'}<br />&nbsp; yourIdea,<br />&nbsp; <span className="code-white">tinyfish</span><br />{'}'});</p><p className="terminal-comment">// make something worth showing<span className="terminal-cursor">▋</span></p></div><div className="terminal-resources mono"><a href="https://docs.tinyfish.ai/" target="_blank" rel="noopener noreferrer">DOCUMENTATION</a><a href={event.tinyfishUrl} target="_blank" rel="noopener noreferrer">CREATE AN ACCOUNT ↗</a></div></div></div>
       </section>
 
-      <section className="organizers-section scene dot-grid" id="organizers" data-chapter="07">
-        <SectionLabel number="07">THE MINDS BEHIND AZINHACK</SectionLabel>
+      <section className="community-section scene" id="community-partners" data-chapter="07">
+        <SectionLabel number="07">GROWING TOGETHER</SectionLabel>
+        <div className="community-heading" data-reveal>
+          <h2>COMMUNITY<br /><i>PARTNERS.</i></h2>
+          <p className="mono">THE ORGANIZATIONS & CLUBS<br />BUILDING WITH US.</p>
+        </div>
+        <div className="community-grid">
+          {communityPartners.map((partner) => (
+            <article className="community-card" key={partner.id} data-reveal>
+              <div className="community-card-top">
+                <span>{partner.role || 'COMMUNITY PARTNER'}</span>
+                <PixelStar />
+              </div>
+              <div className="community-partner-body">
+                <div className="community-logo-wrap">
+                  <Image src={partner.image} alt={partner.name} width={400} height={400} />
+                </div>
+                <div className="community-partner-info">
+                  <h3>{partner.name}</h3>
+                  {partner.description && <p>{partner.description}</p>}
+                </div>
+              </div>
+              <div className="community-socials">
+                {partner.instagram && (
+                  <a href={partner.instagram} target="_blank" rel="noopener noreferrer" className="community-social-btn">
+                    INSTAGRAM ↗
+                  </a>
+                )}
+                {partner.linkedin && (
+                  <a href={partner.linkedin} target="_blank" rel="noopener noreferrer" className="community-social-btn">
+                    LINKEDIN ↗
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="organizers-section scene dot-grid" id="organizers" data-chapter="08">
+        <SectionLabel number="08">THE MINDS BEHIND AZINHACK</SectionLabel>
         <div className="organizers-header" data-reveal>
           <div>
             <h2>MEET THE<br /><i>ORGANIZERS.</i></h2>
@@ -279,7 +319,7 @@ export default function AzinhackPage() {
         >
           <div className="organizer-track">
             {organizers.map((member) => {
-              const isHead = member.badge === 'ORGANIZER HEAD';
+              const isHead = member.badge === 'ORGANIZER HEAD' || member.badge === 'MAIN ORGANIZER';
               const isSpecial = member.isSpecial;
               return (
                 <article key={member.id} className={`organizer-card ${isSpecial ? 'is-special' : ''} ${isHead ? 'is-head' : ''}`}>
@@ -351,20 +391,21 @@ export default function AzinhackPage() {
         </div>
       </section>
 
-      <section className="faq-section" id="faq" data-chapter="08"><SectionLabel number="08">BEFORE YOU BUILD</SectionLabel><div className="faq-layout"><div><h2>GOOD<br /><i>QUESTIONS.</i></h2><p>A few things to know<br />before the first line of code.</p></div><div className="faq-list">{faqs.map((item, i) => <details key={item.q} onToggle={() => ScrollTrigger.refresh()}><summary><span className="faq-index mono">0{i + 1}</span><span>{item.q}</span><span className="faq-plus" aria-hidden="true">+</span></summary><p>{item.a}{item.link && <><br /><a className="text-link" href={item.link} target="_blank" rel="noopener noreferrer">{item.linkLabel} ↗</a></>}</p></details>)}</div></div></section>
+      <section className="faq-section" id="faq" data-chapter="09"><SectionLabel number="09">BEFORE YOU BUILD</SectionLabel><div className="faq-layout"><div><h2>GOOD<br /><i>QUESTIONS.</i></h2><p>A few things to know<br />before the first line of code.</p></div><div className="faq-list">{faqs.map((item, i) => <details key={item.q} onToggle={() => ScrollTrigger.refresh()}><summary><span className="faq-index mono">0{i + 1}</span><span>{item.q}</span><span className="faq-plus" aria-hidden="true">+</span></summary><p>{item.a}{item.link && <><br /><a className="text-link" href={item.link} target="_blank" rel="noopener noreferrer">{item.linkLabel} ↗</a></>}</p></details>)}</div></div></section>
 
-      <section className="gallery-section scene" id="gallery" data-chapter="09">
-        <SectionLabel number="09">FROM THE COMMUNITY</SectionLabel>
+      <section className="gallery-section scene" id="gallery" data-chapter="10">
+        <SectionLabel number="10">FROM THE COMMUNITY</SectionLabel>
         <div className="gallery-heading"><h2>GOOD PEOPLE.<br /><i>GREAT POSSIBILITIES.</i></h2><span className="mono">THE COMMUNITY ARCHIVE<br />SCROLL. EXPLORE. REMEMBER.</span></div>
         <div className="gallery-window" data-lenis-prevent><div className="gallery-track">{gallery.map((item, i) => <button className="photo-card" key={item.src} onClick={() => setPhoto(i)} aria-label={`Open photo ${i + 1}: ${item.alt}`}><div className="photo-image"><Image src={item.src} alt={item.alt} width={1600} height={1200} sizes="(max-width: 700px) 85vw, 48vw" /><span className="photo-expand" aria-hidden="true">+</span></div><div className="photo-caption"><span className="mono">FRAME_0{i + 1}</span><span>{item.caption}</span></div></button>)}</div></div>
         <div className="gallery-bottom mono"><span>THE PEOPLE BEHIND THE POSSIBILITY.</span><span>CLICK A FRAME TO TAKE A CLOSER LOOK</span></div>
       </section>
 
       <footer><div className="footer-top"><div><span className="mono">21–22 OCTOBER · GGSIPU USAR</span><h2>GOT A <i>WHAT IF?</i><br />LET’S BUILD IT.</h2></div><a className="button button-white" href={event.registrationUrl} target="_blank" rel="noopener noreferrer">Register now<PixelStar /></a></div><div className="footer-word" aria-label="AZINHACK ’26"><span className="footer-name">AZIN<span className="footer-hack">HACK</span></span><span className="footer-year">’26</span></div><div className="footer-bottom mono"><span>ORGANIZED BY IoSC<br />INTEL oneAPI STUDENT CLUB · GGSIPU EDC</span><a href="/azinhack-26.ics" download>SAVE THE DATE</a><button className="motion-control" aria-pressed={motionPaused} onClick={() => setMotionPaused(!motionPaused)}>{motionPaused ? 'ENABLE MOTION' : 'PAUSE MOTION'}</button><button onClick={() => navigate('home')}>BACK TO TOP +</button></div></footer>
-      <div className="chapter-indicator mono" aria-hidden="true"><span>{chapter}</span><span>/ 09</span></div>
+      <div className="chapter-indicator mono" aria-hidden="true"><span>{chapter}</span><span>/ 10</span></div>
 
       <dialog ref={galleryDialog} className="gallery-dialog" aria-label="Community photo viewer" data-lenis-prevent onCancel={e => { e.preventDefault(); closePhoto(); }} onClose={() => { setPhoto(null); lenis.current?.start(); }} onClick={e => { if (e.target === e.currentTarget) closePhoto(); }} onKeyDown={e => { if (e.key === 'ArrowRight') changePhoto(1); if (e.key === 'ArrowLeft') changePhoto(-1); }}><button className="dialog-close" onClick={closePhoto} aria-label="Close photo viewer">×</button>{photo !== null && <><Image src={gallery[photo].src} alt={gallery[photo].alt} width={1600} height={1200} sizes="95vw" /><div className="viewer-bottom"><button onClick={() => changePhoto(-1)} aria-label="Previous photo">PREV</button><span>{gallery[photo].caption}<small className="mono">{String(photo + 1).padStart(2, '0')} / {String(gallery.length).padStart(2, '0')}</small></span><button onClick={() => changePhoto(1)} aria-label="Next photo">NEXT</button></div></>}</dialog>
     </main>
   );
 }
+
 

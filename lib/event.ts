@@ -51,13 +51,13 @@ export const organizers: OrganizerMember[] = [
   {
     id: "pranshu-bansal",
     name: "Pranshu Bansal",
-    role: "TinyFish Ambassador & i7 Gaming Co-Lead",
-    badge: "TINYFISH AMBASSADOR",
-    team: "TinyFish & i7 Gaming",
+    role: "Main Organizer & TinyFish Ambassador",
+    badge: "MAIN ORGANIZER",
+    team: "Main Organizer · TinyFish",
     image: "/assets/i7/Pranshu-speaking-1.jpeg",
     github: "https://github.com/Pranshu640",
     linkedin: "https://www.linkedin.com/in/pranshu-bansal-dev/",
-    bio: "Building till codex limits hit",
+    bio: "Main Organizer & TinyFish Student Ambassador",
     isSpecial: true,
   },
   {
@@ -182,4 +182,27 @@ export const organizers: OrganizerMember[] = [
     bio: "AI Development Co-Lead",
   },
 ];
+
+export interface CommunityPartner {
+  id: string;
+  name: string;
+  role?: string;
+  image: string;
+  instagram?: string;
+  linkedin?: string;
+  description?: string;
+}
+
+export const communityPartners: CommunityPartner[] = [
+  {
+    id: "techspace-usict",
+    name: "TechSpace USICT",
+    role: "Community Partner",
+    image: "/assets/community/techspace.jpeg",
+    instagram: "https://www.instagram.com/techspace_usict?stkn=aXUweHkwa2hsdzJm",
+    linkedin: "https://www.linkedin.com/company/techspace-usict/",
+    description: "Official Tech Club of USICT · GGSIPU",
+  },
+];
+
 
