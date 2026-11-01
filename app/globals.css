@@ -1261,6 +1261,37 @@ textarea:focus-visible {
     color: #204f88;
 }
 
+.detail-social-links {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.detail-social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.detail-social-links a span {
+    color: #204f88;
+}
+
+.detail-social-links a:hover {
+    color: #0b57d0;
+    text-decoration: underline;
+}
+
+.detail-social-links svg {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+}
+
 /* Members Explorer */
 .explorer-app,
 .browser-app,
@@ -7416,7 +7447,10 @@ textarea:focus-visible {
 }
 
 .team-explorer-shell .xp-member-list {
-    flex: 0 0 auto;
+    flex: 0 1 180px;
+    min-height: 0;
+    max-height: 180px;
+    overflow-y: auto;
     border-top: 1px solid #7f9db9;
     background: #fff;
     font: 10px Tahoma, Arial, sans-serif
@@ -7707,6 +7741,13 @@ textarea:focus-visible {
 
 .team-explorer-shell .team-profile-pane {
     background: linear-gradient(135deg, #fff 0%, #fbfdff 60%, #edf6fd 100%)
+}
+
+.team-explorer-shell .xp-empty-state {
+    padding: 28px 20px;
+    color: #555;
+    font: 12px Tahoma, Arial, sans-serif;
+    text-align: center
 }
 
 .team-explorer-shell .xp-person-preview {
