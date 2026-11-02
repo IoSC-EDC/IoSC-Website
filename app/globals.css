@@ -7965,3 +7965,473 @@ textarea:focus-visible {
     transform: scale(1.06) !important;
     box-shadow: 0 0 30px rgba(59, 130, 246, 1), 0 0 52px rgba(0, 225, 255, 0.95), inset 0 0 18px rgba(255, 255, 255, 0.95) !important;
 }
+
+/* ==========================================================================
+   Mobile UX & Responsiveness Enhancements (IoSC-EDC)
+   Ensures seamless navigation, legible typography, and touch-friendly controls
+   without modifying desktop XP visual theme or logic.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Base layout fixes */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+
+    .guided-shell {
+        width: 100% !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    /* Boot screen scaling on mobile */
+    .boot-brand {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-top: -10px !important;
+        text-align: center !important;
+    }
+
+    .boot-brand > div {
+        font-size: clamp(28px, 8vw, 38px) !important;
+        letter-spacing: -1.5px !important;
+    }
+
+    .boot-brand strong {
+        font-size: clamp(20px, 6vw, 26px) !important;
+        letter-spacing: -0.5px !important;
+    }
+
+    /* Guided Browser Chrome */
+    .guided-browser-chrome .window-titlebar {
+        padding: 0 6px !important;
+    }
+
+    .guided-browser-chrome .window-title {
+        min-width: 0 !important;
+        flex: 1 !important;
+    }
+
+    .guided-browser-chrome .window-title span:last-child {
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+    }
+
+    .guided-minimal-toolbar {
+        padding: 3px 6px !important;
+        gap: 6px !important;
+    }
+
+    .guided-minimal-toolbar .address-bar > span {
+        display: none !important;
+    }
+
+    .guided-minimal-toolbar .address-bar > div p {
+        font-size: 10px !important;
+    }
+
+    .guided-minimal-toolbar > button {
+        white-space: nowrap !important;
+        font-size: 10px !important;
+        padding: 0 6px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Portal Navigation Bar - Touch-friendly smooth scroll */
+    .portal-nav {
+        display: flex !important;
+        position: sticky !important;
+        top: 58px !important;
+        z-index: 95 !important;
+        height: auto !important;
+        min-height: 40px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        padding: 4px 6px !important;
+        gap: 4px !important;
+        background: #175f94 !important;
+        align-items: center !important;
+    }
+
+    .portal-nav::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .portal-nav-brand {
+        display: inline-flex !important;
+        align-items: center !important;
+        font-size: 13px !important;
+        min-width: auto !important;
+        padding: 0 8px 0 4px !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.25) !important;
+    }
+
+    .portal-nav a,
+    .portal-nav button {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+        padding: 6px 10px !important;
+        min-height: 30px !important;
+        border-radius: 3px !important;
+    }
+
+    .portal-nav button {
+        margin-left: 4px !important;
+    }
+
+    /* Hero Section */
+    .portal-main {
+        padding: 8px 8px 16px !important;
+    }
+
+    .portal-hero,
+    .portal-section {
+        width: 100% !important;
+        min-height: auto !important;
+        margin-bottom: 14px !important;
+        border-radius: 6px !important;
+        border: 2px solid #0054e3 !important;
+        box-shadow: 0 4px 14px rgba(0, 35, 80, 0.25) !important;
+    }
+
+    .portal-hero {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 24px 16px !important;
+        gap: 18px !important;
+    }
+
+    .portal-hero h1 {
+        font-size: clamp(26px, 7vw, 36px) !important;
+        line-height: 1.2 !important;
+        margin: 8px 0 12px !important;
+    }
+
+    .portal-hero > div:first-child > p {
+        font-size: 11px !important;
+        letter-spacing: 0.5px !important;
+        margin: 0 !important;
+    }
+
+    .portal-hero > div:first-child > span {
+        font-size: 13px !important;
+        line-height: 1.55 !important;
+        display: block !important;
+        margin-bottom: 14px !important;
+    }
+
+    .portal-hero a,
+    .portal-hero button {
+        min-height: 40px !important;
+        padding: 10px 18px !important;
+        font-size: 12px !important;
+    }
+
+    .portal-code {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 0 !important;
+        border-radius: 4px !important;
+    }
+
+    .portal-code pre {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        font-size: 11px !important;
+        padding: 12px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Portal Sections General */
+    .portal-section {
+        padding: 20px 14px !important;
+    }
+
+    .portal-section > h2 {
+        font-size: 18px !important;
+        margin: 0 0 10px !important;
+    }
+
+    .portal-section > p {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+        margin: 8px 0 !important;
+    }
+
+    .portal-section-title {
+        height: auto !important;
+        min-height: 44px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        padding: 8px 10px !important;
+    }
+
+    .portal-section-title h2 {
+        font-size: 18px !important;
+        margin: 0 !important;
+    }
+
+    .portal-section-title button {
+        max-width: 100% !important;
+        font-size: 11px !important;
+        min-height: 32px !important;
+        white-space: normal !important;
+    }
+
+    /* What we do / Track list */
+    .portal-track-list {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    .portal-track-list article {
+        min-height: auto !important;
+        padding: 12px 14px !important;
+        display: flex !important;
+        gap: 12px !important;
+        align-items: flex-start !important;
+        border-radius: 4px !important;
+    }
+
+    .portal-track-list article b {
+        font-size: 16px !important;
+        line-height: 1 !important;
+        margin-top: 2px !important;
+    }
+
+    .portal-track-list article h3 {
+        font-size: 14px !important;
+        margin: 0 0 4px !important;
+    }
+
+    .portal-track-list article p {
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+        margin: 0 !important;
+    }
+
+    /* Projects Table Mobile Layout */
+    .portal-project-table {
+        border-radius: 4px !important;
+        overflow: hidden !important;
+    }
+
+    .portal-project-table article {
+        display: grid !important;
+        grid-template-columns: 36px 1fr !important;
+        gap: 8px 10px !important;
+        padding: 12px 10px !important;
+        align-items: start !important;
+    }
+
+    .portal-project-table article > div:first-child {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 4px !important;
+    }
+
+    .portal-project-table article section h3 {
+        font-size: 13px !important;
+        margin: 0 !important;
+    }
+
+    .portal-project-table article section p {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        margin: 3px 0 !important;
+    }
+
+    .portal-project-table article section small {
+        font-size: 10px !important;
+    }
+
+    .portal-project-table article > div:last-child {
+        grid-column: 1 / -1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding-top: 6px !important;
+        border-top: 1px dashed #d6e0e6 !important;
+        margin-top: 2px !important;
+    }
+
+    /* Events Calendar - Legible on Mobile */
+    .portal-events {
+        font-size: 12px !important;
+        width: 100% !important;
+    }
+
+    .portal-events th,
+    .portal-events td {
+        height: auto !important;
+        padding: 9px 8px !important;
+    }
+
+    .portal-events th:nth-child(3),
+    .portal-events td:nth-child(3),
+    .portal-events th:nth-child(4),
+    .portal-events td:nth-child(4) {
+        display: none !important;
+    }
+
+    .portal-events td strong {
+        font-size: 12px !important;
+        display: block !important;
+    }
+
+    /* Portal Sidebar & Official Links */
+    .portal-sidebar {
+        margin-top: 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .portal-sidebar section {
+        padding: 14px 14px !important;
+        border-radius: 4px !important;
+    }
+
+    .portal-sidebar section h2 {
+        font-size: 14px !important;
+    }
+
+    .portal-sidebar section ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px 12px !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+
+    /* Portal Footer */
+    .portal-footer {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 16px 12px !important;
+        text-align: center !important;
+    }
+
+    .portal-footer nav {
+        justify-content: center !important;
+        gap: 10px 14px !important;
+    }
+
+    /* Taskbar on Mobile */
+    .taskbar {
+        height: 34px !important;
+        padding: 0 4px !important;
+    }
+
+    .start-button {
+        width: 80px !important;
+        height: 28px !important;
+        font-size: 11px !important;
+        gap: 4px !important;
+    }
+
+    .task-items {
+        flex: 1 !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .task-items > button {
+        max-width: 130px !important;
+        padding: 2px 6px !important;
+    }
+
+    .task-items > button span {
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+    }
+
+    /* Windows Explorer / Teams Panel Mobile Polish */
+    .team-explorer-shell .explorer-main {
+        grid-template-columns: 1fr !important;
+    }
+
+    .team-explorer-shell .explorer-sidebar {
+        max-height: 180px !important;
+        overflow-y: auto !important;
+        border-right: 0 !important;
+        border-bottom: 2px solid #7191b8 !important;
+        padding: 6px !important;
+    }
+
+    .team-explorer-shell .xp-person-preview {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 14px 10px !important;
+        gap: 10px !important;
+    }
+
+    .team-explorer-shell .xp-person-preview dl {
+        border-left: 0 !important;
+        padding-left: 0 !important;
+        text-align: left !important;
+        margin: 6px auto !important;
+    }
+
+    .team-explorer-shell .xp-person-preview p {
+        display: block !important;
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        margin-top: 6px !important;
+    }
+
+    .team-explorer-shell .xp-person-social {
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-top: 8px !important;
+    }
+
+    .team-explorer-shell .xp-person-social a {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        padding: 4px 10px !important;
+        border: 1px solid #7f9db9 !important;
+        border-radius: 4px !important;
+        background: #fff !important;
+        font-size: 11px !important;
+        color: #154d84 !important;
+        text-decoration: none !important;
+    }
+
+    /* Start Menu on Mobile */
+    .start-menu {
+        width: min(340px, 96vw) !important;
+        left: 2vw !important;
+    }
+
+    .start-content {
+        min-height: auto !important;
+    }
+
+    .start-left button span strong,
+    .start-right button span {
+        font-size: 11px !important;
+    }
+}
