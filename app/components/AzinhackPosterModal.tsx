@@ -20,14 +20,14 @@ function PixelStar({ className = "" }: { className?: string }) {
 export default function AzinhackPosterModal() {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    // Open the poster 2 seconds after page mounts (after boot screen / load completes)
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 2000);
+  // useEffect(() => {
+  //   // Open the poster 2 seconds after page mounts (after boot screen / load completes)
+  //   const timer = setTimeout(() => {
+  //     setIsOpen(true);
+  //   }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

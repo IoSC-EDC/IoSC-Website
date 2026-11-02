@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft, ArrowRight, Bot, CalendarDays, Car, Check, ChevronRight,
-  Code2, Computer, Cpu, Droplets, FileText, Folder, FolderOpen, Github, Linkedin, Globe2,
+  Code2, Computer, Cpu, Droplets, FileText, Folder, FolderOpen, Linkedin, Instagram, Github, Globe2,
   HelpCircle, Info, Mail, MapPin, Maximize2, MessageCircle, Minus, Monitor,
   MoreHorizontal, Music2, Plus, Power, Search, Send, Settings, Sparkles, Trophy,
   Wifi, X
@@ -38,8 +38,8 @@ type Team = {
   name: string;
   image: string;
   description: string;
-  lead: TeamMember;
-  coLead: TeamMember;
+  lead?: TeamMember;
+  coLead?: TeamMember;
   members: TeamMember[];
 };
 
@@ -154,7 +154,7 @@ const clubLeadership = [
   {
     title: "Technical Lead",
     name: "Waqar Akhtar",
-    image: "/assets/leads/Waqar Akhtar.jpeg",
+    image: "/assets/leads/Waqar Akhtar.jpg",
     github: "https://github.com/Waqar080206",
     linkedin: "https://www.linkedin.com/in/waqar08/",
     bio: "Artificial intelligence is no match for natural stupidity",
@@ -207,8 +207,48 @@ const teams: Team[] = [
         role: "Member",
         image: "/assets/i3/Prabhat Kumar - Prabhat Kumar.png",
         github: "https://github.com/PrabhatKumar-06",
-        // linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/prabhat-kumar-9b9295430/",
         bio: "Heavy are the hands that center a div.",
+      },
+      {
+        name: "Pushkar Kumar Purve",
+        role: "Member",
+        image: "/assets/i3/Pushkar.jpeg",
+        github: "https://github.com/PushkarKrPurve",
+        linkedin: "https://www.linkedin.com/in/pushkarkrpurve/",
+        bio: "Too lazy to write a bio.",
+      },
+      {
+        name: "Piyush Rawat ",
+        role: "Member",
+        image: "/assets/i3/Piyush Rawat.jpg",
+        github: "https://github.com/Piyush-Rawat-08",
+        linkedin: "https://www.linkedin.com/in/piyush-rawat-016546373/",
+        bio: "Crafting Clean Code for the Modern Web.",
+      },
+      {
+        name: "Deep Mishra ",
+        role: "Member",
+        image: "/assets/i3/DeepMishra.jpg",
+        github: "https://github.com/Deep-mishra-123",
+        linkedin: "https://www.linkedin.com/in/deepmishra26",
+        bio: "Building AI-powered products with full-stack development, IoT, and Agentic Ai.",
+      },
+      {
+        name: "Meghna Nanda ",
+        role: "Member",
+        image: "/assets/i3/Meghna Nanda.jpg",
+        github: "https://github.com/excadrill1234",
+        linkedin: "https://www.linkedin.com/in/meghna-nanda-224006432?trk=contact-info",
+        bio: "Open source,Open future",
+      },
+      {
+        name: "Priyanshu",
+        role: "Member",
+        image: "/assets/i3/Priyanshu Kumar.jpg",
+        github: "https://github.com/Priyansh7u",
+        linkedin: "https://www.linkedin.com/in/priyanshu-kumar-917733378/",
+        bio: "Web Developer ",
       },
     ],
   },
@@ -222,34 +262,36 @@ const teams: Team[] = [
     lead: {
       name: "Akshat Talwar",
       role: "Team Lead",
-      image: "/assets/leads/image.png",
+      image: "/assets/i5/Akshat Talwar.jpg",
       github: "https://github.com/akshattalwar001",
       linkedin: "https://www.linkedin.com/in/akshat-talwar/",
+      bio: "Trying to do better",
     },
 
     coLead: {
       name: "Gurmehak Singh",
       role: "Co Lead",
-      image: "/assets/i5/Gurmehak-Singh.png",
-      github: "https://github.com/niggsingh20",
+      image: "/assets/i5/Gurmehak Singh.jpg",
+      github: "https://github.com/gmsmehak850-debug",
       linkedin: "https://www.linkedin.com/in/gurmehak-singh-484763364",
-      bio: "Some random nobody ~",
+      bio: "Who's gonna carry the boats",
     },
 
     members: [
       {
         name: "Shourya Upadhyay",
         role: "Member",
-        image: "/assets/i5/20260708_114840 - Shourya Upadhyay.jpg",
+        image: "/assets/i5/Shourya Upadhyay.png",
         github: "https://github.com/shouryaupadhyay2029",
         // linkedin: "#",
+        bio: "Creative",
       },
       {
         name: "Aditya Bhatnagar",
         role: "Member",
         image: "/assets/i5/IMG_20260130_044912_379 - Aditya Bhatnagar.webp",
         github: "https://github.com/adityabhatnagar1",
-        // linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/adityabhatnagar1/",
         bio: "If there is a God, he's a great Mathematician!",
       },
       {
@@ -266,14 +308,47 @@ const teams: Team[] = [
         image: "/assets/i5/RP.jpeg",
         github: "https://github.com/rudrapaliwal-1",
         linkedin: "https://www.linkedin.com/in/rudra-narayan-paliwal/",
+        bio: "Awakened minds rarely rests",
       },
       {
         name: "Parshv jain",
         role: "Member",
-        image: "/assets/i5/PS.jpeg",
-        github: "https://github.com/parshvjain1912-byte/sheild-x",
+        image: "/assets/i5/Parshv Jain.jpg",
+        github: "https://github.com/parshvjain1912-byte",
         linkedin: "https://www.linkedin.com/in/parshv-jain-46a066380/",
-        // bio: "Building AI, vision & immersive experiences.",
+        bio: "Work hard ",
+      },
+      {
+        name: "Abhimanyu Shukla ",
+        role: "Member",
+        image: "/assets/i5/Abhimanyu Shukla.png",
+        github: "https://github.com/abhimanyushukla1214-design",
+        linkedin: "https://www.linkedin.com/in/abhimanyu-shukla-undefined-a88775332?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        bio: "Curious Mind, Relentless Executor",
+      },
+      {
+        name: "Aman Negi",
+        role: "Member",
+        image: "/assets/i5/Aman Negi.jpg",
+        github: "https://github.com/AmanNegi778",
+        linkedin: "https://www.linkedin.com/in/aman-negi-8a70aa380/",
+        bio: "Always Improving",
+      },
+      {
+        name: "Tejas kapoor",
+        role: "Member",
+        image: "/assets/i5/Tejas Kapoor.jpg",
+        github: "https://github.com/TejasKapoor0353",
+        linkedin: "https://www.linkedin.com/in/tejas-kapoor-a43328382",
+        bio: "I make things happen ",
+      },
+      {
+        name: "Japleen kaur",
+        role: "Member",
+        image: "/assets/i5/Japleen Kaur.jpg",
+        github: "https://github.com/japleenkCODES",
+        linkedin: "#",
+        bio: "With great power comes great pull requests.",
       },
     ],
   },
@@ -289,8 +364,8 @@ const teams: Team[] = [
       role: "Team Lead",
       image: "/assets/i7/MANANDEEP SINGH LAMBA.jpeg",
       github: "https://github.com/ManandeepSingh1196",
-      linkedin: "https://www.linkedin.com/in/manandeep-singh-lamba/",
-      // bio: " ",
+      linkedin: "https://www.linkedin.com/in/manandeep-singh-lamba",
+      bio: "God Bless Dick Cheney's America",
     },
 
     coLead: {
@@ -299,7 +374,7 @@ const teams: Team[] = [
       image: "/assets/i7/Pranshu-speaking-1.jpeg",
       github: "https://github.com/Pranshu640",
       linkedin: "https://www.linkedin.com/in/pranshu-bansal-dev/",
-      bio: "Building till codex limits hit",
+      bio: "Fixing Vibe Coded Mess",
       status: 'IoSCBounty{"Hi Lol"}',
     },
 
@@ -307,10 +382,10 @@ const teams: Team[] = [
       {
         name: "Akul Malik",
         role: "Member",
-        image: "/assets/i7/IMG-20260606-WA0023~2 - Akul Malik.jpg",
-        github: "https://github.com/akul1301",
-        linkedin: "https://www.linkedin.com/in/akul-malik-b65216324/",
-        bio: "Data Anal-yst",
+        image: "/assets/i7/Akul Malik.jpg",
+        github: "https://github.com/Akul1301",
+        linkedin: "https://www.linkedin.com/in/akul-malik-b65216324",
+        bio: "Idek anymore",
       },
       {
         name: "Vishesh Sagar",
@@ -318,7 +393,7 @@ const teams: Team[] = [
         image: "/assets/i7/WhatsApp Image 2026-07-26 at 22.07.39 - Vishesh Sagar.jpeg",
         github: "https://github.com/visheshsagar0501-prog",
         linkedin: "https://www.linkedin.com/in/vishesh-sagar-723704362/",
-        bio: "Professional Ctrl + C, ctrl + V ; Part time coder",
+        bio: "Don't wanna ctrl + C , ctrl + V again ",
       },
       {
         name: "Mohd Ayan",
@@ -331,18 +406,42 @@ const teams: Team[] = [
       {
         name: "Tushar Singh",
         role: "Member",
-        image: "/assets/i7/TS.jpeg",
+        image: "/assets/i7/Tushar Singh.jpg",
         github: "https://github.com/tusharsingh3199",
         linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
-        bio: "Building AI, vision & immersive experiences.",
+        bio: "Eureka....",
+      },
+      {
+        name: "Tanishq",
+        role: "Member",
+        image: "/assets/i7/Tanishq.jpg",
+        github: "https://github.com/Ghost-Tanishq",
+        linkedin: "https://www.linkedin.com/in/tanishq-koli-58a30637a",
+        bio: "Did I ever tell you what the definition of insanity is? ",
       },
       {
         name: "Aditya Dash",
         role: "Member",
-        image: "/assets/i7/AD.jpeg",
+        image: "/assets/i7/Aaditya Dash.jpeg",
         github: "https://github.com/ozzymandias1576",
-        // linkedin: "https://www.linkedin.com/in/tushar-singh-97526a379/",
-        // bio: "Building AI, vision & immersive experiences.",
+        linkedin: "https://in.linkedin.com/in/aaditya-dash-3322b6261",
+        bio: "I am a Future Game Developer.",
+      },
+      {
+        name: "Hiren Dahiya ",
+        role: "Member",
+        image: "/assets/i7/HIREN DAHIYA.jpg",
+        github: "https://github.com/dahiyahiren1206-rgb",
+        linkedin: "https://www.linkedin.com/in/hiren-dahiya-307b07314",
+        bio: "Student who loves learning new things, exploring technology, building projects, and improving my skills one step at a time.",
+      },
+      {
+        name: "Dhruv Anand Singh ",
+        role: "Member",
+        image: "/assets/i7/Dhruv - Dhruv Singh.png",
+        github: "https://github.com/IamSoDeadxD",
+        linkedin: "https://www.linkedin.com/in/dhruv-singh-xd/",
+        bio: "Let It All Work Out",
       },
 
     ],
@@ -357,28 +456,28 @@ const teams: Team[] = [
     lead: {
       name: "Avish Choudhary",
       role: "Team Lead",
-      image: "/assets/i9/me - Avish Choudhary.png",
+      image: "/assets/i9/Avish Choudhary.jpg",
       github: "https://github.com/choudhary-avish20",
       linkedin: "https://www.linkedin.com/in/c2avish/",
-      bio: "Works, but makes sad noises",
+      bio: "Work??",
     },
 
     coLead: {
       name: "Dishita Sinha",
       role: "Co Lead",
       image: "/assets/i9/DS.jpeg",
-      github: "https://share.google/Av30hbYaudmSY48us",
+      github: "https://github.com/Dsinha04",
       linkedin: "https://in.linkedin.com/in/dsinha007",
       bio: "Late nights. Quiet screens. Beautiful logic",
     },
 
     members: [
       {
-        name: "PUSHPENDRA SINGH",
+        name: "Pushpendra Singh",
         role: "Member",
-        image: "/assets/i9/IMG-20260411-WA0020 - PUSHPENDRA SINGH.jpg",
-        github: "https://github.com/Pushpendra2006/Pushpendra2006",
-        linkedin: "https://www.linkedin.com/in/pushpendra-singh-69a768333/",
+        image: "/assets/i9/PUSHPENDRA SINGH.jpg",
+        github: "https://github.com/Pushpendra2006",
+        linkedin: "https://www.linkedin.com/in/pushpendra-singh-",
         bio: "Most people ask AI for answers.I spend time figuring out how AI finds them",
       },
       {
@@ -387,23 +486,23 @@ const teams: Team[] = [
         image: "/assets/i9/College photo - Chaitanya Mangla.jpeg",
         github: "https://github.com/cmangla581",
         linkedin: "https://www.linkedin.com/in/chaitanya-mangla-252606377/",
-        bio: "Passionate about Mathematics, Physics and Artificial Intelligence.  Also, allergic to giving up.",
+        bio: "Allergic to giving up.",
       },
       {
         name: "Ananya Sharma",
         role: "Member",
-        image: "/assets/i9/IMG_20260726_181547 - Ananya Sharma.jpg",
+        image: "/assets/i9/Ananya Sharma.jpg",
         github: "https://github.com/ananya-builds",
-        linkedin: "https://www.linkedin.com/in/ananya-sharma-278a85381/",
+        linkedin: "https://www.linkedin.com/in/ananya-sharma-278a85381",
         bio: "Core Member - Team i9 | Turning data into decisions",
       },
       {
         name: "Richik Das",
         role: "Member",
-        image: "/assets/i9/WhatsApp Image 2026-07-26 at 21.55.35 - Richik Das.jpeg",
+        image: "/assets/i9/Richik Das.jpg",
         github: "https://github.com/Richik06",
         linkedin: "https://www.linkedin.com/in/richik-das-7aa8b12b7/",
-        bio: "Aspiring AI Engineer",
+        bio: "Nothing ",
       },
       {
         name: "Anannya Negi",
@@ -424,18 +523,18 @@ const teams: Team[] = [
       {
         name: "Anujot Singh",
         role: "Member",
-        image: "/assets/i9/Anujot Singh.jpg",
+        image: "/assets/i9/Anujot Singh.png",
         github: "https://github.com/anujott-codes",
         linkedin: "https://www.linkedin.com/in/anujotsingh/",
-        bio: "Core Member - Team i9",
+        bio: "cheetaaahhhh",
       },
       {
         name: "Shifali",
         role: "Member",
         image: "/assets/i9/Shifali.jpg",
         github: "https://github.com/shifali0156-wq",
-        // linkedin: "#",
-        bio: "Just another runner in the rat race.",
+        linkedin: "https://www.linkedin.com/in/shifali-559168379",
+        bio: "Need help? Ask me!! I won't reply🙂",
       },
       {
         name: "Priya Chaurasia",
@@ -444,6 +543,30 @@ const teams: Team[] = [
         github: "https://github.com/noticeablestar",
         linkedin: "https://www.linkedin.com/in/priyachaurasia",
         bio: "Harnessing human intelligence",
+      },
+      {
+        name: "Harsh Kaushik",
+        role: "Member",
+        image: "/assets/i9/Harsh Kaushik.jpg",
+        github: "https://github.com/kaushikharsh99",
+        linkedin: "https://www.linkedin.com/in/harsh-kaushik-95920b379",
+        bio: "Grilled chicken sandwich ",
+      },
+      {
+        name: "Antra Kukreti",
+        role: "Member",
+        image: "/assets/i9/Antra.png",
+        //github: "#",
+        linkedin: "https://www.linkedin.com/in/antra-kukreti-a7a501442",
+        bio: "An all-rounder driven to outperform.",
+      },
+      {
+        name: "Anshika Kharb",
+        role: "Member",
+        image: "/assets/i9/Anshika Kharb.jpg",
+        github: "https://github.com/anshika-15-cs",
+        linkedin: "https://www.linkedin.com/in/anshika-kharb-8b396341b/",
+        bio: "Learn. Train. Deploy. Repeat.",
       },
     ],
   },
@@ -473,32 +596,25 @@ const teams: Team[] = [
 
     members: [],
   },
-
+  */
   {
     id: "design",
     name: "Arc : Design and Content Team",
     image: "/assets/teams/design.png",
     description: "Designs club materials and promotional content.",
 
-    lead: {
-      name: "Place Holder",
-      role: "Team Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
-      linkedin: "#",
-    },
-
-    coLead: {
-      name: "Place Holder",
-      role: "Co Lead",
-      image: "/assets/members/placeholder.png",
-      github: "#",
-      linkedin: "#",
-    },
-
-    members: [],
+    members: [
+      {
+        name: "Kinjal Tyagi",
+        role: "Member",
+        image: "/assets/arc/Kinjal Tyagi.jpeg",
+        github: "#",
+        linkedin: "https://www.linkedin.com/in/kinjal-tyagi-6b5906436/",
+        bio: "Making chaos look intentional!",
+      },
+    ],
   },
-  */
+
 ];
 
 const mentors = [
@@ -861,7 +977,7 @@ function AboutApp() {
     <div className="system-panel">
       {tab === "General" && <><div className="system-hero"><ChipMark /><div><h2>Intel oneAPI Student Club — EDC</h2><p>IoSC · GGSIPU East Delhi Campus</p></div></div><hr /><div className="system-copy"><strong>A future-focused, tech-driven community.</strong><p>IoSC brings together students who love technology and innovative development—from design, system integration, game development, robotics, and web to management. It is a platform to learn, gain hands-on experience, and excel.</p></div><div className="system-stats"><span><b>LEARN</b> together</span><span><b>BUILD</b> projects</span><span><b>SHARE</b> openly</span></div></>}
       {tab === "Our values" && <div className="value-list">{[["Hands-on education", "Turn technical ideas into practical experience through making and experimentation."], ["Real-life problem solving", "Learn by working on challenges that demand thoughtful, useful solutions."], ["Collaboration", "Build with people from different technical and creative disciplines."], ["Industry insight", "Connect workshops and sessions with contemporary tools and working practice."]].map(([title, text], i) => <div key={title}><span>{i + 1}</span><p><strong>{title}</strong><small>{text}</small></p></div>)}</div>}
-      {tab === "Club details" && <div className="detail-table"><div><span>Club type</span><strong>Intel oneAPI Student Club</strong></div><div><span>Established</span><strong>2023</strong></div><div><span>Campus</span><strong>GGSIPU East Delhi Campus, USAR</strong></div><div><span>Activities</span><strong>Workshops, hackathons, coding competitions, bootcamps &amp; networking</strong></div><div><span>Focus</span><strong>Technology, oneAPI, multidisciplinary project building</strong></div></div>}
+      {tab === "Club details" && <div className="detail-table"><div><span>Club type</span><strong>Intel oneAPI Student Club</strong></div><div><span>Established</span><strong>2023</strong></div><div><span>Campus</span><strong>GGSIPU East Delhi Campus, USAR</strong></div><div><span>Activities</span><strong>Workshops, hackathons, coding competitions, bootcamps &amp; networking</strong></div><div><span>Focus</span><strong>Technology, oneAPI, multidisciplinary project building</strong></div><div><span>Social Links</span><strong className="detail-social-links"><a href="https://www.linkedin.com/company/iosc-usar/" target="_blank" rel="noopener noreferrer"><Linkedin aria-hidden="true" /><span>LinkedIn</span></a><br></br><br></br><a href="https://www.instagram.com/iosc_edc/" target="_blank" rel="noopener noreferrer"><Instagram aria-hidden="true" /><span>Instagram</span></a></strong></div></div>}
     </div>
   </div>;
 }
@@ -872,10 +988,19 @@ function TeamsPanel() {
   const [selectedPerson, setSelectedPerson] = useState(0);
   const currentTeam = teams.find((team) => team.id === selectedTeam) ?? null;
   const people: TeamMember[] = selectedTeam === "club"
-    ? clubLeadership.map((leader) => ({ name: leader.name, role: leader.title, image: leader.image, github: leader.github, linkedin: leader.linkedin, bio: "bio" in leader ? leader.bio : undefined }))
-    : selectedView === "leadership"
-      ? [currentTeam!.lead, currentTeam!.coLead]
-      : currentTeam!.members;
+  ? clubLeadership.map((leader) => ({
+      name: leader.name,
+      role: leader.title,
+      image: leader.image,
+      github: leader.github,
+      linkedin: leader.linkedin,
+      bio: "bio" in leader ? leader.bio : undefined,
+    }))
+  : selectedView === "leadership"
+    ? [currentTeam!.lead, currentTeam!.coLead].filter(
+        (member): member is TeamMember => Boolean(member)
+      )
+    : currentTeam!.members;
   const person = people[Math.min(selectedPerson, people.length - 1)];
   const select = (team: string | "club", view: "leadership" | "members" = "leadership") => {
     setSelectedTeam(team);
@@ -940,9 +1065,9 @@ function TeamsPanel() {
                     <FolderOpen size={13} />
                     <span>{team.name.split(" : ")[0]}</span>
                   </button>
-                  <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "leadership" ? "selected" : ""}`} onClick={() => select(team.id, "leadership")}>
+                  {team.id !== "design" && <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "leadership" ? "selected" : ""}`} onClick={() => select(team.id, "leadership")}>
                     <Folder size={13} /><span>Team Leads</span>
-                  </button>
+                  </button>}
                   <button type="button" className={`xp-tree-item xp-tree-level-two ${selectedTeam === team.id && selectedView === "members" ? "selected" : ""}`} onClick={() => select(team.id, "members")}>
                     <Folder size={13} /><span>Members</span>
                   </button>
@@ -953,7 +1078,7 @@ function TeamsPanel() {
         </aside>
 
         <main className="team-profile-pane">
-          <div className="xp-person-preview">
+          {person ? <div className="xp-person-preview">
             <img src={person.image} alt={person.name} />
             <div>
               <h2>{person.name}</h2>
@@ -987,11 +1112,11 @@ function TeamsPanel() {
                 )}
               </span>
             </div>
-          </div>
-          <div className="xp-member-list" role="listbox" aria-label="Team members">
+          </div> : <div className="xp-empty-state">No team leads are listed yet.</div>}
+          {people.length > 0 && <div className="xp-member-list" role="listbox" aria-label={selectedView === "members" ? "Team members" : "Team leads"}>
             <div className="xp-member-list-head"><span>Name</span><span>Role</span><span>Status</span></div>
             {people.map((member, index) => <button key={`${member.name}-${index}`} className={index === Math.min(selectedPerson, people.length - 1) ? "selected" : ""} onClick={() => setSelectedPerson(index)}><span>{member.name}</span><span>{member.role}</span><span style={{ whiteSpace: "normal", overflowWrap: "anywhere" }}>{member.status ?? "Active"}</span></button>)}
-          </div>
+          </div>}
         </main>
       </div>
 
