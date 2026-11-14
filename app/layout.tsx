@@ -3,7 +3,8 @@ import "./globals.css";
 import AzinhackPosterModal from "./components/AzinhackPosterModal";
 
 export const metadata: Metadata = {
-  title: "IoSC — Intel oneAPI Student Club",
+  title: "IoSC: Intel oneAPI Student Club",
+  icons: { icon: '/iosc-logo.png' },
   description: "The Intel oneAPI Student Club, reimagined as a Windows XP desktop.",
 };
 

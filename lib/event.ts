@@ -4,7 +4,7 @@ export const event = {
   dates: '21–22 October 2026',
   registrationUrl: 'https://unstop.com/p/azinhack-2026-guru-gobind-singh-indraprastha-university-ggsipu-delhi-1763832',
   venue: 'GGSIPU USAR · East Delhi Campus',
-  address: 'Surajmal Vihar, Delhi — 110092',
+  address: 'Surajmal Vihar, Delhi 110092',
   prizePool: '₹1,00,000',
   tinyfishUrl: 'https://agent.tinyfish.ai/sign-up?ref=v1.dXNlcl8zSjZVdjFEZnBqUkEyM2RZMGFvWEI4Ykh3eVo.1WiZO3MiAIbHKbweb2v2wAGPqEUmjGfPQGFRGnPgvrM',
 };
