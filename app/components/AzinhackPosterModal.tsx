@@ -115,7 +115,7 @@ export default function AzinhackPosterModal() {
                 <Calendar className="w-3.5 h-3.5" />
                 <span>SAVE THE DATE</span>
               </div>
-              <div className="font-bold text-[#161712] text-sm sm:text-base">21—22 Oct 2026</div>
+              <div className="font-bold text-[#161712] text-sm sm:text-base">21–22 Oct 2026</div>
               <div className="text-[11px] text-[#515b6b]">24-Hour Overnight Hack</div>
             </div>
 
